@@ -1,9 +1,11 @@
 import java.awt.Component;
 import java.awt.Font;
 
+import javax.swing.JPanel;
 
 
-public abstract class Panneau {
+
+public abstract class Panneau extends JPanel{
 
 	Font f_titre;
 	Font f_sousTitre;
