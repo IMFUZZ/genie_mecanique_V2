@@ -2,7 +2,7 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.File;
-
+import java.awt.Color;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -21,6 +21,8 @@ public abstract class Panneau extends JPanel{
 	
 	public Panneau() 
 	{
+		setVisible(true);
+		
 		f_titre = new Font("SansSerif", Font.PLAIN, 40);
 		f_sousTitre = new Font("SansSerif", Font.PLAIN, 20);
 		f_texte = new Font("SansSerif", Font.PLAIN, 15);

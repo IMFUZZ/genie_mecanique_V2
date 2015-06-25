@@ -8,7 +8,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public abstract class Fenetre extends JFrame {
+public class Fenetre extends JFrame {
 
 	JPanel p_haut;
 	JPanel p_gauche;
@@ -23,9 +23,12 @@ public abstract class Fenetre extends JFrame {
 		/* Constructeur de l'objet Fenetre */
 		
 		new JFrame();
+		setExtendedState(JFrame.MAXIMIZED_BOTH); // Met la fenêtre "fullscreen" si elle est "resizable"
 		setTitle("Système de gestion - 2014");
 		setLayout(new BorderLayout());
+		/*  ----- Affecte le "fullscreen" -----
 		setResizable(false);
+		 */
 		setBackground(Color.DARK_GRAY);
 		setVisible(false);
 		
