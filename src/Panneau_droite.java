@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -13,7 +14,9 @@ public class Panneau_droite extends Panneau {
 	
 	public Panneau_droite()
 	{
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		//setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		
+		setBackground(Color.red);
 		
 		liste_de_boites = new ArrayList<JComponent>();
 	}

@@ -1,10 +1,12 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -23,14 +25,14 @@ public class Fenetre extends JFrame {
 		/* Constructeur de l'objet Fenetre */
 		
 		new JFrame();
-		setExtendedState(JFrame.MAXIMIZED_BOTH); // Met la fenêtre "fullscreen" si elle est "resizable"
 		setTitle("Système de gestion - 2014");
+		setExtendedState(JFrame.MAXIMIZED_BOTH); // Met la fenêtre "fullscreen" si elle est "resizable"
+		
 		setLayout(new BorderLayout());
+		setVisible(false);
 		/*  ----- Affecte le "fullscreen" -----
 		setResizable(false);
 		 */
-		setBackground(Color.DARK_GRAY);
-		setVisible(false);
 		
 		screen_height = Toolkit.getDefaultToolkit().getScreenSize().height;
 		screen_width = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -41,11 +43,19 @@ public class Fenetre extends JFrame {
 		p_droite = new JPanel();
 		p_bas = new JPanel();
 		
+		p_haut.setLayout(new GridLayout(1, 1));
+		p_gauche.setLayout(new GridLayout(1, 1));
+		p_centre.setLayout(new GridLayout(1, 1));
+		p_droite.setLayout(new GridLayout(1, 1));
+		p_bas.setLayout(new GridLayout(1, 1));
+		
 		add(p_haut, BorderLayout.NORTH);
 		add(p_gauche, BorderLayout.WEST);
 		add(p_centre, BorderLayout.CENTER);
 		add(p_droite, BorderLayout.EAST);
 		add(p_bas, BorderLayout.SOUTH);
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent windowEvent) {
