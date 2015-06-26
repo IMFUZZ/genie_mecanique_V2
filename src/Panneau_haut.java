@@ -34,6 +34,9 @@ public class Panneau_haut extends Panneau {
 		p_image_centre = new JPanel();
 		p_texte_image_centre = new JPanel();
 		
+		p_gauche.setMaximumSize(new Dimension(500, 300));
+		p_centre.setMaximumSize(new Dimension(700, 300));
+		
 		p_image_centre.setLayout(new FlowLayout());
 		p_texte_image_centre.setLayout(new FlowLayout());
 		
