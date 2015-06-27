@@ -53,14 +53,13 @@ public class Panneau_haut extends Panneau {
 			
 		/* ----- Ces lignes servent à vérifier la position des panneaux
 		 * 
-		 */
 		p_gauche.setBackground(Color.red);
 		p_centre.setBackground(Color.pink);
 		p_droite.setBackground(Color.green);
 		setBackground(Color.blue);
 		p_image_centre.setBackground(Color.blue);
 		p_texte_image_centre.setBackground(Color.yellow);
-		
+		*/
 	}
 }
  

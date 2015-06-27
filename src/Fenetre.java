@@ -1,14 +1,20 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Fenetre extends JFrame {
@@ -26,8 +32,11 @@ public class Fenetre extends JFrame {
 		/* Constructeur de l'objet Fenetre */
 		
 		new JFrame();
+		
 		setTitle("Système de gestion - 2014");
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // Met la fenêtre "fullscreen" si elle est "resizable"
+		setMinimumSize(new Dimension(800, 600));
+		
 		
 		setLayout(new BorderLayout());
 		setVisible(false);

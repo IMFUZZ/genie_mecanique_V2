@@ -25,7 +25,7 @@ public class Panneau_haut_etudiant extends Panneau_haut {
 		l_nom_etudiant = new JLabel(s_nom_etudiant);
 		l_prenom_etudiant = new JLabel(s_prenom_etudiant);
 		l_image_etudiant = faire_image("src/images/etudiant1.png", 150, 160);
-		l_image_centre = faire_image("src/images/barcode.png", 300, 200);
+		l_image_centre = faire_codebarre("src/images/barcode.png");
 		
 		l_texte_image_centre.setText("Scanner un étudiant");
 		

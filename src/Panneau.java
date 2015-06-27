@@ -72,4 +72,24 @@ public abstract class Panneau extends JPanel{
 	      return new JLabel("Erreur : image inexistante!");
 	}
 	
+	public JLabel faire_codebarre(String a_chemin_image)
+	{
+	      try {
+	          JLabel lImage = new JLabel(
+	        		  (new ImageIcon(
+	        				  ((new ImageIcon(
+	        						  a_chemin_image)).getImage()).getScaledInstance(
+	        								  150, 
+	        								  100, 
+	        								  java.awt.Image.SCALE_SMOOTH))));
+	          /* Cette ligne montre l'image dans une fenetre 'dialogue'
+	           * JOptionPane.showMessageDialog(null, lImage);
+	           */
+	          return lImage;
+	       } catch (Exception exceptions) {
+	    	   System.out.println("ERREUR : COULD NOT IMPORT IMAGE!");
+	    	   exceptions.printStackTrace();
+	       }
+	      return new JLabel("Erreur : image inexistante!");
+	}
 }
