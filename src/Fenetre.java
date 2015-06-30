@@ -37,7 +37,6 @@ public class Fenetre extends JFrame {
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // Met la fenêtre "fullscreen" si elle est "resizable"
 		setMinimumSize(new Dimension(800, 600));
 		
-		
 		setLayout(new BorderLayout());
 		setVisible(false);
 		/*  ----- Affecte le "fullscreen" -----
