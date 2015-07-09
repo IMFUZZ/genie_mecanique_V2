@@ -35,8 +35,8 @@ public abstract class Panneau extends JPanel{
 		f_sousTitre = new Font("SansSerif", Font.PLAIN, 20);
 		f_texte = new Font("SansSerif", Font.PLAIN, 15);
 		
-		boite_standard_largeur = 120;
-		boite_standard_hauteur = 40;
+		boite_standard_largeur = 150;
+		boite_standard_hauteur = 50;
 	}
 	
 	protected void ajuster_boites()
