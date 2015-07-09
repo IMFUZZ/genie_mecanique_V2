@@ -16,6 +16,5 @@ public class Panneau_haut_recherche extends Panneau_haut {
 		
 		p_image_centre.add(l_image_centre);
 		p_centre.add(p_image_centre);
-		p_centre.add(p_texte_image_centre);
 	}
 }
