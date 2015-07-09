@@ -22,6 +22,7 @@ public abstract class Panneau_centre extends Panneau {
 	public Panneau_centre()
 	{
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		
 		dimension_tableaux = new Dimension(200, 200);
 		setBackground(Color.cyan);	
 	}

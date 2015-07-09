@@ -1,33 +1,40 @@
-import java.awt.BorderLayout;
 import java.awt.Color;
 
-import javax.swing.BoxLayout;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.border.Border;
 
 
 public class Panneau_centre_etudiant extends Panneau_centre {
-	
-	JTable tableau_bris;
-	JLabel titre_tableau_bris;
-	JScrollPane scroll_tableau_bris;
+		
 	
 	public Panneau_centre_etudiant()
 	{
+		Border paddingTableaux = borderFactory.createEmptyBorder(10, 10, 10, 10);
 		titre_tableau_outils = new JLabel("Outils");
+		titre_tableau_outils.setBorder(paddingTableaux);
 		add(titre_tableau_outils);
 		initialiser_tableau_outils();
 		
 		titre_tableau_bruts = new JLabel("Bruts");
+		titre_tableau_bruts.setBorder(paddingTableaux);
 		add(titre_tableau_bruts);
 		initialiser_tableau_bruts();
 		
 		titre_tableau_bris = new JLabel("Bris");
+		titre_tableau_bris.setBorder(paddingTableaux);
 		add(titre_tableau_bris);
 		initialiser_tableau_bris();
 		
 	}
+	
+	BorderFactory borderFactory;
+	
+	JTable tableau_bris;
+	JLabel titre_tableau_bris;
+	JScrollPane scroll_tableau_bris;
 	
 	
 	public void initialiser_tableau_outils() {
@@ -45,6 +52,7 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 		tableau_outils.setRowHeight(20);
 		scroll_tableau_outils = new JScrollPane(tableau_outils);
 		scroll_tableau_outils.setSize(dimension_tableaux);
+		scroll_tableau_outils.setBorder(borderFactory.createEmptyBorder(10, 10, 10, 10));
 		add(scroll_tableau_outils);
 	}
 	
@@ -83,9 +91,5 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 		add(scroll_tableau_bris);
 	}
 
-
-
-	
-	
 
 }
