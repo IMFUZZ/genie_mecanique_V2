@@ -1,10 +1,12 @@
 import java.awt.Color;
 import java.awt.Dimension;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.border.Border;
 
 
 public abstract class Panneau_centre extends Panneau {
@@ -19,11 +21,12 @@ public abstract class Panneau_centre extends Panneau {
 	
 	Dimension dimension_tableaux;
 	
+	BorderFactory border_factory;
+	Border padding_tableaux = border_factory.createEmptyBorder(0, 20, 10, 20);
+	
 	public Panneau_centre()
 	{
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		
-		dimension_tableaux = new Dimension(200, 200);
 		setBackground(Color.cyan);	
 	}
 	

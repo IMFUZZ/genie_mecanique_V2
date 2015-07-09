@@ -1,28 +1,36 @@
-import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
 
 public class Panneau_centre_recherche extends Panneau_centre {
 	
 	
 	public Panneau_centre_recherche()	{
 		
-		setPanneauMenu();
-		add(panneauMenu);
-		setPanneauxContenu();
-		add(panneauxContenu);
+		dimension_tableaux = new Dimension(200, 200);
 		
+		creer_contenu_onglets();
+		
+		creer_onglets();
+		
+		add(tabbed_pane);
+
 	}
-	
+
+	Dimension dimension_onglets = new Dimension(250, 50);
+	Border padding_onglets = border_factory.createEmptyBorder(10, 10, 10, 10);
+	Border contour_onglets = border_factory.createEtchedBorder();
+	Border bordure_onglets = new CompoundBorder(contour_onglets, padding_onglets);
+
 	JTable tableau_etudiants;
 	JLabel titre_tableau_etudiants;
 	JScrollPane scroll_tableau_etudiants;
@@ -31,182 +39,60 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	JLabel titre_tableau_materiel;
 	JScrollPane scroll_tableau_materiel;
 	
+	JTabbedPane tabbed_pane;
 	
-	/**
-	 * Panneau contenant les onglets
-	 */
-	protected JPanel panneauMenu;	
+	JPanel panneau_etudiants;
+	JPanel panneau_outils;
+	JPanel panneau_materiel;
+	JPanel panneau_bruts;
 	
-	/**
-	 * Crée le panneau contenant les boutons du menu et l'ajoute à la fenêtre
-	 */
-	protected void setPanneauMenu(){
-		panneauMenu = new JPanel();
-		panneauMenu.setLayout(new BoxLayout(panneauMenu, BoxLayout.LINE_AXIS));
+	
+	public void creer_contenu_onglets() {
 		
-		ajouterBoutonEtudiants();
-		ajouterBoutonOutils();
-		ajouterBoutonMateriel();
-		ajouterBoutonBruts();
+		panneau_etudiants = new JPanel();
+		panneau_etudiants.setLayout(new BoxLayout(panneau_etudiants, BoxLayout.Y_AXIS));
+		afficher_tableau_etudiants();
+		
+		panneau_outils = new JPanel();
+		panneau_outils.setLayout(new BoxLayout(panneau_outils, BoxLayout.Y_AXIS));
+		afficher_tableau_outils();
+		
+		panneau_materiel = new JPanel();
+		panneau_materiel.setLayout(new BoxLayout(panneau_materiel, BoxLayout.Y_AXIS));
+		afficher_tableau_materiel();
+		
+		panneau_bruts = new JPanel();
+		panneau_bruts.setLayout(new BoxLayout(panneau_bruts, BoxLayout.Y_AXIS));
+		afficher_tableau_bruts();
 	}
 	
-	/**
-	 * Ajoute le bouton «Étudiants» au menu
-	 */
-	protected void ajouterBoutonEtudiants(){
-		JButton boutonEtudiants = new JButton("Étudiants");
-		panneauMenu.add(boutonEtudiants);
+	public void creer_onglets() {
+		tabbed_pane = new JTabbedPane();
+		tabbed_pane.addTab("Étudiants", panneau_etudiants);
+		tabbed_pane.addTab("Outils", panneau_outils);
+		tabbed_pane.addTab("Matériel", panneau_materiel);
+		tabbed_pane.addTab("Bruts", panneau_bruts);
 		
-		ActionListener actionBoutonEtudiants = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				layoutCartes.show(panneauxContenu, "Étudiants");
-				afficher_etudiants(listeCartes.get(0));
-			}
-		};
-		boutonEtudiants.addActionListener(actionBoutonEtudiants);
+		JLabel titre_onglet_etudiants = new JLabel("Étudiants");
+		titre_onglet_etudiants.setPreferredSize(dimension_onglets);
+		tabbed_pane.setTabComponentAt(0, titre_onglet_etudiants);
+		
+		JLabel titre_onglet_outils = new JLabel("Outils");
+		titre_onglet_outils.setPreferredSize(dimension_onglets);
+		tabbed_pane.setTabComponentAt(1, titre_onglet_outils);
+		
+		JLabel titre_onglet_materiel = new JLabel("Matériel");
+		titre_onglet_materiel.setPreferredSize(dimension_onglets);
+		tabbed_pane.setTabComponentAt(2, titre_onglet_materiel);
+		
+		JLabel titre_onglet_bruts = new JLabel("Bruts");
+		titre_onglet_bruts.setPreferredSize(dimension_onglets);
+		tabbed_pane.setTabComponentAt(3, titre_onglet_bruts);
 	}
 	
-	/**
-	 * Ajoute le bouton « Outils » au menu
-	 */
-	protected void ajouterBoutonOutils(){
-		JButton boutonOutils = new JButton("Outils");
-		panneauMenu.add(boutonOutils);
-		
-		ActionListener actionBoutonOutils = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				layoutCartes.show(panneauxContenu, "Outils");
-				afficher_outils(listeCartes.get(1));
-			}
-		};
-		boutonOutils.addActionListener(actionBoutonOutils);
-	}
-	
-	/**
-	 * Ajoute le bouton « Matériel » au menu
-	 */
-	protected void ajouterBoutonMateriel(){
-		JButton boutonMateriel = new JButton("Matériel");
-		panneauMenu.add(boutonMateriel);
-		
-		ActionListener actionBoutonMateriel = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				layoutCartes.show(panneauxContenu, "Matériel");
-				afficher_materiel(listeCartes.get(2));
-			}
-		};
-		boutonMateriel.addActionListener(actionBoutonMateriel);
-	}
-	
-	/**
-	 * Ajoute le bouton « Bruts » au menu
-	 */
-	protected void ajouterBoutonBruts(){
-		JButton boutonBruts = new JButton("Bruts");
-		panneauMenu.add(boutonBruts);
-		
-		ActionListener actionBoutonBruts = new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				layoutCartes.show(panneauxContenu, "Bruts");
-				afficher_bruts(listeCartes.get(3));
-			}
-		};
-		boutonBruts.addActionListener(actionBoutonBruts);
-	}
-	
-	
-	
-	
-	
-	/**
-	 * Panneau contenant tous les panneaux de contenu
-	 */
-	protected JPanel panneauxContenu;
-	/**
-	 * Liste contenant les cartes de panneauxContenu
-	 */
-	protected ArrayList<JPanel> listeCartes;
-	
-	/**
-	 * Layout de panneauxContenus
-	 */
-	protected CardLayout layoutCartes;
-	
-	/**
-	 * Créée le panneau de contenu avec toutes ses cartes
-	 */
-	protected void setPanneauxContenu(){
-		panneauxContenu = new JPanel();
-		layoutCartes = new CardLayout();
-		panneauxContenu.setLayout(layoutCartes);
-		
-		listeCartes = new ArrayList<JPanel>();
-		
-		JPanel carteEtudiants = new JPanel(); 
-		carteEtudiants.setLayout(new BoxLayout(carteEtudiants, BoxLayout.Y_AXIS));
-		panneauxContenu.add(carteEtudiants, "Étudiants");
-		listeCartes.add(carteEtudiants);
-		
-		JPanel carteOutils = new JPanel();
-		carteOutils.setLayout(new BoxLayout(carteOutils, BoxLayout.Y_AXIS));
-		panneauxContenu.add(carteOutils, "Outils");
-		listeCartes.add(carteOutils);
-		
-		JPanel carteMateriel = new JPanel(); 
-		carteMateriel.setLayout(new BoxLayout(carteMateriel, BoxLayout.Y_AXIS));
-		panneauxContenu.add(carteMateriel, "Matériel");
-		listeCartes.add(carteMateriel);
-		
-		JPanel carteBruts = new JPanel(); 
-		carteBruts.setLayout(new BoxLayout(carteBruts, BoxLayout.Y_AXIS));
-		panneauxContenu.add(carteBruts, "Bruts");
-		listeCartes.add(carteBruts);
-		
-		// Onglet affiché par défaut
-		layoutCartes.show(panneauxContenu, "Étudiants");
-		afficher_etudiants(listeCartes.get(0));
-			
-	}
-	
-	public void afficher_etudiants(JPanel carteEtudiants) {
-		carteEtudiants.removeAll();
-		JLabel labelTitre = new JLabel("Liste des étudiants");
-		carteEtudiants.add(labelTitre);
-		JScrollPane scrollEnCours = initialiser_tableau_etudiants();
-		carteEtudiants.add(scrollEnCours);
-	}
-	
-	public void afficher_outils(JPanel carteOutils) {
-		carteOutils.removeAll();
-		JLabel labelTitre = new JLabel("Liste des outils");
-		carteOutils.add(labelTitre);
-		JScrollPane scrollEnCours = initialiser_tableau_outils();
-		carteOutils.add(scrollEnCours);
-	}
-	
-	public void afficher_materiel(JPanel carteMateriel) {
-		carteMateriel.removeAll();
-		JLabel labelTitre = new JLabel("Liste du matériel");
-		carteMateriel.add(labelTitre);
-		JScrollPane scrollEnCours = initialiser_tableau_materiel();
-		carteMateriel.add(scrollEnCours);
-	}
-	
-	public void afficher_bruts(JPanel carteBruts) {
-		carteBruts.removeAll();
-		JLabel labelTitre = new JLabel("Liste des bruts");
-		carteBruts.add(labelTitre);
-		JScrollPane scrollEnCours = initialiser_tableau_bruts();
-		carteBruts.add(scrollEnCours); 
-	}
-
-	
-	public JScrollPane initialiser_tableau_etudiants() {
+	public void afficher_tableau_etudiants() {
 		/* Ajoute les informations des outils empruntés dans le tableau */
+		panneau_etudiants.removeAll();
 		
 		int nb_etudiants = 10; // ajuster en fonction du nb d'articles à lister
 		String[] noms_colonnes = {"Code utilisateur", "Prénom", "Nom", "Photo"};
@@ -218,13 +104,15 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		tableau_etudiants.setGridColor(Color.LIGHT_GRAY);
 		tableau_etudiants.setMaximumSize(dimension_tableaux);
 		tableau_etudiants.setRowHeight(20);
+		
 		scroll_tableau_etudiants = new JScrollPane(tableau_etudiants);
 		scroll_tableau_etudiants.setSize(dimension_tableaux);
-		return scroll_tableau_etudiants;
+		panneau_etudiants.add(scroll_tableau_etudiants);
 	}
 	
-	public JScrollPane initialiser_tableau_outils() {
+	public void afficher_tableau_outils() {
 		/* Ajoute les informations des outils empruntés dans le tableau */
+		panneau_outils.removeAll();
 		
 		int nb_outils = 10; // ajuster en fonction du nb d'articles à lister
 		String[] noms_colonnes = {"Id", "Description", "Responsable (professeur)"};
@@ -238,11 +126,12 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		tableau_outils.setRowHeight(20);
 		scroll_tableau_outils = new JScrollPane(tableau_outils);
 		scroll_tableau_outils.setSize(dimension_tableaux);
-		return scroll_tableau_outils;
+		panneau_outils.add(scroll_tableau_outils);
 	}
 	
-	public JScrollPane initialiser_tableau_materiel() {
+	public void afficher_tableau_materiel() {
 		/* Ajoute les informations des bruts empruntés dans le tableau */
+		panneau_materiel.removeAll();
 		
 		int nb_materiaux = 10; // ajuster en fonction du nb d'articles à lister
 		String[] noms_colonnes = {"Id", "Description", "Responsable (professeur)"};
@@ -256,11 +145,12 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		tableau_materiel.setRowHeight(20);
 		scroll_tableau_materiel = new JScrollPane(tableau_materiel);
 		scroll_tableau_materiel.setSize(dimension_tableaux);
-		return scroll_tableau_materiel;
+		panneau_materiel.add(scroll_tableau_materiel);
 	}
 	
-	public JScrollPane initialiser_tableau_bruts() {
+	public void afficher_tableau_bruts() {
 		/* Ajoute les informations des bruts empruntés dans le tableau */
+		panneau_bruts.removeAll();
 		
 		int nb_bruts = 10; // ajuster en fonction du nb d'articles à lister
 		String[] noms_colonnes = {"Id", "Description", "Responsable (professeur)"};
@@ -274,7 +164,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		tableau_bruts.setRowHeight(20);
 		scroll_tableau_bruts = new JScrollPane(tableau_bruts);
 		scroll_tableau_bruts.setSize(dimension_tableaux);
-		return scroll_tableau_bruts;
+		panneau_bruts.add(scroll_tableau_bruts);
 	}
 	
 }

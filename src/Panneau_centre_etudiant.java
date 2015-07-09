@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -12,25 +13,29 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 	
 	public Panneau_centre_etudiant()
 	{
-		Border paddingTableaux = borderFactory.createEmptyBorder(10, 10, 10, 10);
+		dimension_tableaux = new Dimension(200, 200);
+		
 		titre_tableau_outils = new JLabel("Outils");
-		titre_tableau_outils.setBorder(paddingTableaux);
+		titre_tableau_outils.setFont(f_sousTitre);
+		titre_tableau_outils.setBorder(padding_tableaux);
 		add(titre_tableau_outils);
 		initialiser_tableau_outils();
 		
 		titre_tableau_bruts = new JLabel("Bruts");
-		titre_tableau_bruts.setBorder(paddingTableaux);
+		titre_tableau_bruts.setFont(f_sousTitre);
+		titre_tableau_bruts.setBorder(padding_tableaux);
 		add(titre_tableau_bruts);
 		initialiser_tableau_bruts();
 		
 		titre_tableau_bris = new JLabel("Bris");
-		titre_tableau_bris.setBorder(paddingTableaux);
+		titre_tableau_bris.setFont(f_sousTitre);
+		titre_tableau_bris.setBorder(padding_tableaux);
 		add(titre_tableau_bris);
 		initialiser_tableau_bris();
 		
 	}
 	
-	BorderFactory borderFactory;
+	
 	
 	JTable tableau_bris;
 	JLabel titre_tableau_bris;
@@ -50,9 +55,9 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 		tableau_outils.setGridColor(Color.LIGHT_GRAY);
 		tableau_outils.setMaximumSize(dimension_tableaux);
 		tableau_outils.setRowHeight(20);
+		
 		scroll_tableau_outils = new JScrollPane(tableau_outils);
-		scroll_tableau_outils.setSize(dimension_tableaux);
-		scroll_tableau_outils.setBorder(borderFactory.createEmptyBorder(10, 10, 10, 10));
+		scroll_tableau_outils.setBorder(padding_tableaux);
 		add(scroll_tableau_outils);
 	}
 	
@@ -69,8 +74,9 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 		tableau_bruts.setGridColor(Color.LIGHT_GRAY);
 		tableau_bruts.setSize(dimension_tableaux);
 		tableau_bruts.setRowHeight(20);
+		
 		scroll_tableau_bruts = new JScrollPane(tableau_bruts);
-		scroll_tableau_bruts.setSize(dimension_tableaux);
+		scroll_tableau_bruts.setBorder(padding_tableaux);
 		add(scroll_tableau_bruts);
 	}
 	
@@ -86,8 +92,9 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 		tableau_bris = new JTable(donnees_tableau, noms_colonnes);
 		tableau_bris.setGridColor(Color.LIGHT_GRAY);
 		tableau_bris.setRowHeight(20);
+		
 		scroll_tableau_bris = new JScrollPane(tableau_bris);
-		scroll_tableau_bris.setSize(dimension_tableaux);
+		scroll_tableau_bris.setBorder(padding_tableaux);
 		add(scroll_tableau_bris);
 	}
 
