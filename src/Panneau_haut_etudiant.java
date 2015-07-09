@@ -20,15 +20,14 @@ public class Panneau_haut_etudiant extends Panneau_haut {
 	JLabel l_prenom_etudiant;
 	
 	TitledBorder b_p_gauche;
-	TitledBorder b_codeBarre;
 	
 	String s_nom_etudiant;
 	String s_prenom_etudiant;
 	
 	public Panneau_haut_etudiant()
 	{
-		s_nom_etudiant = "Dubé";
 		s_prenom_etudiant = "Daniel-Junior";
+		s_nom_etudiant = "Dubé";
 		
 		p_info_etudiant = new JPanel();
 		p_nom_prenom = new JPanel();
@@ -42,23 +41,23 @@ public class Panneau_haut_etudiant extends Panneau_haut {
 		l_nom_etudiant.setFont(f_sousTitre);
 		l_prenom_etudiant.setFont(f_sousTitre);
 		
-		// { --- ARRANGER L'ALIGNEMENT! --- 
-		p_info_etudiant.setLayout(new FlowLayout());
-		p_nom_prenom.setLayout(new FlowLayout());
-		// --- }
+		p_info_etudiant.setLayout(new BoxLayout(p_info_etudiant, BoxLayout.X_AXIS));
+		p_nom_prenom.setLayout(new BoxLayout(p_nom_prenom, BoxLayout.Y_AXIS));
+		p_nom_prenom.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
 		
 		b_p_gauche = BorderFactory.createTitledBorder("Information sur le client");
-		b_codeBarre = BorderFactory.createTitledBorder("Information sur le client");
+		b_codeBarre = BorderFactory.createTitledBorder("Retour à la selection de client");
+		
 		p_gauche.setBorder(
 				b_p_gauche);
 		p_centre.setBorder(
 				b_codeBarre);
 	
-		p_nom_prenom.add(l_image_etudiant);
+		p_nom_prenom.add(l_prenom_etudiant);
 		p_nom_prenom.add(l_nom_etudiant);
 		
+		p_info_etudiant.add(l_image_etudiant);
 		p_info_etudiant.add(p_nom_prenom);
-		p_info_etudiant.add(l_prenom_etudiant);
 		
 		p_gauche.add(p_info_etudiant);
 		

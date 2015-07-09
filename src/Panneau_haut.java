@@ -18,7 +18,8 @@ import javax.swing.border.TitledBorder;
 public class Panneau_haut extends Panneau {
 	
 	JLabel l_image_centre;
-	JLabel l_prof;
+	JLabel l_prof_prenom;
+	JLabel l_prof_nom;
 	JLabel l_date;
 	
 	JPanel p_image_centre;
@@ -27,6 +28,7 @@ public class Panneau_haut extends Panneau {
 	JPanel p_remplissage;
 	JPanel p_droite;
 	
+	TitledBorder b_codeBarre;
 	TitledBorder b_droite;
 	
 	public Panneau_haut()
@@ -37,14 +39,18 @@ public class Panneau_haut extends Panneau {
 		Calendar cal = Calendar.getInstance();
 		
 		l_image_centre = faire_image("", 300, 200);
-		l_prof = new JLabel("Professeur connecté : BONJOUR TEST");
+		l_prof_prenom = new JLabel("Sarah");
+		l_prof_nom = new JLabel("Laflamme");
 		l_date = new JLabel();
 		
+		l_prof_prenom.setFont(f_sousTitre);
+		l_prof_nom.setFont(f_sousTitre);
 		l_date.setText("Date : "
 				+ (dateFormat.format(cal.getTime())).toString());
 
-		l_prof.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		l_date.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		l_prof_prenom.setBorder(BorderFactory.createEmptyBorder(30, 10, 0, 10));
+		l_prof_nom.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
+		l_date.setBorder(BorderFactory.createEmptyBorder(50, 10, 10, 10));
 		
 		
 		p_gauche = new JPanel();
@@ -53,21 +59,22 @@ public class Panneau_haut extends Panneau {
 		p_droite = new JPanel();
 		p_image_centre = new JPanel();
 		
-		b_droite = BorderFactory.createTitledBorder("test");
+		b_droite = BorderFactory.createTitledBorder("Administrateur(e) connecté(e) : ");
 		p_droite.setBorder(b_droite);
 		
-		p_gauche.setMaximumSize(new Dimension(500, 300));
-		p_centre.setMaximumSize(new Dimension(300, 300));
-		p_remplissage.setMaximumSize(new Dimension(1000, 300));
-		p_droite.setMaximumSize(new Dimension(400, 300));
+		p_gauche.setMaximumSize(new Dimension(700, 200));
+		p_centre.setMaximumSize(new Dimension(300, 200));
+		p_remplissage.setMaximumSize(new Dimension(1000, 200));
+		p_droite.setMaximumSize(new Dimension(500, 200));
 		
-		p_droite.setLayout(new GridLayout(2,1));
+		p_droite.setLayout(new BoxLayout(p_droite, BoxLayout.Y_AXIS));
 		p_image_centre.setLayout(new GridLayout(1,1));
 		p_image_centre.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
 		p_centre.setLayout(new BoxLayout(p_centre, BoxLayout.Y_AXIS));
 		
-		p_droite.add(l_prof);
+		p_droite.add(l_prof_prenom);
+		p_droite.add(l_prof_nom);
 		p_droite.add(l_date);
 		
 		add(p_gauche);
@@ -75,16 +82,6 @@ public class Panneau_haut extends Panneau {
 		add(p_remplissage);
 		add(p_droite);
 		
-			
-		/* ----- Ces lignes servent à vérifier la position des panneaux
-		 * 
-		p_gauche.setBackground(Color.red);
-		p_centre.setBackground(Color.pink);
-		p_droite.setBackground(Color.green);
-		setBackground(Color.blue);
-		p_image_centre.setBackground(Color.blue);
-		p_texte_image_centre.setBackground(Color.yellow);
-		*/
 	}
 }
  
