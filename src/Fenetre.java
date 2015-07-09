@@ -58,16 +58,7 @@ public class Fenetre extends JFrame {
 		p_droite.setLayout(new GridLayout(1, 1));
 		p_bas.setLayout(new GridLayout(1, 1));
 		
-		p_haut.setBorder(
-				BorderFactory.createLineBorder(Color.black));
-		p_gauche.setBorder(
-				BorderFactory.createLineBorder(Color.black));
-		p_centre.setBorder(
-				BorderFactory.createLineBorder(Color.black));
-		p_droite.setBorder(
-				BorderFactory.createLineBorder(Color.black));
-		p_bas.setBorder(
-				BorderFactory.createLineBorder(Color.black));
+
 		
 		add(p_haut, BorderLayout.NORTH);
 		add(p_gauche, BorderLayout.WEST);

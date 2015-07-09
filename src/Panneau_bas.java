@@ -28,6 +28,8 @@ public class Panneau_bas extends Panneau {
 		l_commande.setText(a_s_notification);
 	}
 	
+	// -------- Changer le niveau de couleur (light green, light yellow and light red)
+	
 	public void niveau_alerte(int niveau_alerte)
 	{
 		if (niveau_alerte == 0)
