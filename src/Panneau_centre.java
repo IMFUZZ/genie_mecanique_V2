@@ -30,14 +30,4 @@ public abstract class Panneau_centre extends Panneau {
 		setBackground(Color.cyan);	
 	}
 	
-	public void set_tableau_outils() {
-		
-	}
-	
-	public void set_tableau_bruts() {
-		
-	}
-	
-	
-	
 }

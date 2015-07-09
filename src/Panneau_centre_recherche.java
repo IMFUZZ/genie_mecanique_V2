@@ -75,18 +75,22 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		
 		JLabel titre_onglet_etudiants = new JLabel("Étudiants");
 		titre_onglet_etudiants.setPreferredSize(dimension_onglets);
+		titre_onglet_etudiants.setFont(f_sousTitre);
 		tabbed_pane.setTabComponentAt(0, titre_onglet_etudiants);
 		
 		JLabel titre_onglet_outils = new JLabel("Outils");
 		titre_onglet_outils.setPreferredSize(dimension_onglets);
+		titre_onglet_outils.setFont(f_sousTitre);
 		tabbed_pane.setTabComponentAt(1, titre_onglet_outils);
 		
 		JLabel titre_onglet_materiel = new JLabel("Matériel");
 		titre_onglet_materiel.setPreferredSize(dimension_onglets);
+		titre_onglet_materiel.setFont(f_sousTitre);
 		tabbed_pane.setTabComponentAt(2, titre_onglet_materiel);
 		
 		JLabel titre_onglet_bruts = new JLabel("Bruts");
 		titre_onglet_bruts.setPreferredSize(dimension_onglets);
+		titre_onglet_bruts.setFont(f_sousTitre);
 		tabbed_pane.setTabComponentAt(3, titre_onglet_bruts);
 	}
 	
@@ -94,7 +98,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		/* Ajoute les informations des outils empruntés dans le tableau */
 		panneau_etudiants.removeAll();
 		
-		int nb_etudiants = 10; // ajuster en fonction du nb d'articles à lister
+		int nb_etudiants = 30; // ajuster en fonction du nb d'articles à lister
 		String[] noms_colonnes = {"Code utilisateur", "Prénom", "Nom", "Photo"};
 		String[][] donnees_tableau = new String[nb_etudiants][noms_colonnes.length];
 		
@@ -102,11 +106,8 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		
 		tableau_etudiants = new JTable(donnees_tableau, noms_colonnes);
 		tableau_etudiants.setGridColor(Color.LIGHT_GRAY);
-		tableau_etudiants.setMaximumSize(dimension_tableaux);
 		tableau_etudiants.setRowHeight(20);
-		
 		scroll_tableau_etudiants = new JScrollPane(tableau_etudiants);
-		scroll_tableau_etudiants.setSize(dimension_tableaux);
 		panneau_etudiants.add(scroll_tableau_etudiants);
 	}
 	
@@ -114,7 +115,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		/* Ajoute les informations des outils empruntés dans le tableau */
 		panneau_outils.removeAll();
 		
-		int nb_outils = 10; // ajuster en fonction du nb d'articles à lister
+		int nb_outils = 30; // ajuster en fonction du nb d'articles à lister
 		String[] noms_colonnes = {"Id", "Description", "Responsable (professeur)"};
 		String[][] donnees_tableau = new String[nb_outils][noms_colonnes.length];
 		
@@ -122,10 +123,8 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		
 		tableau_outils = new JTable(donnees_tableau, noms_colonnes);
 		tableau_outils.setGridColor(Color.LIGHT_GRAY);
-		tableau_outils.setMaximumSize(dimension_tableaux);
 		tableau_outils.setRowHeight(20);
 		scroll_tableau_outils = new JScrollPane(tableau_outils);
-		scroll_tableau_outils.setSize(dimension_tableaux);
 		panneau_outils.add(scroll_tableau_outils);
 	}
 	
@@ -133,7 +132,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		/* Ajoute les informations des bruts empruntés dans le tableau */
 		panneau_materiel.removeAll();
 		
-		int nb_materiaux = 10; // ajuster en fonction du nb d'articles à lister
+		int nb_materiaux = 30; // ajuster en fonction du nb d'articles à lister
 		String[] noms_colonnes = {"Id", "Description", "Responsable (professeur)"};
 		String[][] donnees_tableau = new String[nb_materiaux][noms_colonnes.length];
 		
@@ -141,10 +140,8 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		
 		tableau_materiel = new JTable(donnees_tableau, noms_colonnes);
 		tableau_materiel.setGridColor(Color.LIGHT_GRAY);
-		tableau_materiel.setSize(dimension_tableaux);
 		tableau_materiel.setRowHeight(20);
 		scroll_tableau_materiel = new JScrollPane(tableau_materiel);
-		scroll_tableau_materiel.setSize(dimension_tableaux);
 		panneau_materiel.add(scroll_tableau_materiel);
 	}
 	
@@ -152,7 +149,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		/* Ajoute les informations des bruts empruntés dans le tableau */
 		panneau_bruts.removeAll();
 		
-		int nb_bruts = 10; // ajuster en fonction du nb d'articles à lister
+		int nb_bruts = 30; // ajuster en fonction du nb d'articles à lister
 		String[] noms_colonnes = {"Id", "Description", "Responsable (professeur)"};
 		String[][] donnees_tableau = new String[nb_bruts][noms_colonnes.length];
 		
@@ -160,10 +157,8 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		
 		tableau_bruts = new JTable(donnees_tableau, noms_colonnes);
 		tableau_bruts.setGridColor(Color.LIGHT_GRAY);
-		tableau_bruts.setSize(dimension_tableaux);
 		tableau_bruts.setRowHeight(20);
 		scroll_tableau_bruts = new JScrollPane(tableau_bruts);
-		scroll_tableau_bruts.setSize(dimension_tableaux);
 		panneau_bruts.add(scroll_tableau_bruts);
 	}
 	
