@@ -58,8 +58,6 @@ public class Fenetre extends JFrame {
 		p_droite.setLayout(new GridLayout(1, 1));
 		p_bas.setLayout(new GridLayout(1, 1));
 		
-
-		
 		add(p_haut, BorderLayout.NORTH);
 		add(p_gauche, BorderLayout.WEST);
 		add(p_centre, BorderLayout.CENTER);
