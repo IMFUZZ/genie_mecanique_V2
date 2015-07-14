@@ -16,7 +16,7 @@ public class Base_de_donnees {
 		/* Constructeur de l'objet BaseDeDonnee */
 	}
 
-	public String[] faire_requete(String requete) {
+	public String[] faire_requete_sqlite(String requete) {
 		/* Fonction permettant d'effectuer une requête 
 		 * à la base de donnée. Celle-ci effectue les 
 		 * requête en "polling" et retourne une String[] 
@@ -62,7 +62,7 @@ public class Base_de_donnees {
 		return enregistrement.toArray(new String[0]);
 	}
 
-	public void faire_update(String requete) {
+	public void faire_update_sqlite(String requete) {
 		/* Fonction permettant d'effectuer une requête 
 		 * à la base de donnée. Celle-ci effectue les 
 		 * requête en "polling" et retourne une String[] 

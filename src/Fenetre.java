@@ -35,9 +35,7 @@ public class Fenetre extends JFrame {
 		/* Constructeur de l'objet Fenetre */
 		
 		new JFrame();
-		
-		JOptionPane.showInputDialog(this, "Identifiant administrateur :");
-		
+
 		setTitle("Système de gestion - 2014");
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // Met la fenêtre "fullscreen" si elle est "resizable"
 		setMinimumSize(new Dimension(800, 600));
@@ -68,6 +66,8 @@ public class Fenetre extends JFrame {
 		add(p_centre, BorderLayout.CENTER);
 		add(p_droite, BorderLayout.EAST);
 		add(p_bas, BorderLayout.SOUTH);
+		
+		set_panneau_recherche();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
