@@ -15,6 +15,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Fenetre extends JFrame {
@@ -28,10 +29,14 @@ public class Fenetre extends JFrame {
 	int screen_height;
 	int screen_width;
 	
+	Personne utilisateur;
+	
 	public Fenetre() {
 		/* Constructeur de l'objet Fenetre */
 		
 		new JFrame();
+		
+		JOptionPane.showInputDialog(this, "Identifiant administrateur :");
 		
 		setTitle("Système de gestion - 2014");
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // Met la fenêtre "fullscreen" si elle est "resizable"
@@ -71,5 +76,21 @@ public class Fenetre extends JFrame {
 				setVisible(false);
 			}
 		});
+	}
+	
+	public void set_panneau_recherche()
+	{
+		p_bas.add(new Panneau_bas());
+		p_droite.add(new Panneau_droite_recherche());
+		p_haut.add(new Panneau_haut_recherche());
+		p_centre.add(new Panneau_centre_recherche());
+	}
+	
+	public void set_panneau_etudiant()
+	{
+		p_bas.add(new Panneau_bas());
+		p_droite.add(new Panneau_droite_etudiant());
+		p_haut.add(new Panneau_haut_etudiant());
+		p_centre.add(new Panneau_centre_etudiant());
 	}
 }
