@@ -31,8 +31,9 @@ public class Panneau_haut extends Panneau {
 	TitledBorder b_codeBarre;
 	TitledBorder b_droite;
 	
-	public Panneau_haut()
+	public Panneau_haut(Fenetre a_parent)
 	{
+		super(a_parent);
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");

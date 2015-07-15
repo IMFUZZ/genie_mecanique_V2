@@ -10,29 +10,27 @@ public class Programme {
 		
 		String id = "";
 		
-		String temp_secret = "i";
-
 		Fenetre fenetre_principale = new Fenetre();	
+		
+		String temp_secret = "";
 		
 		while (!professeur_existe && (id != null))
 		{
 			id = (String) JOptionPane.showInputDialog(
-					fenetre_principale, 
-					"Identifiant administrateur : ", 
-					"Connection", 
-					3, 
-					new ImageIcon("src/images/icon_128.png"), 
-					null, 
-					"");
+					fenetre_principale, 			// -- Component
+					"Identifiant administrateur : ",// -- Sujet
+					"Connection",  					// -- Titre
+					3,  							// -- Type d'icône (si l'image ne fonctionne pas)
+					new ImageIcon(
+							"src/images/icon_128.png"),  // -- Icône personnalisée
+					null,  							// -- Liste pour comboBox (non-utilisé)
+					"");  							// -- Texte par défault
 			if (id != null) {
 				if (id.equals(temp_secret)) 
 					{professeur_existe = true;}
 			}
 		}	
-		if (professeur_existe)
-		{
-			fenetre_principale.setVisible(true);
-		}
+		if (professeur_existe) {fenetre_principale.setVisible(true);}
 		
 		System.out.println("Fin de l'exécution");
 	}

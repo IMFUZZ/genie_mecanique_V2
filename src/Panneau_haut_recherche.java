@@ -3,6 +3,7 @@ import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -14,8 +15,10 @@ public class Panneau_haut_recherche extends Panneau_haut {
 	
 	JPanel p_titre;
 	
-	public Panneau_haut_recherche()
+	public Panneau_haut_recherche(Fenetre a_parent)
 	{
+		super(a_parent);
+		
 		l_titre_debut = new JLabel("Logiciel de");
 		l_titre_fin = new JLabel("gestion d'inventaire");
 		l_titre_debut.setFont(f_titre);

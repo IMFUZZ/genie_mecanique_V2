@@ -3,6 +3,7 @@ import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -14,7 +15,9 @@ import javax.swing.border.CompoundBorder;
 public class Panneau_centre_recherche extends Panneau_centre {
 	
 	
-	public Panneau_centre_recherche()	{
+	public Panneau_centre_recherche(Fenetre a_parent) {
+		
+		super(a_parent);
 		
 		dimension_tableaux = new Dimension(200, 200);
 		

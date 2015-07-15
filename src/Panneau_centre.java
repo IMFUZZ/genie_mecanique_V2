@@ -3,6 +3,7 @@ import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -24,8 +25,9 @@ public abstract class Panneau_centre extends Panneau {
 	BorderFactory border_factory;
 	Border padding_tableaux = border_factory.createEmptyBorder(0, 20, 10, 20);
 	
-	public Panneau_centre()
+	public Panneau_centre(Fenetre a_parent)
 	{
+		super(a_parent);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 	}
 	

@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -11,8 +12,10 @@ import javax.swing.border.Border;
 public class Panneau_centre_etudiant extends Panneau_centre {
 		
 	
-	public Panneau_centre_etudiant()
+	public Panneau_centre_etudiant(Fenetre a_parent)
 	{
+		super(a_parent);
+		
 		dimension_tableaux = new Dimension(200, 200);
 		
 		titre_tableau_outils = new JLabel("Outils");

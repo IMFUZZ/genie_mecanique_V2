@@ -1,5 +1,6 @@
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 
 import java.awt.Color;
@@ -9,8 +10,10 @@ public class Panneau_bas extends Panneau {
 	
 	JLabel l_commande;
 		
-	public Panneau_bas()
+	public Panneau_bas(Fenetre a_parent)
 	{	
+		super(a_parent);
+		
 		//setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		setLayout(new GridLayout(1,1));
 		

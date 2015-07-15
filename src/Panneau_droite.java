@@ -10,8 +10,10 @@ import javax.swing.JComponent;
 
 public class Panneau_droite extends Panneau {
 	
-	public Panneau_droite()
+	public Panneau_droite(Fenetre a_parent)
 	{
+		super(a_parent);
+		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 	}
 }

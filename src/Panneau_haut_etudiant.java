@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
@@ -24,8 +25,10 @@ public class Panneau_haut_etudiant extends Panneau_haut {
 	String s_nom_etudiant;
 	String s_prenom_etudiant;
 	
-	public Panneau_haut_etudiant()
+	public Panneau_haut_etudiant(Fenetre a_parent)
 	{
+		super(a_parent);
+		
 		s_prenom_etudiant = "Daniel-Junior";
 		s_nom_etudiant = "Dubé";
 		

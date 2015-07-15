@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 
 public abstract class Panneau extends JPanel{
 
+	Fenetre parent;
+	
 	ArrayList<JComponent> liste_de_boites;
 	
 	Font f_titre;
@@ -25,8 +27,10 @@ public abstract class Panneau extends JPanel{
 	int boite_standard_largeur;
 	int boite_standard_hauteur;
 	
-	public Panneau() 
+	public Panneau(Fenetre a_parent) 
 	{
+		parent = a_parent;
+		
 		setVisible(true);
 		
 		liste_de_boites = new ArrayList<JComponent>();

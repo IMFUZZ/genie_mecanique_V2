@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -20,6 +21,16 @@ import javax.swing.JPanel;
 
 public class Fenetre extends JFrame {
 
+	Panneau current_p_haut_recherche;
+	Panneau current_p_centre_recherche;
+	Panneau current_p_bas_recherche;
+	Panneau current_p_droit_recherche;
+	
+	Panneau current_p_haut_etudiant;
+	Panneau current_p_centre_etudiant;
+	Panneau current_p_bas_etudiant;
+	Panneau current_p_droit_etudiant;
+	
 	JPanel p_haut;
 	JPanel p_gauche;
 	JPanel p_centre;
@@ -32,7 +43,6 @@ public class Fenetre extends JFrame {
 	Personne utilisateur;
 	
 	public Fenetre() {
-		/* Constructeur de l'objet Fenetre */
 		
 		new JFrame();
 
@@ -42,9 +52,6 @@ public class Fenetre extends JFrame {
 		
 		setLayout(new BorderLayout());
 		setVisible(false);
-		/*  ----- Affecte le "fullscreen" -----
-		setResizable(false);
-		 */
 		
 		screen_height = Toolkit.getDefaultToolkit().getScreenSize().height;
 		screen_width = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -67,7 +74,20 @@ public class Fenetre extends JFrame {
 		add(p_droite, BorderLayout.EAST);
 		add(p_bas, BorderLayout.SOUTH);
 		
-		set_panneau_recherche();
+		current_p_haut_recherche = new Panneau_haut_recherche(this);
+		current_p_centre_recherche = new Panneau_centre_recherche(this);
+		current_p_droit_recherche = new Panneau_droite_recherche(this);
+		current_p_bas_recherche = new Panneau_bas(this);
+		
+		current_p_haut_etudiant = new Panneau_haut_etudiant(this);
+		current_p_centre_etudiant = new Panneau_centre_etudiant(this);
+		current_p_droit_etudiant = new Panneau_droite_etudiant(this);
+		current_p_bas_etudiant = new Panneau_bas(this);
+		
+		p_bas.add(current_p_bas_recherche);
+		p_droite.add(current_p_droit_recherche);
+		p_haut.add(current_p_haut_recherche);
+		p_centre.add(current_p_centre_recherche);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -79,18 +99,38 @@ public class Fenetre extends JFrame {
 	}
 	
 	public void set_panneau_recherche()
-	{
-		p_bas.add(new Panneau_bas());
-		p_droite.add(new Panneau_droite_recherche());
-		p_haut.add(new Panneau_haut_recherche());
-		p_centre.add(new Panneau_centre_recherche());
+	{	
+		p_bas.removeAll();
+		p_droite.removeAll();
+		p_haut.removeAll();
+		p_centre.removeAll();
+		
+		p_bas.revalidate();
+		p_droite.revalidate();
+		p_haut.revalidate();
+		p_centre.revalidate();
+		
+		p_bas.add(current_p_bas_recherche);
+		p_droite.add(current_p_droit_recherche);
+		p_haut.add(current_p_haut_recherche);
+		p_centre.add(current_p_centre_recherche);
 	}
 	
 	public void set_panneau_etudiant()
-	{
-		p_bas.add(new Panneau_bas());
-		p_droite.add(new Panneau_droite_etudiant());
-		p_haut.add(new Panneau_haut_etudiant());
-		p_centre.add(new Panneau_centre_etudiant());
+	{		
+		p_bas.removeAll();
+		p_droite.removeAll();
+		p_haut.removeAll();
+		p_centre.removeAll();
+		
+		p_bas.revalidate();
+		p_droite.revalidate();
+		p_haut.revalidate();
+		p_centre.revalidate();
+		
+		p_bas.add(current_p_bas_etudiant);
+		p_droite.add(current_p_droit_etudiant);
+		p_haut.add(current_p_haut_etudiant);
+		p_centre.add(current_p_centre_etudiant);
 	}
 }

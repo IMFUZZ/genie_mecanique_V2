@@ -1,8 +1,13 @@
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -21,7 +26,16 @@ public class Panneau_droite_etudiant extends Panneau_droite {
 	JPanel p_image_brute;
 	JPanel p_image_retour;
 	
-	public Panneau_droite_etudiant(){
+	JButton b_test;
+	
+	public Panneau_droite_etudiant(Fenetre a_parent){
+		
+		super(a_parent);
+		
+		b_test = new JButton("Selectionner");
+		
+		liste_de_boites.addAll(Arrays.asList(b_test));
+		ajuster_boites();
 		
 		p_image_location = new JPanel();
 		p_image_brute = new JPanel();
@@ -50,5 +64,12 @@ public class Panneau_droite_etudiant extends Panneau_droite {
 		add(p_image_location);
 		add(p_image_brute);
 		add(p_image_retour);
+		add(b_test);
+		
+		b_test.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				parent.set_panneau_recherche();
+			}
+		});
 	}
 }
