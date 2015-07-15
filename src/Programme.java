@@ -13,7 +13,7 @@ public class Programme {
 		Fenetre fenetre_principale = new Fenetre();	
 		
 		String temp_secret = "";
-		
+
 		while (!professeur_existe && (id != null))
 		{
 			id = (String) JOptionPane.showInputDialog(
@@ -26,8 +26,10 @@ public class Programme {
 					null,  							// -- Liste pour comboBox (non-utilisé)
 					"");  							// -- Texte par défault
 			if (id != null) {
-				if (id.equals(temp_secret)) 
-					{professeur_existe = true;}
+				if (fenetre_principale.controlleur.administrateur_existe(id))
+				{
+					professeur_existe = true;
+				}
 			}
 		}	
 		if (professeur_existe) {fenetre_principale.setVisible(true);}

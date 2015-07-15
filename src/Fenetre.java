@@ -41,10 +41,13 @@ public class Fenetre extends JFrame {
 	int screen_width;
 	
 	Personne utilisateur;
+	Controlleur controlleur;
 	
 	public Fenetre() {
 		
 		new JFrame();
+		
+		controlleur = new Controlleur(this);
 
 		setTitle("Système de gestion - 2014");
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // Met la fenêtre "fullscreen" si elle est "resizable"

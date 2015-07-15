@@ -6,13 +6,13 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
 
-public class Base_de_donnees {
+public class Base_de_donnees_sqlite {
 	// Fonction abstraite ne servant qu'à permettre d'intéragir avec la base de
 	// données
 	private java.sql.Connection con;
 	private java.sql.Statement stmt;
 
-	public Base_de_donnees() {
+	public Base_de_donnees_sqlite() {
 		/* Constructeur de l'objet BaseDeDonnee */
 	}
 
@@ -29,7 +29,7 @@ public class Base_de_donnees {
 		List<String> enregistrement = new LinkedList<String>();
 		try {
 			Class.forName("org.sqlite.JDBC");
-			con = DriverManager.getConnection("jdbc:sqlite:baseDeDonnee.db");
+			con = DriverManager.getConnection("jdbc:sqlite:base_de_donnees.db");
 			con.setAutoCommit(false);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(requete);
@@ -71,7 +71,7 @@ public class Base_de_donnees {
 		
 		try {
 			Class.forName("org.sqlite.JDBC");
-			con = DriverManager.getConnection("jdbc:sqlite:baseDeDonnee.db");
+			con = DriverManager.getConnection("jdbc:sqlite:base_de_donnees.db");
 			con.setAutoCommit(false);
 			stmt = con.createStatement();
 			stmt.executeUpdate(requete);
