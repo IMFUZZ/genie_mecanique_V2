@@ -48,6 +48,7 @@ public class Base_de_donnees_sqlite {
 						// Si le Nuplet est d'un autre type
 						System.out.println("autre type non géré!!");
 					}
+					System.out.println(entree);
 					enregistrement.add(entree);
 				}
 			}

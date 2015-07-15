@@ -1,0 +1,6 @@
+ THIS IS YOUR TODO LIST!!
+ 
+ - [ ] Faire en sorte que la BDSQLITE supporte tout les datatypes
+ - [ ] 
+ - [ ] 
+ - [ ]
