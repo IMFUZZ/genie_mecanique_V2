@@ -1,6 +1,6 @@
  THIS IS YOUR TODO LIST!!
 
- - [ ] 
+ - [ ] fenêtre de modification d'une ligne de la table
  - [ ] 
  - [ ] 
  - [ ] 
