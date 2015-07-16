@@ -1,13 +1,10 @@
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.ArrayList;
-import java.awt.Color;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -76,10 +73,10 @@ public abstract class Panneau extends JPanel{
 	      return new JLabel("Erreur : image inexistante!");
 	}
 	
-	public JLabel faire_codebarre(String a_chemin_image)
+	public JButton faire_codebarre(String a_chemin_image)
 	{
 	      try {
-	          JLabel lImage = new JLabel(
+	          JButton lImage = new JButton(
 	        		  (new ImageIcon(
 	        				  ((new ImageIcon(
 	        						  a_chemin_image)).getImage()).getScaledInstance(
@@ -94,6 +91,6 @@ public abstract class Panneau extends JPanel{
 	    	   System.out.println("ERREUR : COULD NOT IMPORT IMAGE!");
 	    	   exceptions.printStackTrace();
 	       }
-	      return new JLabel("Erreur : image inexistante!");
+	      return new JButton("Erreur : image inexistante!");
 	}
 }

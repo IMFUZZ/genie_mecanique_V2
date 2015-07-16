@@ -38,7 +38,7 @@ public class Panneau_haut_etudiant extends Panneau_haut {
 		l_nom_etudiant = new JLabel(s_nom_etudiant);
 		l_prenom_etudiant = new JLabel(s_prenom_etudiant);
 		l_image_etudiant = faire_image("src/images/etudiant1.png", 150, 160);
-		l_image_centre = faire_codebarre("src/images/barcode.png");
+		l_codebarre_centre = faire_codebarre("src/images/barcode.png");
 		
 		l_image_etudiant.setFont(f_sousTitre);
 		l_nom_etudiant.setFont(f_sousTitre);
@@ -64,7 +64,7 @@ public class Panneau_haut_etudiant extends Panneau_haut {
 		
 		p_gauche.add(p_info_etudiant);
 		
-		p_image_centre.add(l_image_centre);
+		p_image_centre.add(l_codebarre_centre);
 		p_centre.add(p_image_centre);
 	}
 }

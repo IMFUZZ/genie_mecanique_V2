@@ -17,7 +17,7 @@ public class Controlleur {
 					+ "VALUES "
 					+ "("+ a_id_outil
 					+", "+ a_id_proprietaire
-					+", "+ parent.utilisateur.numero
+					+", "+ parent.administrateur.numero
 					+");");
 	}
 	public void faire_don(int a_id_proprietaire, int a_id_brut)
@@ -27,7 +27,7 @@ public class Controlleur {
 					+ "VALUES "
 					+ "("+ a_id_brut
 					+", "+ a_id_proprietaire
-					+", "+ parent.utilisateur.numero
+					+", "+ parent.administrateur.numero
 					+");");
 	}
 	public void ajouter_etudiant(int a_id_etudiant, String a_prenom, String a_nom)

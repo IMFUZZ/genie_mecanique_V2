@@ -1,23 +1,20 @@
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.JComponent;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 public class Panneau_haut extends Panneau {
 	
-	JLabel l_image_centre;
+	JButton l_codebarre_centre;
 	JLabel l_prof_prenom;
 	JLabel l_prof_nom;
 	JLabel l_date;
@@ -39,7 +36,7 @@ public class Panneau_haut extends Panneau {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Calendar cal = Calendar.getInstance();
 		
-		l_image_centre = faire_image("", 300, 200);
+		l_codebarre_centre = faire_codebarre("");
 		l_prof_prenom = new JLabel("Sarah");
 		l_prof_nom = new JLabel("Laflamme");
 		l_date = new JLabel();

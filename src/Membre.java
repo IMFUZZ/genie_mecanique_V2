@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 
-public class Personne {
+public class Membre {
 
 	int numero;
 	
@@ -16,7 +16,7 @@ public class Personne {
 	ArrayList<String> locations;
 	ArrayList<String> bris;
 	
-	public Personne(String a_prenom, String a_nom, String a_chemin_image)
+	public Membre(String a_prenom, String a_nom, String a_chemin_image)
 	{
 		prenom = a_prenom;
 		nom = a_nom;
