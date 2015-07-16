@@ -31,7 +31,7 @@ public class Panneau_haut_recherche extends Panneau_haut {
 		l_titre_fin.setBorder(BorderFactory.createEmptyBorder(0, 20, 35, 20));
 		p_titre.setBorder(BorderFactory.createLineBorder(Color.black, 5));
 		p_titre.setBackground(Color.white);
-		l_image_centre = faire_codebarre("src/images/barcode.png");
+		l_codebarre_centre = faire_codebarre("src/images/barcode.png");
 		
 		b_codeBarre = BorderFactory.createTitledBorder("Selectionner un client");
 		p_centre.setBorder(
@@ -39,7 +39,7 @@ public class Panneau_haut_recherche extends Panneau_haut {
 		
 		p_titre.add(l_titre_debut);
 		p_titre.add(l_titre_fin);
-		p_image_centre.add(l_image_centre);
+		p_image_centre.add(l_codebarre_centre);
 		
 		p_gauche.add(p_titre);
 		p_centre.add(p_image_centre);

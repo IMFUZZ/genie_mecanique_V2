@@ -14,9 +14,9 @@ import javax.swing.JPanel;
 
 public class Panneau_droite_etudiant extends Panneau_droite {
 
-	JLabel l_image_location;
-	JLabel l_image_brute;
-	JLabel l_image_retour;
+	JButton l_image_location;
+	JButton l_image_brute;
+	JButton l_image_retour;
 	
 	JLabel l_texte_image_location;
 	JLabel l_texte_image_brute;

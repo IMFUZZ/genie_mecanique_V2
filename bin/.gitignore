@@ -1,20 +1,7 @@
-/Base_de_donnees.class
-/Panneau_centre_recherche.class
-/Panneau_centre_recherche$1.class
-/Panneau_centre_recherche$2.class
-/Panneau_centre_recherche$3.class
-/Panneau_centre_recherche$4.class
-<<<<<<< HEAD
-/images/
-=======
-/images
-/Panneau_droite_recherche$1.class
-/Panneau_droite_recherche$2.class
->>>>>>> 07143947eb06f83579bb8b8979fe636bb3d9cae2
-/Utilisateur.class
-/Personne.class
-/Fenetre$1.class
-/Panneau_droite_recherche$3.class
-/Panneau_droite_etudiant$1.class
-/Controlleur.class
 /Base_de_donnees_sqlite.class
+/Controlleur.class
+/Fenetre$1.class
+/Personne.class
+/images/
+/Panneau_droite_etudiant$1.class
+/Membre.class
