@@ -41,7 +41,6 @@ public class Fenetre extends JFrame {
 	int screen_width;
 	
 	Membre administrateur;
-	Membre etudiant;
 	Controlleur controlleur;
 	
 	public Fenetre() {
@@ -98,7 +97,6 @@ public class Fenetre extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent windowEvent) {
 				setVisible(false);
-				System.exit(0);
 			}
 		});
 	}
@@ -137,13 +135,5 @@ public class Fenetre extends JFrame {
 		p_droite.add(current_p_droit_etudiant);
 		p_haut.add(current_p_haut_etudiant);
 		p_centre.add(current_p_centre_etudiant);
-	}
-	
-	public void reset_panneau_etudiant()
-	{
-		current_p_bas_etudiant = new Panneau_bas(this);
-		current_p_droit_etudiant = new Panneau_droite_etudiant(this);
-		current_p_haut_etudiant = new Panneau_haut_etudiant(this);
-		current_p_centre_etudiant = new Panneau_centre_etudiant(this);
 	}
 }
