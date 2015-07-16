@@ -17,7 +17,7 @@ public class Base_de_donnees_sqlite {
 		/* Constructeur de l'objet BaseDeDonnee */
 	}
 
-	public String[] faire_requete_sqlite(String requete) {
+	public List<Object> faire_requete_sqlite(String requete) {
 		/* Fonction permettant d'effectuer une requête 
 		 * à la base de donnée. Celle-ci effectue les 
 		 * requête en "polling" et retourne une String[] 
@@ -26,8 +26,8 @@ public class Base_de_donnees_sqlite {
 		
 		ResultSet rs = null;
 		int nombreColonne = 0;
-		String entree = "";
-		List<String> enregistrement = new LinkedList<String>();
+		Object entree = null;
+		List<Object> enregistrement = new LinkedList<Object>();
 		try {
 			Class.forName("org.sqlite.JDBC");
 			con = DriverManager.getConnection("jdbc:sqlite:base_de_donnees.db");
@@ -41,7 +41,7 @@ public class Base_de_donnees_sqlite {
 					int typeColonne = rm.getColumnType(x);
 					if (typeColonne == Types.TINYINT
 							|| typeColonne == Types.INTEGER) {
-						entree = Integer.toString(rs.getInt(x));
+						entree = rs.getInt(x);
 					} else if (typeColonne == Types.VARCHAR 
 							|| typeColonne == Types.NVARCHAR
 							|| typeColonne == Types.CHAR
@@ -64,7 +64,7 @@ public class Base_de_donnees_sqlite {
 			System.exit(0);
 		}
 
-		return enregistrement.toArray(new String[0]);
+		return enregistrement;
 	}
 
 	public void faire_update_sqlite(String requete) {

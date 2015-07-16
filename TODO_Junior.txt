@@ -5,7 +5,9 @@
  - [ ] M'assurer que le système ferme toujours sécuritairement
  - [ ]
 
+ NOTE : 
 
+ 	Utiliser un système de codebarre avec des lettres pour inventorier les items et un systeme avec des chiffres pour inventorier les membres
 
 
 COPY 

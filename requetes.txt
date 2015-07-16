@@ -1,23 +1,23 @@
 
 
 CREATE TABLE outils(
-	id INTEGER PRIMARY KEY 
-		AUTOINCREMENT,
+	id TEXT PRIMARY KEY,
 	name TEXT NOT NULL,
 	description TEXT,
+	quantity INT
+		NOT NULL,
 	available TINYINT 
 		DEFAULT 1,
 	broken TINYINT
+		DEFAULT 0,
+	must_command TINYINT
 		DEFAULT 0
 );
 	
-INSERT INTO outils (name, description)
-	VALUES ('marteau', 'Outils servant a planter des clous.....');
-
+INSERT INTO outils (id, name, description, quantity) VALUES ('O1', 'marteau', 'Outils servant a planter des clous.....', 100);
 
 CREATE TABLE bruts(
-	id INTEGER PRIMARY KEY 
-		AUTOINCREMENT,
+	id TEXT PRIMARY KEY,
 	name TEXT NOT NULL,
 	description TEXT,
 	quantity INT
@@ -28,10 +28,10 @@ CREATE TABLE bruts(
 		DEFAULT 0
 );
 
-INSERT INTO bruts (name, description, quantity)
-	VALUES ('planche 2x4', 'Planche de chene de 2x4x10', 10);
+INSERT INTO bruts (id, name, description, quantity)
+	VALUES ('B1', planche 2x4', 'Planche de chene de 2x4x10', 10);
 
-CREATE TABLE utilisateurs(
+CREATE TABLE membres(
 	id TEXT PRIMARY KEY,
 	name TEXT NOT NULL,
 	last_name TEXT NOT NULL,
@@ -41,14 +41,29 @@ CREATE TABLE utilisateurs(
 
 INSERT INTO membres (id, name, last_name, is_admin)
 	VALUES ('1245278', 'Daniel-Junior', 'Dubé', 1);
+INSERT INTO membres (id, name, last_name)
+	VALUES ('1357059', 'Sarah', 'Laflamme');
 
 CREATE TABLE locations(
-	item_id INT NOT NULL,
-	owner_id INT NOT NULL,
-	admin_id INT NOT NULL,
-	date_of_location DATE
-		DEFAULT (datetime('now','localtime'))
+	item_id TEXT NOT NULL,
+	owner_id TEXT NOT NULL,
+	admin_id TEXT NOT NULL,
+	date DATE
+		DEFAULT (datetime('now','localtime')),
+	returned TINYINT
+		DEFAULT 0
 );
 
 INSERT INTO locations (item_id, owner_id, admin_id)
-	VALUES (1, 1245278, 1111111);
+	VALUES ('1', '1245278', '1111111');
+
+CREATE TABLE dons(
+	item_id TEXT NOT NULL,
+	owner_id TEXT NOT NULL,
+	admin_id TEXT NOT NULL,
+	date DATE
+		DEFAULT (datetime('now','localtime'))
+);
+
+INSERT INTO dons(item_id, owner_id, admin_id)
+	VALUES ('1', '1245278', '1111111');
