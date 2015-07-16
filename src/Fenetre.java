@@ -97,6 +97,7 @@ public class Fenetre extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent windowEvent) {
 				setVisible(false);
+				System.exit(0);
 			}
 		});
 	}

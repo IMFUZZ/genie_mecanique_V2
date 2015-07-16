@@ -84,7 +84,7 @@ public class Controlleur {
 	{
 		String[] result = bd_sqlite.faire_requete_sqlite(
 				"SELECT is_admin FROM utilisateurs WHERE id = '" + id + "';");
-		if (result.length > 0 && result[0].equals(1))
+		if (result.length > 0 && result[0].equals("1"))
 		{
 			return true;
 		}

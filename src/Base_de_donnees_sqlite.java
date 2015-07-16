@@ -4,6 +4,7 @@ import java.util.List;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.Types;
 import java.util.ArrayList;
 
 public class Base_de_donnees_sqlite {
@@ -38,17 +39,20 @@ public class Base_de_donnees_sqlite {
 			while (rs.next()) {
 				for (int x = 1; x <= (rm.getColumnCount()); x++) {
 					int typeColonne = rm.getColumnType(x);
-					if (typeColonne == 4) {
-						// Si le Nuplet est de type INTEGER alors
+					if (typeColonne == Types.TINYINT
+							|| typeColonne == Types.INTEGER) {
 						entree = Integer.toString(rs.getInt(x));
-					} else if (typeColonne == 12) {
-						// Si le Nuplet est de type STRING alors
+					} else if (typeColonne == Types.VARCHAR 
+							|| typeColonne == Types.NVARCHAR
+							|| typeColonne == Types.CHAR
+							|| typeColonne == Types.DATE
+							|| typeColonne == Types.TIME
+							|| typeColonne == Types.NCHAR) {
 						entree = rs.getString(x);
 					} else {
 						// Si le Nuplet est d'un autre type
 						System.out.println("autre type non géré!!");
 					}
-					System.out.println(entree);
 					enregistrement.add(entree);
 				}
 			}

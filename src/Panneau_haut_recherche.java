@@ -29,7 +29,7 @@ public class Panneau_haut_recherche extends Panneau_haut {
 		
 		l_titre_debut.setBorder(BorderFactory.createEmptyBorder(35, 20, 0, 20));
 		l_titre_fin.setBorder(BorderFactory.createEmptyBorder(0, 20, 35, 20));
-		p_titre.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+		p_titre.setBorder(BorderFactory.createLineBorder(Color.black, 1));
 		p_titre.setBackground(Color.white);
 		l_image_centre = faire_codebarre("src/images/barcode.png");
 		

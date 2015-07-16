@@ -39,7 +39,7 @@ CREATE TABLE utilisateurs(
 		DEFAULT 0
 );
 
-INSERT INTO utilisateurs (id, name, last_name, is_admin)
+INSERT INTO membres (id, name, last_name, is_admin)
 	VALUES ('1245278', 'Daniel-Junior', 'Dubé', 1);
 
 CREATE TABLE locations(

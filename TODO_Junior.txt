@@ -1,6 +1,34 @@
  THIS IS YOUR TODO LIST!!
  
  - [ ] Faire en sorte que la BDSQLITE supporte tout les datatypes
- - [ ] 
- - [ ] 
+ - [ ] Transformer les images codebarres en bouton avec l'image par-dessus
+ - [ ] M'assurer que le système ferme toujours sécuritairement
  - [ ]
+
+
+
+
+COPY 
+
+
+while (rs.next()) {
+				for (int x = 1; x <= (rm.getColumnCount()); x++) {
+					int typeColonne = rm.getColumnType(x);
+					if (typeColonne == Types.TINYINT
+							|| typeColonne == Types.INTEGER) {
+						entree = Integer.toString(rs.getInt(x));
+					} else if (typeColonne == Types.VARCHAR 
+							|| typeColonne == Types.NVARCHAR
+							|| typeColonne == Types.CHAR
+							|| typeColonne == Types.DATE
+							|| typeColonne == Types.TIME
+							|| typeColonne == Types.NCHAR) {
+						entree = rs.getString(x);
+					} else {
+						// Si le Nuplet est d'un autre type
+						System.out.println("autre type non géré!!");
+					}
+					System.out.println(entree);
+					enregistrement.add(entree);
+				}
+			}
