@@ -39,7 +39,6 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 	}
 	
 	
-	
 	JTable tableau_bris;
 	JLabel titre_tableau_bris;
 	JScrollPane scroll_tableau_bris;

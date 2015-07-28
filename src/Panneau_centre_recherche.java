@@ -1,9 +1,10 @@
-import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JComponent;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -103,13 +104,19 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		
 		int nb_etudiants = 30; // ajuster en fonction du nb d'articles à lister
 		String[] noms_colonnes = {"Code utilisateur", "Prénom", "Nom", "Photo"};
-		String[][] donnees_tableau = new String[nb_etudiants][noms_colonnes.length];
+		Object[][] donnees_tableau = new Object[nb_etudiants][noms_colonnes.length];
 		
-		// ici aller chercher infos dans la BD
+		// remplir donnees_tableau à partir de la bd
+		donnees_tableau[0][0] = "1357059";
+		ImageIcon image_etudiant = new ImageIcon("src/images/etudiant1.png");
+		Image img = image_etudiant.getImage();
+		Image newimg = img.getScaledInstance(70, 70,  java.awt.Image.SCALE_SMOOTH);
+		donnees_tableau[0][3] = new ImageIcon(newimg);
 		
-		tableau_etudiants = new JTable(donnees_tableau, noms_colonnes);
-		tableau_etudiants.setGridColor(Color.LIGHT_GRAY);
-		tableau_etudiants.setRowHeight(20);
+		tableau_etudiants = new Tableau(new Modele_table(donnees_tableau, noms_colonnes));
+		tableau_etudiants.setRowHeight(70);
+		tableau_etudiants.getColumnModel().getColumn(3).setMaxWidth(70);
+		tableau_etudiants.setFont(f_sousTitre);
 		scroll_tableau_etudiants = new JScrollPane(tableau_etudiants);
 		panneau_etudiants.add(scroll_tableau_etudiants);
 	}
@@ -120,13 +127,11 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		
 		int nb_outils = 30; // ajuster en fonction du nb d'articles à lister
 		String[] noms_colonnes = {"Id", "Description", "Responsable (professeur)"};
-		String[][] donnees_tableau = new String[nb_outils][noms_colonnes.length];
+		Object[][] donnees_tableau = new String[nb_outils][noms_colonnes.length];
 		
 		// ici aller chercher infos dans la BD
 		
-		tableau_outils = new JTable(donnees_tableau, noms_colonnes);
-		tableau_outils.setGridColor(Color.LIGHT_GRAY);
-		tableau_outils.setRowHeight(20);
+		tableau_outils = new Tableau(new Modele_table(donnees_tableau, noms_colonnes));
 		scroll_tableau_outils = new JScrollPane(tableau_outils);
 		panneau_outils.add(scroll_tableau_outils);
 	}
@@ -137,13 +142,11 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		
 		int nb_materiaux = 30; // ajuster en fonction du nb d'articles à lister
 		String[] noms_colonnes = {"Id", "Description", "Responsable (professeur)"};
-		String[][] donnees_tableau = new String[nb_materiaux][noms_colonnes.length];
+		Object[][] donnees_tableau = new String[nb_materiaux][noms_colonnes.length];
 		
 		// ici aller chercher infos dans la BD
 		
-		tableau_materiel = new JTable(donnees_tableau, noms_colonnes);
-		tableau_materiel.setGridColor(Color.LIGHT_GRAY);
-		tableau_materiel.setRowHeight(20);
+		tableau_materiel = new Tableau(new Modele_table(donnees_tableau, noms_colonnes));
 		scroll_tableau_materiel = new JScrollPane(tableau_materiel);
 		panneau_materiel.add(scroll_tableau_materiel);
 	}
@@ -154,13 +157,11 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		
 		int nb_bruts = 30; // ajuster en fonction du nb d'articles à lister
 		String[] noms_colonnes = {"Id", "Description", "Responsable (professeur)"};
-		String[][] donnees_tableau = new String[nb_bruts][noms_colonnes.length];
+		Object[][] donnees_tableau = new String[nb_bruts][noms_colonnes.length];
 		
 		// ici aller chercher infos dans la BD
 		
-		tableau_bruts = new JTable(donnees_tableau, noms_colonnes);
-		tableau_bruts.setGridColor(Color.LIGHT_GRAY);
-		tableau_bruts.setRowHeight(20);
+		tableau_bruts = new Tableau(new Modele_table(donnees_tableau, noms_colonnes));
 		scroll_tableau_bruts = new JScrollPane(tableau_bruts);
 		panneau_bruts.add(scroll_tableau_bruts);
 	}
