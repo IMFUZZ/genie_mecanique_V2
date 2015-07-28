@@ -10,9 +10,13 @@ import javax.swing.table.DefaultTableModel;
 
 public class Modele_table extends DefaultTableModel {
     
-    public Modele_table(Vector<Vector<Object>> data, Vector<String> columnNames)
+	String nom_table;
+	
+    public Modele_table(String a_nom_table, Vector<Vector<Object>> data, Vector<String> columnNames)
     {
     	super(data, columnNames);
+    	nom_table = a_nom_table;
+
     	for (int i=0; i < data.size(); i++) {
     		String path = getValueAt(i, 3).toString();
     		ImageIcon image_etudiant = new ImageIcon(path);
@@ -20,6 +24,8 @@ public class Modele_table extends DefaultTableModel {
     		Image newimg = img.getScaledInstance(70, 70,  java.awt.Image.SCALE_SMOOTH);
     		setValueAt(new ImageIcon(newimg), i, 3);    		
     	}
+
+    	
     }
     
     @Override
