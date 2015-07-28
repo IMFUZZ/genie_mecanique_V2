@@ -1,6 +1,7 @@
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Vector;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -59,14 +60,57 @@ public class Base_de_donnees_sqlite {
 			stmt.close();
 			con.close();
 		} catch (Exception e) {
-			System.out.println("Impossible d'effectuer la requête dans la base de donnée");
+			System.out.println("Impossible d'effectuer la requête dans la base de donnée!");
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
 
 		return enregistrement;
 	}
+	
+	public Modele_table creer_modele_table(String a_nom_table) {
+		/* Fonction permettant d'effectuer une requête 
+		 * à la base de donnée. Celle-ci effectue les 
+		 * requête en "polling" et retourne une String[] 
+		 * contenant les élements retourné par la base 
+		 * de donnée */
+		ResultSet rs = null;
+		try {
+			Class.forName("org.sqlite.JDBC");
+			con = DriverManager.getConnection("jdbc:sqlite:base_de_donnees.db");
+			con.setAutoCommit(false);
+			stmt = con.createStatement();
+			rs = stmt.executeQuery("select * from " + a_nom_table + "");
+			ResultSetMetaData rm = rs.getMetaData();
+			
+		    // names of columns
+		    Vector<String> columnNames = new Vector<String>();
+		    int columnCount = rm.getColumnCount();
+		    for (int column = 1; column <= columnCount; column++) {
+		        columnNames.add(rm.getColumnName(column));
+		    }
+	
+		    // data of the table
+		    Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+		    while (rs.next()) {
+		        Vector<Object> vector = new Vector<Object>();
+		        for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+		            vector.add(rs.getObject(columnIndex));
+		        }
+		        data.add(vector);
+		    }
+			stmt.close();
+			con.close();
+			return new Modele_table(data, columnNames);
+		} catch (Exception e) {
+			System.out.println("Impossible d'obtenir le ResultSet de la base de données!");
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+		}
+		return new Modele_table(new Vector<Vector<Object>>(), new Vector<String>());
 
+	}
+	
 	public void faire_update_sqlite(String requete) {
 		/* Fonction permettant d'effectuer une requête 
 		 * à la base de donnée. Celle-ci effectue les 
@@ -84,7 +128,7 @@ public class Base_de_donnees_sqlite {
 			con.commit();
 			con.close();
 		} catch (Exception e) {
-			System.out.println("Impossible d'écrire dans la base de donnée");
+			System.out.println("Impossible d'effectuer l'update dans la base de données!");
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
