@@ -35,14 +35,15 @@ CREATE TABLE membres(
 	id TEXT PRIMARY KEY,
 	name TEXT NOT NULL,
 	last_name TEXT NOT NULL,
+	image_path TEXT,
 	is_admin TINYINT 
 		DEFAULT 0
 );
 
-INSERT INTO membres (id, name, last_name, is_admin)
-	VALUES ('1245278', 'Daniel-Junior', 'Dubé', 1);
-INSERT INTO membres (id, name, last_name, is_admin)
-	VALUES ('1357059', 'Sarah', 'Laflamme', 0);
+INSERT INTO membres (id, name, last_name, image_path, is_admin)
+	VALUES ('1245278', 'Daniel-Junior', 'Dubé', 'src/images/etudiants/1245278', 1);
+INSERT INTO membres (id, name, last_name, image_path, is_admin)
+	VALUES ('1357059', 'Sarah', 'Laflamme', 'src/images/etudiants/1357059', 0);
 
 CREATE TABLE locations(
 	item_id TEXT NOT NULL,
