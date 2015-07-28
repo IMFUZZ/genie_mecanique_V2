@@ -29,7 +29,7 @@ CREATE TABLE bruts(
 );
 
 INSERT INTO bruts (id, name, description, quantity)
-	VALUES ('B1', planche 2x4', 'Planche de chene de 2x4x10', 10);
+	VALUES ('B1', 'planche 2x4', 'Planche de chene de 2x4x10', 10);
 
 CREATE TABLE membres(
 	id TEXT PRIMARY KEY,
@@ -41,8 +41,8 @@ CREATE TABLE membres(
 
 INSERT INTO membres (id, name, last_name, is_admin)
 	VALUES ('1245278', 'Daniel-Junior', 'Dubé', 1);
-INSERT INTO membres (id, name, last_name)
-	VALUES ('1357059', 'Sarah', 'Laflamme');
+INSERT INTO membres (id, name, last_name, is_admin)
+	VALUES ('1357059', 'Sarah', 'Laflamme', 0);
 
 CREATE TABLE locations(
 	item_id TEXT NOT NULL,

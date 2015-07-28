@@ -23,7 +23,6 @@ public class Base_de_donnees_sqlite {
 		 * requête en "polling" et retourne une String[] 
 		 * contenant les élements retourné par la base 
 		 * de donnée */
-		
 		ResultSet rs = null;
 		int nombreColonne = 0;
 		Object entree = null;
@@ -36,6 +35,7 @@ public class Base_de_donnees_sqlite {
 			rs = stmt.executeQuery(requete);
 			ResultSetMetaData rm = rs.getMetaData();
 			//nombreColonne = rm.getColumnCount();
+			
 			while (rs.next()) {
 				for (int x = 1; x <= (rm.getColumnCount()); x++) {
 					int typeColonne = rm.getColumnType(x);

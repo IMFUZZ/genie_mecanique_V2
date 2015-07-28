@@ -10,7 +10,7 @@ public class Controlleur {
 	{
 		parent = a_parent;
 		bd_sqlite = new Base_de_donnees_sqlite();
-		ajouter_brut("B2", "Brut #1", "Ceci est un test", 100);
+		//ajouter_brut("B2", "Brut #1", "Ceci est un test", 100);
 	}
 		
 	public void faire_locations(String a_id_proprietaire, String a_id_outil)
@@ -86,8 +86,8 @@ public class Controlleur {
 	public boolean administrateur_existe(String id) // ----- FONCTIONNEL -----
 	{
 		List<Object> result = bd_sqlite.faire_requete_sqlite(
-				"SELECT is_admin FROM utilisateurs WHERE id = '" + id + "';");
-		if (result.size() > 0 && result.get(0).equals(1))
+				"SELECT is_admin FROM membres WHERE id = '" + id + "' and is_admin = 1;");
+		if (result.size() > 0)
 		{
 			return true;
 		}
