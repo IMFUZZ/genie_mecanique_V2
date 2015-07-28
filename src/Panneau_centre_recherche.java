@@ -113,7 +113,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		Image newimg = img.getScaledInstance(70, 70,  java.awt.Image.SCALE_SMOOTH);
 		donnees_tableau[0][3] = new ImageIcon(newimg);
 		
-		tableau_etudiants = new Tableau(new Modele_table(donnees_tableau, noms_colonnes));
+		tableau_etudiants = new Tableau(parent.controlleur.creer_modele_table("membres"));
 		tableau_etudiants.setRowHeight(70);
 		tableau_etudiants.getColumnModel().getColumn(3).setMaxWidth(70);
 		tableau_etudiants.setFont(f_sousTitre);
@@ -131,7 +131,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		
 		// ici aller chercher infos dans la BD
 		
-		tableau_outils = new Tableau(new Modele_table(donnees_tableau, noms_colonnes));
+		tableau_outils = new Tableau(parent.controlleur.creer_modele_table("outils"));
 		scroll_tableau_outils = new JScrollPane(tableau_outils);
 		panneau_outils.add(scroll_tableau_outils);
 	}
@@ -146,7 +146,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		
 		// ici aller chercher infos dans la BD
 		
-		tableau_materiel = new Tableau(new Modele_table(donnees_tableau, noms_colonnes));
+		tableau_materiel = new Tableau(parent.controlleur.creer_modele_table("bruts"));
 		scroll_tableau_materiel = new JScrollPane(tableau_materiel);
 		panneau_materiel.add(scroll_tableau_materiel);
 	}
@@ -161,7 +161,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		
 		// ici aller chercher infos dans la BD
 		
-		tableau_bruts = new Tableau(new Modele_table(donnees_tableau, noms_colonnes));
+		tableau_bruts = new Tableau(parent.controlleur.creer_modele_table("bruts"));
 		scroll_tableau_bruts = new JScrollPane(tableau_bruts);
 		panneau_bruts.add(scroll_tableau_bruts);
 	}
