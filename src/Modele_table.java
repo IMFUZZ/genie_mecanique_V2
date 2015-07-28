@@ -16,22 +16,23 @@ public class Modele_table extends DefaultTableModel {
     {
     	super(data, columnNames);
     	nom_table = a_nom_table;
-
-    	for (int i=0; i < data.size(); i++) {
-    		String path = getValueAt(i, 3).toString();
-    		ImageIcon image_etudiant = new ImageIcon(path);
-    		Image img = image_etudiant.getImage();
-    		Image newimg = img.getScaledInstance(70, 70,  java.awt.Image.SCALE_SMOOTH);
-    		setValueAt(new ImageIcon(newimg), i, 3);    		
+    	if (nom_table == "membres")
+    	{
+        	for (int i=0; i < data.size(); i++) {
+        		String path = getValueAt(i, 3).toString();
+        		ImageIcon image_etudiant = new ImageIcon(path);
+        		Image img = image_etudiant.getImage();
+        		Image newimg = img.getScaledInstance(70, 70,  java.awt.Image.SCALE_SMOOTH);
+        		setValueAt(new ImageIcon(newimg), i, 3); 
+        	}
     	}
 
-    	
     }
     
     @Override
     public Class<?> getColumnClass(int column)
     {
-    	if (column == 3) {
+    	if (column == 3 && nom_table == "membres") {
     		return ImageIcon.class;
     	}
     	else {

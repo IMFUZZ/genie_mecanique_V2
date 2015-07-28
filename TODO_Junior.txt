@@ -3,34 +3,12 @@
  - [ ] Faire en sorte que la BDSQLITE supporte tout les datatypes
  - [ ] Transformer les images codebarres en bouton avec l'image par-dessus
  - [ ] M'assurer que le système ferme toujours sécuritairement
- - [ ]
+ - [ ] Mettre un titledBorder sur les tables de centre ETUDIANT
+ - [ ] *** faire une classe scrollPane pour les tables
+ - [ ] Changer les noms des champs de la BD pour les mettre en francais
+ - [ ] Jeter un coup d'oeil au comboxBox du panneau Droite
 
  NOTE : 
 
  	Utiliser un système de codebarre avec des lettres pour inventorier les items et un systeme avec des chiffres pour inventorier les membres
 
-
-COPY 
-
-
-while (rs.next()) {
-				for (int x = 1; x <= (rm.getColumnCount()); x++) {
-					int typeColonne = rm.getColumnType(x);
-					if (typeColonne == Types.TINYINT
-							|| typeColonne == Types.INTEGER) {
-						entree = Integer.toString(rs.getInt(x));
-					} else if (typeColonne == Types.VARCHAR 
-							|| typeColonne == Types.NVARCHAR
-							|| typeColonne == Types.CHAR
-							|| typeColonne == Types.DATE
-							|| typeColonne == Types.TIME
-							|| typeColonne == Types.NCHAR) {
-						entree = rs.getString(x);
-					} else {
-						// Si le Nuplet est d'un autre type
-						System.out.println("autre type non géré!!");
-					}
-					System.out.println(entree);
-					enregistrement.add(entree);
-				}
-			}

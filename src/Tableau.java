@@ -1,5 +1,7 @@
 import java.awt.Color;
+import java.awt.Dimension;
 
+import javax.swing.BorderFactory;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -11,6 +13,8 @@ public class Tableau extends JTable {
 		setGridColor(Color.LIGHT_GRAY);
 		setRowHeight(30);
 		setRowMargin(0);
+		this.setFillsViewportHeight(true);
+		
 	}
 	
 

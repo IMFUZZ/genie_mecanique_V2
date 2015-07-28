@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Rectangle;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
@@ -53,13 +54,14 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 		
 		// ici aller chercher infos dans la BD
 		
-		tableau_outils = new JTable(donnees_tableau, noms_colonnes);
+		tableau_outils = new Tableau(parent.controlleur.creer_modele_table("membres"));
 		tableau_outils.setGridColor(Color.LIGHT_GRAY);
 		tableau_outils.setMaximumSize(dimension_tableaux);
 		tableau_outils.setRowHeight(20);
 		
 		scroll_tableau_outils = new JScrollPane(tableau_outils);
 		scroll_tableau_outils.setBorder(padding_tableaux);
+		scroll_tableau_outils.setBorder(BorderFactory.createTitledBorder("OUTILS"));
 		add(scroll_tableau_outils);
 	}
 	
@@ -72,13 +74,14 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 		
 		// ici aller chercher infos dans la BD
 		
-		tableau_bruts = new JTable(donnees_tableau, noms_colonnes);
+		tableau_bruts = new Tableau(parent.controlleur.creer_modele_table("membres"));
 		tableau_bruts.setGridColor(Color.LIGHT_GRAY);
 		tableau_bruts.setSize(dimension_tableaux);
 		tableau_bruts.setRowHeight(20);
 		
 		scroll_tableau_bruts = new JScrollPane(tableau_bruts);
 		scroll_tableau_bruts.setBorder(padding_tableaux);
+		scroll_tableau_bruts.setBorder(BorderFactory.createLineBorder(Color.blue, 1));
 		add(scroll_tableau_bruts);
 	}
 	
@@ -91,12 +94,13 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 		
 		// ici aller chercher infos dans la BD (fonction qui pourra être réutilisée pour refresh)
 		
-		tableau_bris = new JTable(donnees_tableau, noms_colonnes);
+		tableau_bris = new Tableau(parent.controlleur.creer_modele_table("membres"));
 		tableau_bris.setGridColor(Color.LIGHT_GRAY);
 		tableau_bris.setRowHeight(20);
 		
 		scroll_tableau_bris = new JScrollPane(tableau_bris);
 		scroll_tableau_bris.setBorder(padding_tableaux);
+		scroll_tableau_bris.setBorder(BorderFactory.createLineBorder(Color.black, 1));
 		add(scroll_tableau_bris);
 	}
 
