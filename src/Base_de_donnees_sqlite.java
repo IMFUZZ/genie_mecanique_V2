@@ -101,13 +101,13 @@ public class Base_de_donnees_sqlite {
 		    }
 			stmt.close();
 			con.close();
-			return new Modele_table(data, columnNames);
+			return new Modele_table(a_nom_table, data, columnNames);
 		} catch (Exception e) {
 			System.out.println("Impossible d'obtenir le ResultSet de la base de données!");
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
-		return new Modele_table(new Vector<Vector<Object>>(), new Vector<String>());
+		return new Modele_table(a_nom_table, new Vector<Vector<Object>>(), new Vector<String>());
 
 	}
 	

@@ -9,9 +9,12 @@ import javax.swing.table.DefaultTableModel;
 
 public class Modele_table extends DefaultTableModel {
     
-    public Modele_table(Vector<Vector<Object>> data, Vector<String> columnNames)
+	String nom_table;
+	
+    public Modele_table(String a_nom_table, Vector<Vector<Object>> data, Vector<String> columnNames)
     {
     	super(data, columnNames);
+    	nom_table = a_nom_table;
     }
     
     @Override
