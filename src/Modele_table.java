@@ -1,3 +1,4 @@
+import java.awt.Image;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.Vector;
@@ -12,15 +13,23 @@ public class Modele_table extends DefaultTableModel {
     public Modele_table(Vector<Vector<Object>> data, Vector<String> columnNames)
     {
     	super(data, columnNames);
+    	for (int i=0; i < data.size(); i++) {
+    		String path = getValueAt(i, 3).toString();
+    		ImageIcon image_etudiant = new ImageIcon(path);
+    		Image img = image_etudiant.getImage();
+    		Image newimg = img.getScaledInstance(70, 70,  java.awt.Image.SCALE_SMOOTH);
+    		setValueAt(new ImageIcon(newimg), i, 3);    		
+    	}
     }
     
     @Override
     public Class<?> getColumnClass(int column)
     {
-    	switch (column)
-    	{
-    	case 3: return ImageIcon.class;
-    	default: return String.class;
+    	if (column == 3) {
+    		return ImageIcon.class;
+    	}
+    	else {
+    		return String.class;
     	}
     }
 }

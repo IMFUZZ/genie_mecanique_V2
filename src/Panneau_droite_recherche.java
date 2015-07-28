@@ -27,6 +27,7 @@ public class Panneau_droite_recherche extends Panneau_droite {
 		
 		String[] comboBoxContenu = { "Id", "Nom", "Categorie", "Description",
 		"Quantite" };
+		//parent.current_p_centre_recherche.tabbed_pane.ge
 		cb_Rechercher = new JComboBox<String>(comboBoxContenu);
 		t_rechercher = new JTextField();
 		

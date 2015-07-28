@@ -22,7 +22,7 @@ import javax.swing.JPanel;
 public class Fenetre extends JFrame {
 
 	Panneau current_p_haut_recherche;
-	Panneau current_p_centre_recherche;
+	Panneau_centre_recherche current_p_centre_recherche;
 	Panneau current_p_bas_recherche;
 	Panneau current_p_droit_recherche;
 	

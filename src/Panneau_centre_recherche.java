@@ -1,7 +1,6 @@
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -44,6 +43,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	JScrollPane scroll_tableau_materiel;
 	
 	JTabbedPane tabbed_pane;
+	List<JPanel> liste_panneaux_tableaux;
 	
 	JPanel panneau_etudiants;
 	JPanel panneau_outils;
@@ -107,11 +107,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		Object[][] donnees_tableau = new Object[nb_etudiants][noms_colonnes.length];
 		
 		// remplir donnees_tableau à partir de la bd
-		donnees_tableau[0][0] = "1357059";
-		ImageIcon image_etudiant = new ImageIcon("src/images/etudiant1.png");
-		Image img = image_etudiant.getImage();
-		Image newimg = img.getScaledInstance(70, 70,  java.awt.Image.SCALE_SMOOTH);
-		donnees_tableau[0][3] = new ImageIcon(newimg);
+		
 		
 		tableau_etudiants = new Tableau(parent.controlleur.creer_modele_table("membres"));
 		tableau_etudiants.setRowHeight(70);
