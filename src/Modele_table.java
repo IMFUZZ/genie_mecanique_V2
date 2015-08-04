@@ -26,7 +26,6 @@ public class Modele_table extends DefaultTableModel {
         		setValueAt(new ImageIcon(newimg), i, 3); 
         	}
     	}
-
     }
     
     @Override

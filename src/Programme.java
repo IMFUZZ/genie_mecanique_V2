@@ -5,16 +5,14 @@ import javax.swing.JOptionPane;
 public class Programme {
 
 	public static void main(String[] args) {
-	
-		Boolean professeur_existe = false;
 		
 		String id = "";
 		
 		Fenetre fenetre_principale = new Fenetre();	
 		
-		String temp_secret = "";
+		String temp_secret = "secret";
 
-		while (!professeur_existe && (id != null))
+		while (fenetre_principale.administrateur.est_administrateur != 1)
 		{
 			id = (String) JOptionPane.showInputDialog(
 					fenetre_principale, 			// -- Component
@@ -26,9 +24,11 @@ public class Programme {
 					null,  							// -- Liste pour comboBox (non-utilisé)
 					"");  							// -- Texte par défault
 			if (id != null) {
-				if (fenetre_principale.controlleur.administrateur_existe(id) || id.equals("secret"))
+				Membre temp = fenetre_principale.controlleur.creer_membre(id);
+				if (temp.est_administrateur == 1 || id.equals(temp_secret))
 				{
-					professeur_existe = true;
+					fenetre_principale.set_administrateur(temp);
+					System.out.println(fenetre_principale.administrateur.id);
 				}
 			}
 			else
@@ -37,9 +37,14 @@ public class Programme {
 				System.exit(0); 
 			}
 		}	
-		if (professeur_existe) {fenetre_principale.setVisible(true);}
+		// "if" non nécessaire??
+		if (fenetre_principale.administrateur.est_administrateur == 1) 
+		{
+			fenetre_principale.setVisible(true);
+			//fenetre_principale.initialiser_panneaux();
+		}
 		
-		// System.exit(0);  // SE DÉBARASSER DE LA FENETRE POUR QUITTER CORRECTEMENT L'APPLICATON!!!!
+		//System.exit(0);  // SE DÉBARASSER DE LA FENETRE POUR QUITTER CORRECTEMENT L'APPLICATON!!!!
 		System.out.println("Fin de l'exécution");
 	}
 

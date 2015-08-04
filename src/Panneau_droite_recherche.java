@@ -13,9 +13,9 @@ import javax.swing.JTextField;
 
 public class Panneau_droite_recherche extends Panneau_droite {
 	
-	JButton b_rechercher;
-	JButton b_quitter;
-	JButton b_test;
+	Bouton b_rechercher;
+	Bouton b_quitter;
+	Bouton b_test;
 	
 	JComboBox cb_Rechercher;
 	
@@ -27,14 +27,12 @@ public class Panneau_droite_recherche extends Panneau_droite {
 		
 		String[] comboBoxContenu = { "Id", "Nom", "Categorie", "Description",
 		"Quantite" };
-		//parent.current_p_centre_recherche.tabbed_pane.ge
 		cb_Rechercher = new JComboBox<String>(comboBoxContenu);
 		t_rechercher = new JTextField();
 		
-		b_rechercher = new JButton("Rechercher");
-		b_quitter = new JButton("Se Déconnecter");
-		
-		b_test = new JButton("Selectionner");
+		b_rechercher = new Bouton("Rechercher");
+		b_quitter = new Bouton("Se Déconnecter");
+		b_test = new Bouton("Selectionner");
 		
 		liste_de_boites.addAll(Arrays.asList(cb_Rechercher, t_rechercher, b_rechercher, b_test, b_quitter));
 		ajuster_boites();

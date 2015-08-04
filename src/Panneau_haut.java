@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -31,14 +32,15 @@ public class Panneau_haut extends Panneau {
 	public Panneau_haut(Fenetre a_parent)
 	{
 		super(a_parent);
+		
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Calendar cal = Calendar.getInstance();
 		
 		l_codebarre_centre = faire_codebarre("");
-		l_prof_prenom = new JLabel("Sarah");
-		l_prof_nom = new JLabel("Laflamme");
+		l_prof_prenom = new JLabel(parent.administrateur.prenom);
+		l_prof_nom = new JLabel(parent.administrateur.nom);
 		l_date = new JLabel();
 		
 		l_prof_prenom.setFont(f_sousTitre);
@@ -79,7 +81,11 @@ public class Panneau_haut extends Panneau {
 		add(p_centre);
 		add(p_remplissage);
 		add(p_droite);
-		
+	}
+	public void actualiser()
+	{
+		l_prof_prenom.setText(parent.administrateur.prenom);
+		l_prof_nom.setText(parent.administrateur.nom); 
 	}
 }
  

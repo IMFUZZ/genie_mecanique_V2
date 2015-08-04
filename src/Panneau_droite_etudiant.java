@@ -26,13 +26,13 @@ public class Panneau_droite_etudiant extends Panneau_droite {
 	JPanel p_image_brute;
 	JPanel p_image_retour;
 	
-	JButton b_test;
+	Bouton b_test;
 	
 	public Panneau_droite_etudiant(Fenetre a_parent){
 		
 		super(a_parent);
 		
-		b_test = new JButton("Selectionner");
+		b_test = new Bouton("Selectionner");
 		
 		liste_de_boites.addAll(Arrays.asList(b_test));
 		ajuster_boites();

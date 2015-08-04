@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
@@ -18,18 +20,20 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.border.LineBorder;
 
-public class Fenetre extends JFrame {
+public class Fenetre extends JFrame implements KeyListener {
 
-	Panneau current_p_haut_recherche;
+	Panneau_haut_recherche current_p_haut_recherche;
 	Panneau_centre_recherche current_p_centre_recherche;
-	Panneau current_p_bas_recherche;
-	Panneau current_p_droit_recherche;
+	Panneau_bas current_p_bas_recherche;
+	Panneau_droite_recherche current_p_droit_recherche;
 	
-	Panneau current_p_haut_etudiant;
-	Panneau current_p_centre_etudiant;
-	Panneau current_p_bas_etudiant;
-	Panneau current_p_droit_etudiant;
+	Panneau_haut_etudiant current_p_haut_etudiant;
+	Panneau_centre_etudiant current_p_centre_etudiant;
+	Panneau_bas current_p_bas_etudiant;
+	Panneau_droite_etudiant current_p_droit_etudiant;
 	
 	JPanel p_haut;
 	JPanel p_gauche;
@@ -40,13 +44,13 @@ public class Fenetre extends JFrame {
 	int screen_height;
 	int screen_width;
 	
-	Membre administrateur;
+	Membre administrateur = new Membre();
 	Controlleur controlleur;
 	
 	public Fenetre() {
 		
 		new JFrame();
-		
+		UIManager.put("TitledBorder.border", new LineBorder(new Color(125,125,125), 1));
 		controlleur = new Controlleur(this);
 
 		setTitle("Système de gestion - 2014");
@@ -58,7 +62,6 @@ public class Fenetre extends JFrame {
 		
 		screen_height = Toolkit.getDefaultToolkit().getScreenSize().height;
 		screen_width = Toolkit.getDefaultToolkit().getScreenSize().width;
-		
 		p_haut = new JPanel();
 		p_gauche = new JPanel();
 		p_centre = new JPanel();
@@ -100,6 +103,23 @@ public class Fenetre extends JFrame {
 			}
 		});
 	}
+/*	public void initialiser_panneaux()
+	{	
+		current_p_haut_recherche = new Panneau_haut_recherche(this);
+		current_p_centre_recherche = new Panneau_centre_recherche(this);
+		current_p_droit_recherche = new Panneau_droite_recherche(this);
+		current_p_bas_recherche = new Panneau_bas(this);
+		
+		current_p_haut_etudiant = new Panneau_haut_etudiant(this);
+		current_p_centre_etudiant = new Panneau_centre_etudiant(this);
+		current_p_droit_etudiant = new Panneau_droite_etudiant(this);
+		current_p_bas_etudiant = new Panneau_bas(this);
+		
+		p_bas.add(current_p_bas_recherche);
+		p_droite.add(current_p_droit_recherche);
+		p_haut.add(current_p_haut_recherche);
+		p_centre.add(current_p_centre_recherche);
+	}*/
 	
 	public void set_panneau_recherche()
 	{	
@@ -135,5 +155,30 @@ public class Fenetre extends JFrame {
 		p_droite.add(current_p_droit_etudiant);
 		p_haut.add(current_p_haut_etudiant);
 		p_centre.add(current_p_centre_etudiant);
+	}
+	
+	public void set_administrateur(Membre a_membre)
+	{
+		administrateur = a_membre;
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) 
+	{
+		System.out.println("flag1");
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent e) {
+		System.out.println("flag2");
+		if(e.getKeyCode() == KeyEvent.KEY_TYPED){
+			System.out.println(e.getKeyCode());
+		}
+	}
+	
+	@Override
+	public void keyReleased(KeyEvent e) 
+	{
+		System.out.println("flag3");
 	}
 }

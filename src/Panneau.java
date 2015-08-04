@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -76,7 +77,7 @@ public abstract class Panneau extends JPanel{
 	public JButton faire_codebarre(String a_chemin_image)
 	{
 	      try {
-	          JButton lImage = new JButton(
+	    	  Bouton lImage = new Bouton(
 	        		  (new ImageIcon(
 	        				  ((new ImageIcon(
 	        						  a_chemin_image)).getImage()).getScaledInstance(

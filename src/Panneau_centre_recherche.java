@@ -36,11 +36,11 @@ public class Panneau_centre_recherche extends Panneau_centre {
 
 	JTable tableau_etudiants;
 	JLabel titre_tableau_etudiants;
-	JScrollPane scroll_tableau_etudiants;
+	Panneau_scroll scroll_tableau_etudiants;
 	
 	JTable tableau_materiel;
 	JLabel titre_tableau_materiel;
-	JScrollPane scroll_tableau_materiel;
+	Panneau_scroll scroll_tableau_materiel;
 	
 	JTabbedPane tabbed_pane;
 	List<JPanel> liste_panneaux_tableaux;
@@ -102,18 +102,8 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		/* Ajoute les informations des outils empruntés dans le tableau */
 		panneau_etudiants.removeAll();
 		
-		int nb_etudiants = 30; // ajuster en fonction du nb d'articles à lister
-		String[] noms_colonnes = {"Code utilisateur", "Prénom", "Nom", "Photo"};
-		Object[][] donnees_tableau = new Object[nb_etudiants][noms_colonnes.length];
+		scroll_tableau_etudiants = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("membres")));
 		
-		// remplir donnees_tableau à partir de la bd
-		
-		
-		tableau_etudiants = new Tableau(parent.controlleur.creer_modele_table("membres"));
-		tableau_etudiants.setRowHeight(70);
-		tableau_etudiants.getColumnModel().getColumn(3).setMaxWidth(70);
-		tableau_etudiants.setFont(f_sousTitre);
-		scroll_tableau_etudiants = new JScrollPane(tableau_etudiants);
 		panneau_etudiants.add(scroll_tableau_etudiants);
 	}
 	
@@ -121,29 +111,17 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		/* Ajoute les informations des outils empruntés dans le tableau */
 		panneau_outils.removeAll();
 		
-		int nb_outils = 30; // ajuster en fonction du nb d'articles à lister
-		String[] noms_colonnes = {"Id", "Description", "Responsable (professeur)"};
-		Object[][] donnees_tableau = new String[nb_outils][noms_colonnes.length];
+		scroll_tableau_outils = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("outils")));
 		
-		// ici aller chercher infos dans la BD
-		
-		tableau_outils = new Tableau(parent.controlleur.creer_modele_table("outils"));
-		scroll_tableau_outils = new JScrollPane(tableau_outils);
 		panneau_outils.add(scroll_tableau_outils);
 	}
 	
 	public void afficher_tableau_materiel() {
 		/* Ajoute les informations des bruts empruntés dans le tableau */
 		panneau_materiel.removeAll();
+			
+		scroll_tableau_materiel = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("bruts")));
 		
-		int nb_materiaux = 30; // ajuster en fonction du nb d'articles à lister
-		String[] noms_colonnes = {"Id", "Description", "Responsable (professeur)"};
-		Object[][] donnees_tableau = new String[nb_materiaux][noms_colonnes.length];
-		
-		// ici aller chercher infos dans la BD
-		
-		tableau_materiel = new Tableau(parent.controlleur.creer_modele_table("bruts"));
-		scroll_tableau_materiel = new JScrollPane(tableau_materiel);
 		panneau_materiel.add(scroll_tableau_materiel);
 	}
 	
@@ -151,14 +129,8 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		/* Ajoute les informations des bruts empruntés dans le tableau */
 		panneau_bruts.removeAll();
 		
-		int nb_bruts = 30; // ajuster en fonction du nb d'articles à lister
-		String[] noms_colonnes = {"Id", "Description", "Responsable (professeur)"};
-		Object[][] donnees_tableau = new String[nb_bruts][noms_colonnes.length];
+		scroll_tableau_bruts = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("bruts")));
 		
-		// ici aller chercher infos dans la BD
-		
-		tableau_bruts = new Tableau(parent.controlleur.creer_modele_table("bruts"));
-		scroll_tableau_bruts = new JScrollPane(tableau_bruts);
 		panneau_bruts.add(scroll_tableau_bruts);
 	}
 	

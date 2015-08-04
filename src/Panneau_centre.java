@@ -28,6 +28,7 @@ public abstract class Panneau_centre extends Panneau {
 	public Panneau_centre(Fenetre a_parent)
 	{
 		super(a_parent);
+		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 	}
 	

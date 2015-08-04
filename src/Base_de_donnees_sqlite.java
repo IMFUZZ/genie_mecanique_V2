@@ -8,6 +8,8 @@ import java.sql.ResultSetMetaData;
 import java.sql.Types;
 import java.util.ArrayList;
 
+import org.sqlite.SQLiteConfig;
+
 public class Base_de_donnees_sqlite {
 	// Fonction abstraite ne servant qu'à permettre d'intéragir avec la base de
 	// données
@@ -32,6 +34,8 @@ public class Base_de_donnees_sqlite {
 			Class.forName("org.sqlite.JDBC");
 			con = DriverManager.getConnection("jdbc:sqlite:base_de_donnees.db");
 			con.setAutoCommit(false);
+			SQLiteConfig config = new SQLiteConfig();
+			config.setEncoding(SQLiteConfig.Encoding.UTF8);
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(requete);
 			ResultSetMetaData rm = rs.getMetaData();

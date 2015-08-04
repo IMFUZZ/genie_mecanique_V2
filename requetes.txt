@@ -1,70 +1,80 @@
 
 
 CREATE TABLE outils(
-	id TEXT PRIMARY KEY,
-	name TEXT NOT NULL,
-	description TEXT,
-	quantity INT
+	Identifiant TEXT PRIMARY KEY,
+	 TEXT NOT NULL,
+	Description TEXT,
+	Quantité INT
 		NOT NULL,
-	available TINYINT 
+	Disponible TINYINT 
 		DEFAULT 1,
-	broken TINYINT
+	Brisé TINYINT
 		DEFAULT 0,
-	must_command TINYINT
+	Commande_Requise TINYINT
 		DEFAULT 0
 );
 	
-INSERT INTO outils (id, name, description, quantity) VALUES ('O1', 'marteau', 'Outils servant a planter des clous.....', 100);
+INSERT INTO outils (Identifiant, Nom, Description, Quantité) VALUES ('O1', 'Marteau', "Outil servant a planter des clous.....", 100);
+INSERT INTO outils (Identifiant, Nom, Description, Quantité) VALUES ('O2', 'Tournevis', "Outil servant a visser des vis.....", 20);
+INSERT INTO outils (Identifiant, Nom, Description, Quantité) VALUES ('O3', 'Clé Anglaise', "Outil permettant d'effectuer des réparations.....", 100);
 
 CREATE TABLE bruts(
-	id TEXT PRIMARY KEY,
-	name TEXT NOT NULL,
-	description TEXT,
-	quantity INT
+	Identifiant TEXT PRIMARY KEY,
+	Nom TEXT NOT NULL,
+	Description TEXT,
+	Quantité INT
 		NOT NULL,
-	available TINYINT 
+	Disponible TINYINT 
 		DEFAULT 1,
-	must_command TINYINT
+	Commande_Requise TINYINT
 		DEFAULT 0
 );
 
-INSERT INTO bruts (id, name, description, quantity)
-	VALUES ('B1', 'planche 2x4', 'Planche de chene de 2x4x10', 10);
+INSERT INTO bruts (Identifiant, Nom, Description, Quantité)
+	VALUES ("B1", "Planche chêne 2x4", "Planche de chêne de 2x4x10", 10);
+INSERT INTO bruts (Identifiant, Nom, Description, Quantité)
+	VALUES ("B2", "Planche érable 3*6", "Planche d'érable de 3*6x10", 10);
+INSERT INTO bruts (Identifiant, Nom, Description, Quantité)
+	VALUES ("B3", "Planche chêne 4*4", "Planche de chêne de 4*4x10", 10);
+INSERT INTO bruts (Identifiant, Nom, Description, Quantité)
+	VALUES ("B4", "Barre aluminium", "Planche de chêne de 2x4x10", 10);
 
 CREATE TABLE membres(
-	id TEXT PRIMARY KEY,
-	name TEXT NOT NULL,
-	last_name TEXT NOT NULL,
-	image_path TEXT,
-	is_admin TINYINT 
+	Identifiant TEXT PRIMARY KEY,
+	Nom TEXT NOT NULL,
+	Nom_Famille TEXT NOT NULL,
+	Image TEXT,
+	Est_Administrateur TINYINT 
 		DEFAULT 0
 );
 
-INSERT INTO membres (id, name, last_name, image_path, is_admin)
-	VALUES ('1245278', 'Daniel-Junior', 'Dubé', 'src/images/etudiants/1245278', 1);
-INSERT INTO membres (id, name, last_name, image_path, is_admin)
-	VALUES ('1357059', 'Sarah', 'Laflamme', 'src/images/etudiants/1357059', 0);
+INSERT INTO membres (Identifiant, Nom, Nom_Famille, Image, Est_Administrateur)
+	VALUES ('1245278', 'Daniel-Junior', 'Dubé', 'src/images/etudiants/1245278.png', 1);
+INSERT INTO membres (Identifiant, Nom, Nom_Famille, Image, Est_Administrateur)
+	VALUES ('1357059', 'Sarah', 'Laflamme', 'src/images/etudiants/1357059.png', 0);
+INSERT INTO membres (Identifiant, Nom, Nom_Famille, Image, Est_Administrateur)
+	VALUES ('1234567', 'Doug', 'McMahon', 'src/images/etudiants/1234567.png', 1);
 
 CREATE TABLE locations(
-	item_id TEXT NOT NULL,
-	owner_id TEXT NOT NULL,
-	admin_id TEXT NOT NULL,
-	date DATE
+	Identifiant_Objet TEXT NOT NULL,
+	Identifiant_Propriétaire TEXT NOT NULL,
+	Identifiant_Responsable TEXT NOT NULL,
+	Date DATE
 		DEFAULT (datetime('now','localtime')),
-	returned TINYINT
+	Retourné TINYINT
 		DEFAULT 0
 );
 
-INSERT INTO locations (item_id, owner_id, admin_id)
+INSERT INTO locations (Identifiant_Objet, Identifiant_Propriétaire, Identifiant_Responsable)
 	VALUES ('1', '1245278', '1111111');
 
 CREATE TABLE dons(
-	item_id TEXT NOT NULL,
-	owner_id TEXT NOT NULL,
-	admin_id TEXT NOT NULL,
-	date DATE
+	Identifiant_Objet TEXT NOT NULL,
+	Identifiant_Propriétaire TEXT NOT NULL,
+	Identifiant_Responsable TEXT NOT NULL,
+	Date DATE
 		DEFAULT (datetime('now','localtime'))
 );
 
-INSERT INTO dons(item_id, owner_id, admin_id)
+INSERT INTO dons(Identifiant_Objet, Identifiant_Propriétaire, Identifiant_Responsable)
 	VALUES ('1', '1245278', '1111111');
