@@ -1,3 +1,5 @@
+import java.awt.KeyboardFocusManager;
+
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -41,8 +43,10 @@ public class Programme {
 		if (fenetre_principale.administrateur.est_administrateur == 1) 
 		{
 			fenetre_principale.setVisible(true);
+			fenetre_principale.current_p_haut.actualiser();
 			//fenetre_principale.initialiser_panneaux();
 		}
+
 		
 		//System.exit(0);  // SE DÉBARASSER DE LA FENETRE POUR QUITTER CORRECTEMENT L'APPLICATON!!!!
 		System.out.println("Fin de l'exécution");

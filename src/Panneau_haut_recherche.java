@@ -7,7 +7,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
+//NE SERT PLUS A RIEN!!!
 public class Panneau_haut_recherche extends Panneau_haut {
 	
 	JLabel l_titre_debut;
