@@ -14,62 +14,68 @@ import javax.swing.JPanel;
 
 public class Panneau_droite_etudiant extends Panneau_droite {
 
-	JButton l_image_location;
-	JButton l_image_brute;
-	JButton l_image_retour;
+	JButton bouton_location;
+	JButton bouton_brut;
+	JButton bouton_retour;
 	
-	JLabel l_texte_image_location;
-	JLabel l_texte_image_brute;
-	JLabel l_texte_image_retour;
+	//JLabel texte_location;
+	//JLabel texte_brut;
+	//JLabel texte_retour;
 	
-	JPanel p_image_location;
-	JPanel p_image_brute;
-	JPanel p_image_retour;
-	
-	Bouton b_test;
+	JPanel conteneur_location;
+	JPanel conteneur_brut;
+	JPanel conteneur_retour;
 	
 	public Panneau_droite_etudiant(Fenetre a_parent){
 		
 		super(a_parent);
 		
-		b_test = new Bouton("Selectionner");
+		// Création des JPanel qui contiennent les boutons
+		conteneur_location = new JPanel();
+		conteneur_brut = new JPanel();
+		conteneur_retour = new JPanel();
 		
-		liste_de_boites.addAll(Arrays.asList(b_test));
-		ajuster_boites();
-		
-		p_image_location = new JPanel();
-		p_image_brute = new JPanel();
-		p_image_retour = new JPanel();
-		
-		p_image_location.setMaximumSize(new Dimension(200, 150));
-		p_image_brute.setMaximumSize(new Dimension(200, 150));
-		p_image_retour.setMaximumSize(new Dimension(200, 150));
-		
-		l_image_location = faire_codebarre("src/images/barcode.png");
-		l_image_brute = faire_codebarre("src/images/barcode.png");
-		l_image_retour = faire_codebarre("src/images/barcode.png");
+		// Création des images des codes barre
+		// *** À remplacer pour du texte avec la font "code barre"
+		bouton_location = faire_codebarre("src/images/barcode.png");
+		bouton_brut = faire_codebarre("src/images/barcode.png");
+		bouton_retour = faire_codebarre("src/images/barcode.png");
 	
-		l_image_location.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		l_image_brute.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		l_image_retour.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		// Bordure autour du code barre
+		bouton_location.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		bouton_brut.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		bouton_retour.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 	
-		p_image_location.setBorder(BorderFactory.createTitledBorder("Faire emprunt"));
-		p_image_brute.setBorder(BorderFactory.createTitledBorder("Donner brutes"));
-		p_image_retour.setBorder(BorderFactory.createTitledBorder("Faire retour"));
+		// Ajoute un titre aux boutons
+		conteneur_location.setBorder(BorderFactory.createTitledBorder("Faire location"));
+		conteneur_brut.setBorder(BorderFactory.createTitledBorder("Donner bruts"));
+		conteneur_retour.setBorder(BorderFactory.createTitledBorder("Faire retour"));
 	
-		p_image_location.add(l_image_location);
-		p_image_brute.add(l_image_brute);
-		p_image_retour.add(l_image_retour);
+		// Ajoute les boutons à leur conteneur
+		conteneur_location.add(bouton_location);
+		conteneur_brut.add(bouton_brut);
+		conteneur_retour.add(bouton_retour);
 		
-		add(p_image_location);
-		add(p_image_brute);
-		add(p_image_retour);
-		add(b_test);
+		// Ajoute les conteneurs au panneau
+		add(conteneur_location);
+		add(conteneur_brut);
+		add(conteneur_retour);
 		
-		b_test.addActionListener(new ActionListener() {
+		/*
+		 * Action du bouton location
+		 * Lance la fonction faire_location du Contrôleur
+		 */
+		bouton_location.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				parent.set_panneau_recherche();
+				parent.controlleur.faire_location(parent.etudiant);
 			}
 		});
+	}
+	
+	/*
+	 * Routine lançant le processus de location
+	 */
+	public void effectuer_location() {
+		
 	}
 }

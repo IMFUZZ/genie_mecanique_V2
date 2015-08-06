@@ -50,6 +50,7 @@ public class Fenetre extends JFrame{
 	int screen_width;
 	
 	Membre administrateur = new Membre();
+	Membre etudiant = new Membre();
 	Controlleur controlleur;
 	
 	public Fenetre() {

@@ -15,7 +15,6 @@ public class Panneau_droite_recherche extends Panneau_droite {
 	
 	Bouton b_rechercher;
 	Bouton b_quitter;
-	Bouton b_test;
 	
 	JComboBox cb_Rechercher;
 	
@@ -32,15 +31,13 @@ public class Panneau_droite_recherche extends Panneau_droite {
 		
 		b_rechercher = new Bouton("Rechercher");
 		b_quitter = new Bouton("Se Déconnecter");
-		b_test = new Bouton("Selectionner");
 		
-		liste_de_boites.addAll(Arrays.asList(cb_Rechercher, t_rechercher, b_rechercher, b_test, b_quitter));
+		liste_de_boites.addAll(Arrays.asList(cb_Rechercher, t_rechercher, b_rechercher, b_quitter));
 		ajuster_boites();
 		
 		add(cb_Rechercher);
 		add(t_rechercher);
 		add(b_rechercher);
-		add(b_test);
 		add(new JPanel());
 		add(b_quitter);
 		
@@ -52,11 +49,6 @@ public class Panneau_droite_recherche extends Panneau_droite {
 		b_quitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-			}
-		});
-		b_test.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				parent.set_panneau_etudiant();
 			}
 		});
 	}
