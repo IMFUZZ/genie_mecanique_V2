@@ -1,5 +1,9 @@
 import java.util.List;
 
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 
 public class Controlleur extends Base_de_donnees_sqlite{
 
@@ -9,17 +13,70 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	{
 		parent = a_parent;
 	}
-		
-	public void faire_locations(String a_id_proprietaire, String a_id_outil)
+	
+	/*
+	 * Effectue une location d'outil pour le membre connecté (celui envoyé en argument)
+	 */
+	public void faire_location(Membre a_membre)
 	{
-		faire_requete_sqlite(
-				"INSERT INTO locations(Identifiant_Objet, Identifiant_Propriétaire, Identifiant_Responsable) "
-					+ "VALUES "
-					+ "('"+ a_id_outil
-					+"', '"+ a_id_proprietaire
-					+"', '"+ parent.administrateur.numero
-					+"');");
+		String id_outil;
+		Boolean id_outil_valide = false;
+		Boolean a_annule = false;
+		
+		if (a_membre != null) {
+			while (!(a_annule) || !(id_outil_valide)) {
+				
+				id_outil = scanner_outil(); // lance un popup qui permet de scanner l'outil
+				id_outil_valide = valider_id_outil(id_outil); // s'assure que l'id retourné correspond à un outil existant
+				
+				if (id_outil_valide) {
+					// création de la location dans la bd
+					faire_update_sqlite(
+							"INSERT INTO locations(Identifiant_Objet, Identifiant_Proprietaire, Identifiant_Responsable) "
+								+ "VALUES "
+								+ "('"+ id_outil
+								+"', '"+ a_membre.id
+								+"', '"+ parent.administrateur.numero
+								+"');");
+				}
+				
+				// si l'usager a cliqué sur annuler
+				if (id_outil != null) {
+					a_annule = true;
+				}
+			}
+		}		
 	}
+	
+	/*
+	 * Ouvre un popup permettant de scanner le code-barre d'un outil
+	 * Retourne l'id scanné
+	 */
+	public String scanner_outil() {
+		return (String) JOptionPane.showInputDialog(
+				new JFrame(),
+				"Id de l'outil : ",// -- Sujet
+				"Scan de l'outil", 	// -- Titre
+				3, new ImageIcon("src/images/icon_128.png"),  // -- Icône personnalisée
+				null, "");
+	}
+	
+	/*
+	 * Vérifie que l'id envoyé en argument correspond à l'id d'un outil existant 
+	 * et disponible à la location
+	 */
+	public boolean valider_id_outil(String a_id) {
+		Boolean verification = true;
+		
+		// *** À faire (requête SQL)
+		
+		return verification;
+	}
+	
+	
+	/*
+	 * 
+	 */
 	public void faire_don(String a_id_proprietaire, String a_id_brut)
 	{
 		faire_requete_sqlite(
@@ -30,6 +87,11 @@ public class Controlleur extends Base_de_donnees_sqlite{
 					+"', '"+ parent.administrateur.numero
 					+"');");
 	}
+	
+	
+	/*
+	 * 
+	 */
 	public void ajouter_etudiant(String a_id_etudiant, String a_prenom, String a_nom)
 	{
 		faire_requete_sqlite(
@@ -40,6 +102,10 @@ public class Controlleur extends Base_de_donnees_sqlite{
 					+"', '"+ a_nom
 					+"');");
 	}
+	
+	/*
+	 * 
+	 */
 	public void ajouter_administrateur(String a_id_admin, String a_prenom, String a_nom)
 	{
 		faire_requete_sqlite(
@@ -51,6 +117,10 @@ public class Controlleur extends Base_de_donnees_sqlite{
 					+"', "+ 1
 					+");");
 	}
+	
+	/*
+	 * 
+	 */
 	public void ajouter_outil(String a_id_outil, String a_nom, String a_description)
 	{
 		faire_requete_sqlite(
@@ -61,6 +131,10 @@ public class Controlleur extends Base_de_donnees_sqlite{
 					+"', '"+ a_description
 					+"');");
 	}
+	
+	/*
+	 * 
+	 */
 	public void ajouter_brut(String a_id_brut, String a_nom, String a_description, int a_quantity)
 	{
 		faire_requete_sqlite(
@@ -72,6 +146,10 @@ public class Controlleur extends Base_de_donnees_sqlite{
 					+"', "+ a_quantity
 					+");");
 	}
+	
+	/*
+	 * 
+	 */
 	public void declarer_bris(int a_id_outil)
 	{
 		faire_update_sqlite(
@@ -80,6 +158,10 @@ public class Controlleur extends Base_de_donnees_sqlite{
 					+ a_id_outil
 					+";");
 	}
+	
+	/*
+	 * 
+	 */
 	public boolean membre_existe(String id) // ----- FONCTIONNEL -----
 	{
 		List<Object> result = faire_requete_sqlite(
@@ -91,6 +173,9 @@ public class Controlleur extends Base_de_donnees_sqlite{
 		return false;
 	}
 	
+	/*
+	 * 
+	 */
 	public Membre creer_membre(String a_id)
 	{
 		List<Object> result = faire_requete_sqlite(

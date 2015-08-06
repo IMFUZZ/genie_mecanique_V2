@@ -4,25 +4,25 @@ CREATE TABLE outils(
 	Identifiant TEXT PRIMARY KEY,
 	 TEXT NOT NULL,
 	Description TEXT,
-	Quantité INT
+	Quantite INT
 		NOT NULL,
 	Disponible TINYINT 
 		DEFAULT 1,
-	Brisé TINYINT
+	Brise TINYINT
 		DEFAULT 0,
 	Commande_Requise TINYINT
 		DEFAULT 0
 );
 	
-INSERT INTO outils (Identifiant, Nom, Description, Quantité) VALUES ('O1', 'Marteau', "Outil servant a planter des clous.....", 100);
-INSERT INTO outils (Identifiant, Nom, Description, Quantité) VALUES ('O2', 'Tournevis', "Outil servant a visser des vis.....", 20);
-INSERT INTO outils (Identifiant, Nom, Description, Quantité) VALUES ('O3', 'Clé Anglaise', "Outil permettant d'effectuer des réparations.....", 100);
+INSERT INTO outils (Identifiant, Nom, Description, Quantite) VALUES ('O1', 'Marteau', "Outil servant a planter des clous.....", 100);
+INSERT INTO outils (Identifiant, Nom, Description, Quantite) VALUES ('O2', 'Tournevis', "Outil servant a visser des vis.....", 20);
+INSERT INTO outils (Identifiant, Nom, Description, Quantite) VALUES ('O3', 'Clé Anglaise', "Outil permettant d'effectuer des réparations.....", 100);
 
 CREATE TABLE bruts(
 	Identifiant TEXT PRIMARY KEY,
 	Nom TEXT NOT NULL,
 	Description TEXT,
-	Quantité INT
+	Quantite INT
 		NOT NULL,
 	Disponible TINYINT 
 		DEFAULT 1,
@@ -30,13 +30,13 @@ CREATE TABLE bruts(
 		DEFAULT 0
 );
 
-INSERT INTO bruts (Identifiant, Nom, Description, Quantité)
+INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
 	VALUES ("B1", "Planche chêne 2x4", "Planche de chêne de 2x4x10", 10);
-INSERT INTO bruts (Identifiant, Nom, Description, Quantité)
+INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
 	VALUES ("B2", "Planche érable 3*6", "Planche d'érable de 3*6x10", 10);
-INSERT INTO bruts (Identifiant, Nom, Description, Quantité)
+INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
 	VALUES ("B3", "Planche chêne 4*4", "Planche de chêne de 4*4x10", 10);
-INSERT INTO bruts (Identifiant, Nom, Description, Quantité)
+INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
 	VALUES ("B4", "Barre aluminium", "Planche de chêne de 2x4x10", 10);
 
 CREATE TABLE membres(
@@ -57,24 +57,24 @@ INSERT INTO membres (Identifiant, Nom, Nom_Famille, Image, Est_Administrateur)
 
 CREATE TABLE locations(
 	Identifiant_Objet TEXT NOT NULL,
-	Identifiant_Propriétaire TEXT NOT NULL,
+	Identifiant_Proprietaire TEXT NOT NULL,
 	Identifiant_Responsable TEXT NOT NULL,
 	Date DATE
 		DEFAULT (datetime('now','localtime')),
-	Retourné TINYINT
+	Retourne TINYINT
 		DEFAULT 0
 );
 
-INSERT INTO locations (Identifiant_Objet, Identifiant_Propriétaire, Identifiant_Responsable)
+INSERT INTO locations (Identifiant_Objet, Identifiant_Proprietaire, Identifiant_Responsable)
 	VALUES ('1', '1245278', '1111111');
 
 CREATE TABLE dons(
 	Identifiant_Objet TEXT NOT NULL,
-	Identifiant_Propriétaire TEXT NOT NULL,
+	Identifiant_Proprietaire TEXT NOT NULL,
 	Identifiant_Responsable TEXT NOT NULL,
 	Date DATE
 		DEFAULT (datetime('now','localtime'))
 );
 
-INSERT INTO dons(Identifiant_Objet, Identifiant_Propriétaire, Identifiant_Responsable)
+INSERT INTO dons(Identifiant_Objet, Identifiant_Proprietaire, Identifiant_Responsable)
 	VALUES ('1', '1245278', '1111111');
