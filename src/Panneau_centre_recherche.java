@@ -50,7 +50,9 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	JPanel panneau_materiel;
 	JPanel panneau_bruts;
 	
-	
+	/**
+	 * Crée les JPanel qui vont contenir les tableaux
+	 */
 	public void creer_contenu_onglets() {
 		
 		panneau_etudiants = new JPanel();

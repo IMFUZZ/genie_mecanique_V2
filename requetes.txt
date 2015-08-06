@@ -1,4 +1,4 @@
-
+﻿
 
 CREATE TABLE outils(
 	Identifiant TEXT PRIMARY KEY,
@@ -51,7 +51,7 @@ CREATE TABLE membres(
 INSERT INTO membres (Identifiant, Nom, Nom_Famille, Image, Est_Administrateur)
 	VALUES ('1245278', 'Daniel-Junior', 'Dubé', 'src/images/etudiants/1245278.png', 1);
 INSERT INTO membres (Identifiant, Nom, Nom_Famille, Image, Est_Administrateur)
-	VALUES ('1357059', 'Sarah', 'Laflamme', 'src/images/etudiants/1357059.png', 0);
+	VALUES ('1357059', 'Sarah', 'Laflamme', 'src/images/etudiants/1357059.png', 1);
 INSERT INTO membres (Identifiant, Nom, Nom_Famille, Image, Est_Administrateur)
 	VALUES ('1234567', 'Doug', 'McMahon', 'src/images/etudiants/1234567.png', 1);
 

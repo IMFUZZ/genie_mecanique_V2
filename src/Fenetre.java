@@ -122,23 +122,6 @@ public class Fenetre extends JFrame{
 		      }
 		});
 	}
-/*	public void initialiser_panneaux()
-	{	
-		current_p_haut_recherche = new Panneau_haut_recherche(this);
-		current_p_centre_recherche = new Panneau_centre_recherche(this);
-		current_p_droit_recherche = new Panneau_droite_recherche(this);
-		current_p_bas_recherche = new Panneau_bas(this);
-		
-		current_p_haut_etudiant = new Panneau_haut_etudiant(this);
-		current_p_centre_etudiant = new Panneau_centre_etudiant(this);
-		current_p_droit_etudiant = new Panneau_droite_etudiant(this);
-		current_p_bas_etudiant = new Panneau_bas(this);
-		
-		p_bas.add(current_p_bas_recherche);
-		p_droite.add(current_p_droit_recherche);
-		p_haut.add(current_p_haut_recherche);
-		p_centre.add(current_p_centre_recherche);
-	}*/
 	
 	public void set_panneau_recherche()
 	{	
