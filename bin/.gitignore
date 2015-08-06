@@ -1,29 +1,24 @@
-/Tableau.class
-/Panneau_scroll.class
+/Base_de_donnees_sqlite.class
 /Bouton.class
+/Controlleur.class
+/Membre.class
+/Modele_table.class
+/Panneau.class
+/Panneau_bas.class
+/Panneau_centre.class
+/Panneau_centre_etudiant.class
+/Panneau_centre_recherche.class
+/Panneau_droite.class
+/Panneau_droite_etudiant$1.class
+/Panneau_droite_etudiant.class
 /Panneau_droite_recherche$1.class
 /Panneau_droite_recherche$2.class
-/Panneau_droite_recherche$3.class
-/Fenetre$1.class
-/Detecteur_clavier.class
-/Detecteur_clavier$CustomKeyListener.class
-/CustomKeyListener.class
-/Detecteur_clavierimplements.class
-/Panneau_droite_etudiant$1.class
-/Fenetre$2.class
-/p_haut_gauche_etudiant.class
-/Panneau_haut_gauche_etudiant.class
-/Panneau_haut_gauche_recherche.class
-<<<<<<< HEAD
-<<<<<<< HEAD
-/Panneau_haut_recherche.class
-/Panneau_haut_etudiant.class
+/Panneau_droite_recherche.class
+/Panneau_haut.class
 /Panneau_haut_gauche_etudiant$1.class
+/Panneau_haut_gauche_etudiant.class
 /Panneau_haut_gauche_recherche$1.class
-=======
-/Panneau_droite_etudiant$2.class
->>>>>>> 23aa78babe9ffd082d5c9f68d896dc9e7f860f76
-=======
-/Panneau_droite_etudiant$2.class
->>>>>>> 23aa78babe9ffd082d5c9f68d896dc9e7f860f76
-/Fenetre.class
+/Panneau_haut_gauche_recherche.class
+/Panneau_scroll.class
+/Programme.class
+/Tableau.class
