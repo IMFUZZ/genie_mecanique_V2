@@ -8,8 +8,6 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	public Controlleur(Fenetre a_parent)
 	{
 		parent = a_parent;
-		creer_membre("1245278");
-		//ajouter_brut("B2", "Brut #1", "Ceci est un test", 100);
 	}
 		
 	public void faire_locations(String a_id_proprietaire, String a_id_outil)
