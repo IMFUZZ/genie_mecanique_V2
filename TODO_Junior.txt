@@ -2,11 +2,15 @@
  
  - [ X ] Faire en sorte que la BDSQLITE supporte tout les datatypes
  - [ X ] Transformer les images codebarres en bouton avec l'image par-dessus
- - [ ... ] M'assurer que le système ferme toujours sécuritairement
- - [ X ] Mettre un titledBorder sur les tables de centre ETUDIANT avec une font plus grosse
+  - [ X ] Mettre un titledBorder sur les tables de centre ETUDIANT avec une font plus grosse
  - [ X ] *** faire une classe scrollPane pour les tables
- - [ ] Changer les noms des champs de la BD pour les mettre en francais
+ - [ X ] Changer les noms des champs de la BD pour les mettre en francais
  - [ ] Jeter un coup d'oeil au comboxBox du panneau Droite
+  - [ ] Fixer le problème des accents
+  - [ ] s'assurer d'avoir des classes pour construire des object 'outil', 'brutes', etc.. (pour les vérifications)
+ - [ ] Jeter un coup d'oeil au comboxBox du panneau Droite
+ - [ ... ] M'assurer que le système ferme toujours sécuritairement
+
 
 - [ ] FAIRE DES RECHERCHE SUR LE CODE 128-B
 

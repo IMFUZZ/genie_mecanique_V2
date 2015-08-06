@@ -44,7 +44,6 @@ public class Programme {
 		{
 			fenetre_principale.setVisible(true);
 			fenetre_principale.current_p_haut.actualiser();
-			//fenetre_principale.initialiser_panneaux();
 		}
 
 		

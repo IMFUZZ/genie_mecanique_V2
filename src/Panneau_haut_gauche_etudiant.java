@@ -3,6 +3,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -85,8 +87,13 @@ public class Panneau_haut_gauche_etudiant extends Panneau{
 		p_codebarre.add(l_codebarre_centre);
 		
 		add(p_info_etudiant, BorderLayout.WEST);
-		add(p_remplissage, BorderLayout.CENTER);
 		add(p_codebarre, BorderLayout.EAST);
 		add(p_remplissage, BorderLayout.EAST);
+		
+		l_codebarre_centre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				parent.set_panneau_recherche();
+			}
+		});
 	}
 }

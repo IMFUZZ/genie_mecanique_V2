@@ -10,22 +10,25 @@ import java.util.ArrayList;
 
 import org.sqlite.SQLiteConfig;
 
+// RENDRE LA CLASSE ABSTRAITE!!
+
 public class Base_de_donnees_sqlite {
-	// Fonction abstraite ne servant qu'à permettre d'intéragir avec la base de
-	// données
+	
 	private java.sql.Connection con;
 	private java.sql.Statement stmt;
-
+	
+	/* Constructeur de l'objet BaseDeDonnee */
 	public Base_de_donnees_sqlite() {
-		/* Constructeur de l'objet BaseDeDonnee */
+
 	}
 
+	/* Fonction permettant d'effectuer une requête 
+	 * à la base de donnée. Celle-ci effectue les 
+	 * requête en "polling" et retourne une String[] 
+	 * contenant les élements retourné par la base 
+	 * de donnée */
 	public List<Object> faire_requete_sqlite(String requete) {
-		/* Fonction permettant d'effectuer une requête 
-		 * à la base de donnée. Celle-ci effectue les 
-		 * requête en "polling" et retourne une String[] 
-		 * contenant les élements retourné par la base 
-		 * de donnée */
+		
 		ResultSet rs = null;
 		int nombreColonne = 0;
 		Object entree = null;
@@ -39,7 +42,6 @@ public class Base_de_donnees_sqlite {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(requete);
 			ResultSetMetaData rm = rs.getMetaData();
-			//nombreColonne = rm.getColumnCount();
 			
 			while (rs.next()) {
 				for (int x = 1; x <= (rm.getColumnCount()); x++) {
@@ -72,12 +74,13 @@ public class Base_de_donnees_sqlite {
 		return enregistrement;
 	}
 	
+	/* Cette fonction, à l'aide du nom de la table, 
+	 * créer retourne un objet 'Modele_table'. La
+	 * fonction utilise des boucles pour remplir 
+	 * les données d'un vecteur de vecteur et l'
+	 * attribut ensuite au modèle table.*/
 	public Modele_table creer_modele_table(String a_nom_table) {
-		/* Fonction permettant d'effectuer une requête 
-		 * à la base de donnée. Celle-ci effectue les 
-		 * requête en "polling" et retourne une String[] 
-		 * contenant les élements retourné par la base 
-		 * de donnée */
+
 		ResultSet rs = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -115,12 +118,12 @@ public class Base_de_donnees_sqlite {
 
 	}
 	
+	/* Fonction permettant d'effectuer une requête 
+	 * à la base de donnée. Celle-ci effectue les 
+	 * requête en "polling" et retourne une String[] 
+	 * contenant les élements retourné par la base 
+	 * de donnée */
 	public void faire_update_sqlite(String requete) {
-		/* Fonction permettant d'effectuer une requête 
-		 * à la base de donnée. Celle-ci effectue les 
-		 * requête en "polling" et retourne une String[] 
-		 * contenant les élements retourné par la base 
-		 * de donnée */
 		
 		try {
 			Class.forName("org.sqlite.JDBC");

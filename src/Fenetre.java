@@ -28,11 +28,12 @@ import javax.swing.border.LineBorder;
 
 public class Fenetre extends JFrame{
 
+	Panneau_haut current_p_haut;
+	
 	Panneau_centre_recherche current_p_centre_recherche;
 	Panneau_bas current_p_bas_recherche;
 	Panneau_droite_recherche current_p_droit_recherche;
 	
-	Panneau_haut current_p_haut;
 	Panneau_centre_etudiant current_p_centre_etudiant;
 	Panneau_bas current_p_bas_etudiant;
 	Panneau_droite_etudiant current_p_droit_etudiant;
@@ -73,6 +74,7 @@ public class Fenetre extends JFrame{
 		
 		screen_height = Toolkit.getDefaultToolkit().getScreenSize().height;
 		screen_width = Toolkit.getDefaultToolkit().getScreenSize().width;
+		
 		p_haut = new JPanel();
 		p_gauche = new JPanel();
 		p_centre = new JPanel();
@@ -84,12 +86,6 @@ public class Fenetre extends JFrame{
 		p_centre.setLayout(new GridLayout(1, 1));
 		p_droite.setLayout(new GridLayout(1, 1));
 		p_bas.setLayout(new GridLayout(1, 1));
-		
-		add(p_haut, BorderLayout.NORTH);
-		add(p_gauche, BorderLayout.WEST);
-		add(p_centre, BorderLayout.CENTER);
-		add(p_droite, BorderLayout.EAST);
-		add(p_bas, BorderLayout.SOUTH);
 		
 		current_p_haut = new Panneau_haut(this);
 		
@@ -103,8 +99,13 @@ public class Fenetre extends JFrame{
 		
 		p_bas.add(current_p_bas_recherche);
 		p_droite.add(current_p_droit_recherche);
-		p_haut.add(current_p_haut);
 		p_centre.add(current_p_centre_recherche);
+		
+		add(current_p_haut, BorderLayout.NORTH);
+		add(p_gauche, BorderLayout.WEST);
+		add(p_centre, BorderLayout.CENTER);
+		add(p_droite, BorderLayout.EAST);
+		add(p_bas, BorderLayout.SOUTH);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -136,6 +137,7 @@ public class Fenetre extends JFrame{
 		p_bas.add(current_p_bas_recherche);
 		p_droite.add(current_p_droit_recherche);
 		p_centre.add(current_p_centre_recherche);
+		current_p_haut.set_panneau_gauche_recherche();
 	}
 	
 	public void set_panneau_etudiant()
@@ -151,6 +153,7 @@ public class Fenetre extends JFrame{
 		p_bas.add(current_p_bas_etudiant);
 		p_droite.add(current_p_droit_etudiant);
 		p_centre.add(current_p_centre_etudiant);
+		current_p_haut.set_panneau_gauche_etudiant();
 	}
 	
 	public void set_administrateur(Membre a_membre)
