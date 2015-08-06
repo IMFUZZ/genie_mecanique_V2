@@ -1,4 +1,5 @@
 import java.awt.KeyboardFocusManager;
+import java.nio.charset.Charset;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -14,6 +15,8 @@ public class Programme {
 		
 		String temp_secret = "secret";
 
+		System.out.println(Charset.defaultCharset());	
+		
 		while (fenetre_principale.administrateur.est_administrateur != 1)
 		{
 			id = (String) JOptionPane.showInputDialog(
