@@ -1,10 +1,8 @@
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-
 import java.awt.Color;
 import java.awt.GridLayout;
+
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 
 public class Panneau_bas extends Panneau {
 	

@@ -10,6 +10,8 @@
   - [ ] s'assurer d'avoir des classes pour construire des object 'outil', 'brutes', etc.. (pour les vérifications)
  - [ ] Jeter un coup d'oeil au comboxBox du panneau Droite
  - [ ... ] M'assurer que le système ferme toujours sécuritairement
+ - [ ] Faire un systeme d'enregistrement de sauvegarde de BD
+ - [ ] Vérifier si on peut facilement modifier les accents par conversion
 
 
 - [ ] FAIRE DES RECHERCHE SUR LE CODE 128-B
