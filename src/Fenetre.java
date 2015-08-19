@@ -34,6 +34,7 @@ public class Fenetre extends JFrame{
 	JPanel p_bas;
 	
 	JTextField t_commande;
+	char focus_char = '|';
 	
 	int screen_height;
 	int screen_width;
@@ -108,7 +109,12 @@ public class Fenetre extends JFrame{
 		KeyboardFocusManager.getCurrentKeyboardFocusManager()
 		  .addKeyEventDispatcher(new KeyEventDispatcher() {
 		      public boolean dispatchKeyEvent(KeyEvent e) {
-		        System.out.println(e.getKeyChar());
+		    	  if (e.getKeyChar() == focus_char)
+		    	  {
+		    		  t_commande.requestFocus();
+		    		  System.out.println("success");
+		    	  }
+		    	  System.out.println(e.getKeyChar());
 		        return false;
 		      }
 		});

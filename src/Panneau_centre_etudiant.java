@@ -12,9 +12,7 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 	{
 		super(a_parent);
 		
-		initialiser_tableau_outils();
-		initialiser_tableau_bruts();
-		initialiser_tableau_bris();
+		initialiser_panneau();
 	}
 	
 	/*
@@ -26,6 +24,16 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 	/*
 	 * Met à jour le tableau des outils empruntés
 	 */
+	public void initialiser_panneau()
+	{
+		removeAll();
+		revalidate();
+		
+		initialiser_tableau_outils();
+		initialiser_tableau_bruts();
+		initialiser_tableau_bris();
+	}
+	
 	public void initialiser_tableau_outils() {
 
 		scroll_tableau_outils = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("outils")));

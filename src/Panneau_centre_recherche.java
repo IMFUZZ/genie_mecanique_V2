@@ -13,12 +13,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 
 
 public class Panneau_centre_recherche extends Panneau_centre {
 	
+	Tableau t_materiaux;
+	Tableau t_etudiants;
+	Tableau t_outils;
+	Tableau t_bruts;
 	
 	public Panneau_centre_recherche(Fenetre a_parent) {
 		
@@ -62,7 +67,6 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	Panneau_scroll scroll_tableau_materiel;
 	
 	
-	
 	/*
 	 * Crée les JPanel qui vont contenir les tableaux
 	 */
@@ -70,19 +74,17 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		
 		panneau_etudiants = new JPanel();
 		panneau_etudiants.setLayout(new BoxLayout(panneau_etudiants, BoxLayout.Y_AXIS));
-		rafraichir_panneau_etudiants();
 		
 		panneau_outils = new JPanel();
 		panneau_outils.setLayout(new BoxLayout(panneau_outils, BoxLayout.Y_AXIS));
-		rafraichir_panneau_outils();
 		
 		panneau_materiel = new JPanel();
 		panneau_materiel.setLayout(new BoxLayout(panneau_materiel, BoxLayout.Y_AXIS));
-		rafraichir_panneau_materiel();
 		
 		panneau_bruts = new JPanel();
 		panneau_bruts.setLayout(new BoxLayout(panneau_bruts, BoxLayout.Y_AXIS));
-		rafraichir_panneau_bruts();
+		
+		rafraichir_tableaux("");
 	}
 	
 	/*
@@ -120,40 +122,57 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	/*
 	 * Vide le panneau_etudiants et lui ajoute un nouveau tableau contenant les informations sur les étudiants
 	 */
-	public void rafraichir_panneau_etudiants() {
+	public void rafraichir_panneau_etudiants(String a_filtre) {
 		panneau_etudiants.removeAll();		
-		scroll_tableau_etudiants = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("membres")));
+		t_etudiants = new Tableau(parent.controlleur.creer_modele_table("membres"));
+		t_etudiants.sorter.setRowFilter(RowFilter.regexFilter(a_filtre));
+		scroll_tableau_etudiants = new Panneau_scroll(t_etudiants);
 		panneau_etudiants.add(scroll_tableau_etudiants);
 	}
 	
 	/*
 	 * Vide le panneau_outils et lui ajoute un nouveau tableau contenant les informations sur les outils
 	 */
-	public void rafraichir_panneau_outils() {
+	public void rafraichir_panneau_outils(String a_filtre) {
 		
 		panneau_outils.removeAll();
-		scroll_tableau_outils = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("outils")));
+		t_outils = new Tableau(parent.controlleur.creer_modele_table("outils"));
+		t_outils.sorter.setRowFilter(RowFilter.regexFilter(a_filtre));
+		scroll_tableau_outils = new Panneau_scroll(t_outils);
 		panneau_outils.add(scroll_tableau_outils);
 	}
 	
 	/*
 	 * Vide le panneau_materiel et lui ajoute un nouveau tableau contenant les informations sur le matériel
 	 */
-	public void rafraichir_panneau_materiel() {
+	public void rafraichir_panneau_materiel(String a_filtre) {
 		
 		panneau_materiel.removeAll();
-		scroll_tableau_materiel = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("bruts")));
+		t_materiaux = new Tableau(parent.controlleur.creer_modele_table("bruts"));
+		t_materiaux.sorter.setRowFilter(RowFilter.regexFilter(a_filtre));
+		scroll_tableau_materiel = new Panneau_scroll(t_materiaux);
 		panneau_materiel.add(scroll_tableau_materiel);
 	}
 	
 	/*
 	 * Vide le panneau_bruts et lui ajoute un nouveau tableau contenant les informations sur les bruts
 	 */
-	public void rafraichir_panneau_bruts() {
+	public void rafraichir_panneau_bruts(String a_filtre) {
 		
 		panneau_bruts.removeAll();
-		scroll_tableau_bruts = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("bruts")));
+		t_bruts = new Tableau(parent.controlleur.creer_modele_table("bruts"));
+		t_bruts.sorter.setRowFilter(RowFilter.regexFilter(a_filtre));
+		scroll_tableau_bruts = new Panneau_scroll(t_bruts);
 		panneau_bruts.add(scroll_tableau_bruts);
+	}
+	
+	public void rafraichir_tableaux(String a_filtre) {
+			
+		rafraichir_panneau_etudiants(a_filtre);
+		rafraichir_panneau_outils(a_filtre);
+		rafraichir_panneau_materiel(a_filtre);
+		rafraichir_panneau_bruts(a_filtre);
+		revalidate();
 	}
 	
 }
