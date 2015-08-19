@@ -61,6 +61,40 @@ public class Controlleur extends Base_de_donnees_sqlite{
 				null, "");
 	}
 	
+	public Membre Scanner_etudiant()
+	{
+		String id_etudiant;
+		Boolean id_outil_valide = false;
+		Boolean a_annule = false;
+		
+		while (!(a_annule)) {
+			
+			id_etudiant = (String) JOptionPane.showInputDialog(
+					new JFrame(),
+					"Id de l'outil : ",// -- Sujet
+					"Scan de l'outil", 	// -- Titre
+					3, new ImageIcon("src/images/icon_128.png"),  // -- Icône personnalisée
+					null, "");
+					
+			if (id_existe("membres", id_etudiant))
+			{
+				// création de la location dans la bd
+				List<Object> result = faire_requete_sqlite(
+					"SELECT * FROM membres WHERE Identifiant = '" + id_etudiant + "';");
+				if (result.size() == 5)
+				{
+					return new Membre(result.get(0), result.get(1), result.get(2), result.get(3), result.get(4));
+				}
+			}
+			
+			// si l'usager a cliqué sur annuler
+			if (id_etudiant != null) {
+				a_annule = true;
+			}
+		}	
+		return new Membre("", "", "", "", 0);
+	}
+	
 	/*
 	 * Vérifie que l'id envoyé en argument correspond à l'id d'un outil existant 
 	 * et disponible à la location
@@ -162,10 +196,11 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	/*
 	 * 
 	 */
-	public boolean membre_existe(String id) // ----- FONCTIONNEL -----
+	
+	public boolean id_existe(String a_table, String a_id) // ----- FONCTIONNEL -----
 	{
 		List<Object> result = faire_requete_sqlite(
-				"SELECT * FROM membres WHERE Identifiant = '" + id + "';");
+				"SELECT * FROM " + a_table + " WHERE Identifiant = '" + a_id + "';");
 		if (result.size() > 0)
 		{
 			return true;
@@ -178,11 +213,14 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	 */
 	public Membre creer_membre(String a_id)
 	{
-		List<Object> result = faire_requete_sqlite(
-				"SELECT * FROM membres WHERE Identifiant = '" + a_id + "';");
-		if (result.size() == 5)
+		if (id_existe("membres", a_id))
 		{
-			return new Membre(result.get(0), result.get(1), result.get(2), result.get(3), result.get(4));
+			List<Object> result = faire_requete_sqlite(
+					"SELECT * FROM membres WHERE Identifiant = '" + a_id + "';");
+			if (result.size() == 5)
+			{
+				return new Membre(result.get(0), result.get(1), result.get(2), result.get(3), result.get(4));
+			}
 		}
 		return new Membre("", "", "", "", 0);
 	}

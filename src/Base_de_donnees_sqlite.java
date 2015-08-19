@@ -1,12 +1,11 @@
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Vector;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Types;
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Vector;
 
 import org.sqlite.SQLiteConfig;
 

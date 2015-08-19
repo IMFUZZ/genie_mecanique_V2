@@ -2,7 +2,7 @@
 
 CREATE TABLE outils(
 	Identifiant TEXT PRIMARY KEY,
-	 TEXT NOT NULL,
+	Nom TEXT NOT NULL,
 	Description TEXT,
 	Quantite INT
 		NOT NULL,
@@ -38,6 +38,25 @@ INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
 	VALUES ("B3", "Planche chêne 4*4", "Planche de chêne de 4*4x10", 10);
 INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
 	VALUES ("B4", "Barre aluminium", "Planche de chêne de 2x4x10", 10);
+
+INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
+	VALUES ("B5", "Planche chêne 2x4", "Planche de chêne de 2x4x10", 10);
+INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
+	VALUES ("B6", "Planche érable 3*6", "Planche d'érable de 3*6x10", 10);
+INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
+	VALUES ("B7", "Planche chêne 4*4", "Planche de chêne de 4*4x10", 10);
+INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
+	VALUES ("B8", "Barre aluminium", "Planche de chêne de 2x4x10", 10);
+
+INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
+	VALUES ("B10", "Planche chêne 2x4", "Planche de chêne de 2x4x10", 10);
+INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
+	VALUES ("B11", "Planche érable 3*6", "Planche d'érable de 3*6x10", 10);
+INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
+	VALUES ("B12", "Planche chêne 4*4", "Planche de chêne de 4*4x10", 10);
+INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
+	VALUES ("B13", "Barre aluminium", "Planche de chêne de 2x4x10", 10);
+
 
 CREATE TABLE membres(
 	Identifiant TEXT PRIMARY KEY,

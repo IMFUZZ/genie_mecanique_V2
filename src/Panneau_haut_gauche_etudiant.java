@@ -41,8 +41,8 @@ public class Panneau_haut_gauche_etudiant extends Panneau{
 		
 		setMaximumSize(new Dimension(1000, 200));
 		
-		s_prenom_etudiant = "Daniel-Junior";
-		s_nom_etudiant = "Dubé";
+		s_prenom_etudiant = parent.etudiant.prenom;
+		s_nom_etudiant = parent.etudiant.nom;
 		
 		p_info_etudiant = new JPanel();
 		p_remplissage = new JPanel();
@@ -55,7 +55,9 @@ public class Panneau_haut_gauche_etudiant extends Panneau{
 		
 		l_nom_etudiant = new JLabel(s_nom_etudiant);
 		l_prenom_etudiant = new JLabel(s_prenom_etudiant);
-		l_image_etudiant = faire_image("src/images/etudiant1.png", 150, 160);
+		System.out.println("flag");
+		System.out.println(parent.etudiant.chemin_image);
+		l_image_etudiant = faire_image(parent.etudiant.chemin_image, 150, 160);
 		l_codebarre_centre = faire_codebarre("src/images/barcode.png");
 		
 		l_image_etudiant.setFont(f_sousTitre);

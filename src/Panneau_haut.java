@@ -32,9 +32,6 @@ public class Panneau_haut extends Panneau {
 	TitledBorder b_codeBarre;
 	TitledBorder b_droite;
 	
-	Panneau_haut_gauche_recherche p_haut_gauche_recherche;
-	Panneau_haut_gauche_etudiant p_haut_gauche_etudiant;
-	
 	public Panneau_haut(Fenetre a_parent)
 	{
 		super(a_parent);
@@ -67,8 +64,6 @@ public class Panneau_haut extends Panneau {
 		p_remplissage = new JPanel();
 		p_droite = new JPanel();
 		p_image_centre = new JPanel();
-		p_haut_gauche_recherche = new Panneau_haut_gauche_recherche(parent);
-		p_haut_gauche_etudiant = new Panneau_haut_gauche_etudiant(parent);
 		
 		b_droite = BorderFactory.createTitledBorder("Administrateur(e) connecté(e) : ");
 		p_droite.setBorder(b_droite);
@@ -97,7 +92,7 @@ public class Panneau_haut extends Panneau {
 		removeAll();
 		revalidate();
 		
-		add(p_haut_gauche_recherche);
+		add(new Panneau_haut_gauche_recherche(parent));
 		add(p_centre);
 		add(p_droite);
 	}
@@ -106,7 +101,7 @@ public class Panneau_haut extends Panneau {
 		removeAll();
 		revalidate();
 		
-		add(p_haut_gauche_etudiant);
+		add(new Panneau_haut_gauche_etudiant(parent));
 		add(p_centre);
 		add(p_droite);
 	}
