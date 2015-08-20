@@ -2,8 +2,6 @@ import java.util.ArrayList;
 
 
 public class Membre {
-
-	int numero;
 	
 	String id;
 	String nom;

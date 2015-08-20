@@ -23,6 +23,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 		Boolean id_outil_valide = false;
 		Boolean a_annule = false;
 		
+		
 		if (a_membre != null) {
 			while (!(a_annule) || !(id_outil_valide)) {
 				
@@ -36,8 +37,10 @@ public class Controlleur extends Base_de_donnees_sqlite{
 								+ "VALUES "
 								+ "('"+ id_outil
 								+"', '"+ a_membre.id
-								+"', '"+ parent.administrateur.numero
+								+"', '"+ parent.administrateur.id
 								+"');");
+					// ajouter requête pour modifier quantité disponible de l'outil
+					parent.current_p_centre_etudiant.rafraichir_tableaux();
 				}
 				
 				// si l'usager a cliqué sur annuler
@@ -118,7 +121,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 					+ "VALUES "
 					+ "('"+ a_id_brut
 					+"', '"+ a_id_proprietaire
-					+"', '"+ parent.administrateur.numero
+					+"', '"+ parent.administrateur.id
 					+"');");
 	}
 	

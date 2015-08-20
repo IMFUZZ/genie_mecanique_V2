@@ -159,9 +159,11 @@ public class Fenetre extends JFrame{
 	public void charger_panneau_etudiant()
 	{
 		etudiant = controlleur.Scanner_etudiant();
+		
 		if (etudiant.id != "")
 		{
 				set_panneau_etudiant();	
+				current_p_centre_etudiant.rafraichir_tableaux();
 		}	
 		System.out.println(etudiant.id);
 	}
