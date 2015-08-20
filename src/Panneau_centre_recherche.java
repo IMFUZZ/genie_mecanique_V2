@@ -125,7 +125,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	public void rafraichir_panneau_etudiants(String a_filtre) {
 		panneau_etudiants.removeAll();		
 		t_etudiants = new Tableau(parent.controlleur.creer_modele_table("membres", ""));
-		t_etudiants.sorter.setRowFilter(RowFilter.regexFilter(a_filtre));
+		t_etudiants.sorter.setRowFilter(RowFilter.regexFilter("(?i)" + a_filtre));
 		scroll_tableau_etudiants = new Panneau_scroll(t_etudiants);
 		panneau_etudiants.add(scroll_tableau_etudiants);
 	}
@@ -137,7 +137,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		
 		panneau_outils.removeAll();
 		t_outils = new Tableau(parent.controlleur.creer_modele_table("outils", ""));
-		t_outils.sorter.setRowFilter(RowFilter.regexFilter(a_filtre));
+		t_outils.sorter.setRowFilter(RowFilter.regexFilter("(?i)" + a_filtre));
 		scroll_tableau_outils = new Panneau_scroll(t_outils);
 		panneau_outils.add(scroll_tableau_outils);
 	}
@@ -149,7 +149,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		
 		panneau_materiel.removeAll();
 		t_materiaux = new Tableau(parent.controlleur.creer_modele_table("bruts", ""));
-		t_materiaux.sorter.setRowFilter(RowFilter.regexFilter(a_filtre));
+		t_materiaux.sorter.setRowFilter(RowFilter.regexFilter("(?i)" + a_filtre));
 		scroll_tableau_materiel = new Panneau_scroll(t_materiaux);
 		panneau_materiel.add(scroll_tableau_materiel);
 	}
@@ -161,18 +161,23 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		
 		panneau_bruts.removeAll();
 		t_bruts = new Tableau(parent.controlleur.creer_modele_table("bruts", ""));
-		t_bruts.sorter.setRowFilter(RowFilter.regexFilter(a_filtre));
+		t_bruts.sorter.setRowFilter(RowFilter.regexFilter("(?i)" + a_filtre));
 		scroll_tableau_bruts = new Panneau_scroll(t_bruts);
 		panneau_bruts.add(scroll_tableau_bruts);
 	}
 	
 	public void rafraichir_tableaux(String a_filtre) {
-			
+		parent.setEnabled(false);
 		rafraichir_panneau_etudiants(a_filtre);
 		rafraichir_panneau_outils(a_filtre);
 		rafraichir_panneau_materiel(a_filtre);
 		rafraichir_panneau_bruts(a_filtre);
 		revalidate();
+		for (int test = 0; test < 10000; test++)
+		{
+			
+		}
+		parent.setEnabled(true);
 	}
 	
 }

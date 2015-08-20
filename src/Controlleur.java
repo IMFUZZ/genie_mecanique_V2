@@ -71,8 +71,8 @@ public class Controlleur extends Base_de_donnees_sqlite{
 			
 			id_etudiant = (String) JOptionPane.showInputDialog(
 					new JFrame(),
-					"Id de l'outil : ",// -- Sujet
-					"Scan de l'outil", 	// -- Titre
+					"Id de l'étudiant : ",// -- Sujet
+					"Scan de l'étudiant", 	// -- Titre
 					3, new ImageIcon("src/images/icon_128.png"),  // -- Icône personnalisée
 					null, "");
 					
@@ -88,11 +88,11 @@ public class Controlleur extends Base_de_donnees_sqlite{
 			}
 			
 			// si l'usager a cliqué sur annuler
-			if (id_etudiant != null) {
+			if (id_etudiant == null) {
 				a_annule = true;
 			}
 		}	
-		return new Membre("", "", "", "", 0);
+		return new Membre();
 	}
 	
 	/*
