@@ -164,6 +164,7 @@ public class Fenetre extends JFrame{
 			if (etudiant.id != "")
 			{
 				set_panneau_etudiant();	
+				current_p_centre_etudiant.rafraichir_tableaux();
 			}	
 			System.out.println("id etudiant : " + etudiant.id);
 		}
