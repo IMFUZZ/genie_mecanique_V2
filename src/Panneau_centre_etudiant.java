@@ -36,7 +36,7 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 	
 	public void initialiser_tableau_outils() {
 
-		scroll_tableau_outils = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("outils")));
+		scroll_tableau_outils = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("locations", parent.etudiant.id)));
 		scroll_tableau_outils.set_titre("OUTILS");
 		
 		add(scroll_tableau_outils);
@@ -47,7 +47,7 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 	 */
 	public void initialiser_tableau_bruts() {
 		
-		scroll_tableau_bruts = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("bruts")));
+		scroll_tableau_bruts = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("dons",  parent.etudiant.id)));
 		scroll_tableau_bruts.set_titre("BRUTS");
 		
 		add(scroll_tableau_bruts);
@@ -59,7 +59,7 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 
 	public void initialiser_tableau_bris() {
 		
-		scroll_tableau_bris = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("bruts")));
+		scroll_tableau_bris = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("dons", parent.etudiant.id)));
 		scroll_tableau_bris.set_titre("BRUTS");
 		
 		add(scroll_tableau_bris);

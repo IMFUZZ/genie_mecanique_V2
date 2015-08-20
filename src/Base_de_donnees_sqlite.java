@@ -78,7 +78,7 @@ public class Base_de_donnees_sqlite {
 	 * fonction utilise des boucles pour remplir 
 	 * les données d'un vecteur de vecteur et l'
 	 * attribut ensuite au modèle table.*/
-	public Modele_table creer_modele_table(String a_nom_table) {
+	public Modele_table creer_modele_table(String a_nom_table, String a_id_proprietaire) {
 
 		ResultSet rs = null;
 		try {
@@ -86,7 +86,16 @@ public class Base_de_donnees_sqlite {
 			con = DriverManager.getConnection("jdbc:sqlite:base_de_donnees.db");
 			con.setAutoCommit(false);
 			stmt = con.createStatement();
-			rs = stmt.executeQuery("select * from " + a_nom_table + "");
+			System.out.print(a_id_proprietaire);
+			if (!a_id_proprietaire.equals("")) {
+				System.out.println("flag1");
+				rs = stmt.executeQuery("select * from " + a_nom_table + "where Identifiant_Proprietaire = '" + a_id_proprietaire + "';");
+			}
+			else {
+				System.out.println("flag2");
+				rs = stmt.executeQuery("select * from " + a_nom_table + ";");
+			}
+			
 			ResultSetMetaData rm = rs.getMetaData();
 			
 		    // names of columns
