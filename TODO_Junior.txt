@@ -12,6 +12,9 @@
  - [ ... ] M'assurer que le système ferme toujours sécuritairement
  - [ ] Faire un systeme d'enregistrement de sauvegarde de BD
  - [ ] Vérifier si on peut facilement modifier les accents par conversion
+ - [ ] Sur la touche "enter", lancer le bouton associé automatiquement
+ - [ ] Améliorer le système de recherche pour différencier les accents et les majuscules.
+ - [ ] Améliorer la sécurité du système de commande (lancer des locations pour l'étudiant précédemment scanné)
 
 - [ ] FAIRE DES RECHERCHE SUR LE CODE 128-B
 

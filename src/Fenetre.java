@@ -156,6 +156,15 @@ public class Fenetre extends JFrame{
 	{
 		administrateur = a_membre;
 	}
+	public void charger_panneau_etudiant()
+	{
+		etudiant = controlleur.Scanner_etudiant();
+		if (etudiant.id != "")
+		{
+				set_panneau_etudiant();	
+		}	
+		System.out.println(etudiant.id);
+	}
 
 	
 }
