@@ -82,41 +82,45 @@ public class Base_de_donnees_sqlite {
 
 		ResultSet rs = null;
 		try {
-			Class.forName("org.sqlite.JDBC");
-			con = DriverManager.getConnection("jdbc:sqlite:base_de_donnees.db");
-			con.setAutoCommit(false);
-			stmt = con.createStatement();
-			System.out.print(a_id_proprietaire);
-			if (!a_id_proprietaire.equals("")) {
-				System.out.println("flag1");
-				rs = stmt.executeQuery("select * from " + a_nom_table + "where Identifiant_Proprietaire = '" + a_id_proprietaire + "';");
+			if (a_id_proprietaire != null) {
+				Class.forName("org.sqlite.JDBC");
+				con = DriverManager.getConnection("jdbc:sqlite:base_de_donnees.db");
+				con.setAutoCommit(false);
+				stmt = con.createStatement();
+				System.out.print(a_id_proprietaire);
+				if (!a_id_proprietaire.equals("")) {
+					
+					System.out.println(a_nom_table + ", " + a_id_proprietaire);
+					rs = stmt.executeQuery("select * from " + a_nom_table + " where Identifiant_Proprietaire = '" + a_id_proprietaire + "';");
+					System.out.println("flag1");
+				}
+				else {
+					System.out.println("flag2");
+					rs = stmt.executeQuery("select * from " + a_nom_table + ";");
+				}
+				
+				ResultSetMetaData rm = rs.getMetaData();
+				
+			    // names of columns
+			    Vector<String> columnNames = new Vector<String>();
+			    int columnCount = rm.getColumnCount();
+			    for (int column = 1; column <= columnCount; column++) {
+			        columnNames.add(rm.getColumnName(column));
+			    }
+		
+			    // data of the table
+			    Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+			    while (rs.next()) {
+			        Vector<Object> vector = new Vector<Object>();
+			        for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+			            vector.add(rs.getObject(columnIndex));
+			        }
+			        data.add(vector);
+			    }
+				stmt.close();
+				con.close();
+				return new Modele_table(a_nom_table, data, columnNames);
 			}
-			else {
-				System.out.println("flag2");
-				rs = stmt.executeQuery("select * from " + a_nom_table + ";");
-			}
-			
-			ResultSetMetaData rm = rs.getMetaData();
-			
-		    // names of columns
-		    Vector<String> columnNames = new Vector<String>();
-		    int columnCount = rm.getColumnCount();
-		    for (int column = 1; column <= columnCount; column++) {
-		        columnNames.add(rm.getColumnName(column));
-		    }
-	
-		    // data of the table
-		    Vector<Vector<Object>> data = new Vector<Vector<Object>>();
-		    while (rs.next()) {
-		        Vector<Object> vector = new Vector<Object>();
-		        for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
-		            vector.add(rs.getObject(columnIndex));
-		        }
-		        data.add(vector);
-		    }
-			stmt.close();
-			con.close();
-			return new Modele_table(a_nom_table, data, columnNames);
 		} catch (Exception e) {
 			System.out.println("Impossible d'obtenir le ResultSet de la base de données!");
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
