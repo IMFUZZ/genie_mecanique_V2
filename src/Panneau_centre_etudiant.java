@@ -33,7 +33,8 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 	}
 	
 	public void ajouter_tableau_outils() {
-
+		
+		scroll_tableau_outils = null;
 		scroll_tableau_outils = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("locations", parent.etudiant.id)));
 		scroll_tableau_outils.set_titre("OUTILS");
 		

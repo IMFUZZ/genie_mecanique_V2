@@ -173,10 +173,6 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		rafraichir_panneau_materiel(a_filtre);
 		rafraichir_panneau_bruts(a_filtre);
 		revalidate();
-		for (int test = 0; test < 10000; test++)
-		{
-			
-		}
 		parent.setEnabled(true);
 	}
 	

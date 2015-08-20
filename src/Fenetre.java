@@ -112,9 +112,7 @@ public class Fenetre extends JFrame{
 		    	  if (e.getKeyChar() == focus_char)
 		    	  {
 		    		  t_commande.requestFocus();
-		    		  System.out.println("success");
 		    	  }
-		    	  System.out.println(e.getKeyChar());
 		        return false;
 		      }
 		});
@@ -165,7 +163,6 @@ public class Fenetre extends JFrame{
 			{
 				set_panneau_etudiant();	
 			}	
-			System.out.println("id etudiant : " + etudiant.id);
 		}
 	}
 

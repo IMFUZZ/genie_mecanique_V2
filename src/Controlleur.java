@@ -225,7 +225,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 				return new Membre(result.get(0), result.get(1), result.get(2), result.get(3), result.get(4));
 			}
 		}
-		return new Membre("", "", "", "", 0);
+		return new Membre();
 	}
 	
 	

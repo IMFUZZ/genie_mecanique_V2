@@ -55,8 +55,6 @@ public class Panneau_haut_gauche_etudiant extends Panneau{
 		
 		l_nom_etudiant = new JLabel(s_nom_etudiant);
 		l_prenom_etudiant = new JLabel(s_prenom_etudiant);
-		System.out.println("flag");
-		System.out.println(parent.etudiant.chemin_image);
 		l_image_etudiant = faire_image(parent.etudiant.chemin_image, 150, 160);
 		l_codebarre_centre = faire_codebarre("src/images/barcode.png");
 		
