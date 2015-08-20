@@ -2,14 +2,19 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
@@ -17,7 +22,7 @@ import javax.swing.border.TitledBorder;
 public class Panneau_haut extends Panneau {
 	
 	Bouton l_codebarre_centre;
-	Bouton l_lancer_commande;
+	Bouton b_lancer_commande;
 	
 	JLabel l_prof_prenom;
 	JLabel l_prof_nom;
@@ -44,9 +49,9 @@ public class Panneau_haut extends Panneau {
 		l_prof_prenom = new JLabel(parent.administrateur.prenom);
 		l_prof_nom = new JLabel(parent.administrateur.nom);
 		l_date = new JLabel();
-		l_lancer_commande = new Bouton("Exécuter");
+		b_lancer_commande = new Bouton("Exécuter");
 		
-		liste_de_boites.add(l_lancer_commande);
+		liste_de_boites.add(b_lancer_commande);
 		
 		ajuster_boites();
 		
@@ -83,9 +88,40 @@ public class Panneau_haut extends Panneau {
 		p_droite.add(l_prof_nom);
 		p_droite.add(l_date);
 		p_centre.add(parent.t_commande);
-		p_centre.add(l_lancer_commande);
+		p_centre.add(b_lancer_commande);
 		
 		set_panneau_gauche_recherche();
+		
+		b_lancer_commande.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String commande = parent.t_commande.getText();
+				
+				if (commande.equals("A1"))
+				{
+					parent.charger_panneau_etudiant();
+				}
+				else if (commande.equals("A2"))
+				{
+					parent.set_panneau_recherche();
+				}
+				else if (commande.equals("A3"))
+				{
+					parent.controlleur.faire_location(parent.etudiant);
+				}
+				else if (commande.equals("A4"))
+				{
+					System.out.println("Action : Faire don");
+				}
+				else if (commande.equals("A5"))
+				{
+					System.out.println("Action : Faire retour");
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "ERREUR : La commande entrée est invalide!");
+				}
+			}
+		});
 	}
 	public void set_panneau_gauche_recherche()
 	{
