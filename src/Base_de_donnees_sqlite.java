@@ -89,12 +89,9 @@ public class Base_de_donnees_sqlite {
 				stmt = con.createStatement();
 				
 				if (!a_id_proprietaire.equals("")) {
-					
-					System.out.println(a_nom_table + ", " + a_id_proprietaire);
 					rs = stmt.executeQuery("select * from " + a_nom_table + " where Identifiant_Proprietaire = '" + a_id_proprietaire + "';");
 				}
 				else {
-					System.out.println("flag2");
 					rs = stmt.executeQuery("select * from " + a_nom_table + ";");
 				}
 				
