@@ -87,12 +87,11 @@ public class Base_de_donnees_sqlite {
 				con = DriverManager.getConnection("jdbc:sqlite:base_de_donnees.db");
 				con.setAutoCommit(false);
 				stmt = con.createStatement();
-				System.out.print(a_id_proprietaire);
+				
 				if (!a_id_proprietaire.equals("")) {
 					
 					System.out.println(a_nom_table + ", " + a_id_proprietaire);
 					rs = stmt.executeQuery("select * from " + a_nom_table + " where Identifiant_Proprietaire = '" + a_id_proprietaire + "';");
-					System.out.println("flag1");
 				}
 				else {
 					System.out.println("flag2");
