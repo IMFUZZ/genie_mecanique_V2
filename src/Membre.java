@@ -7,7 +7,7 @@ public class Membre {
 	String nom;
 	String prenom;
 	String chemin_image;
-	int est_administrateur;
+	Boolean est_administrateur;
 
 	/* Note : La location d'un outil et la prise d'un brute 
 	 * revient au meme, l'important est le type et le propriétaire.
@@ -25,7 +25,10 @@ public class Membre {
 				prenom = (String) a_prenom;
 				nom = (String) a_nom;
 				chemin_image = (String) a_chemin_image;
-				est_administrateur = (int) a_est_administrateur;
+				if ((int) a_est_administrateur == 1)
+					est_administrateur = true;
+				else
+					est_administrateur = false;
 			}
 			else
 			{
@@ -44,7 +47,7 @@ public class Membre {
 		prenom = "";
 		nom = "";
 		chemin_image = "";
-		est_administrateur = 0;
+		est_administrateur = false;
 	}
 	
 	public void charger_location()

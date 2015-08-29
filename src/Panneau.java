@@ -14,17 +14,25 @@ import javax.swing.JPanel;
 
 public abstract class Panneau extends JPanel{
 
+	// Contenant du panneau
 	Fenetre parent;
 	
-	ArrayList<JComponent> liste_de_boites;
-	
+	// Polices
 	Font f_titre;
 	Font f_sousTitre;
 	Font f_texte;
 	
+	// Array d'objets visuels (boutons, textfields, etc..)
+	ArrayList<JComponent> liste_de_boites;
+	
+	// Taille des objets visuels (boutons, textfields, etc..)
 	int boite_standard_largeur;
 	int boite_standard_hauteur;
 	
+	
+	/*
+	 *  Constructeur standard d'un Panneau
+	 */
 	public Panneau(Fenetre a_parent) 
 	{
 		parent = a_parent;
@@ -41,6 +49,9 @@ public abstract class Panneau extends JPanel{
 		boite_standard_hauteur = 50;
 	}
 	
+	/*
+	 * Procédure qui initialise les objets de la liste_de_boites au valeur par défault
+	 */
 	protected void ajuster_boites()
 	{
 		for (int x = 0; x < liste_de_boites.size(); x++) {
@@ -53,20 +64,21 @@ public abstract class Panneau extends JPanel{
 		}
 	}
 	
+	/*
+	 * Fonction qui construit une image et retourne un objet JLabel contenant 
+	 * cette image aux dimensions prisent en argument
+	 */
 	public JLabel faire_image(String a_chemin_image, int largeur, int hauteur)
 	{
 	      try {
-	          JLabel lImage = new JLabel(
+	          JLabel l_image = new JLabel(
 	        		  (new ImageIcon(
 	        				  ((new ImageIcon(
 	        						  a_chemin_image)).getImage()).getScaledInstance(
 	        								  largeur, 
 	        								  hauteur, 
 	        								  java.awt.Image.SCALE_SMOOTH))));
-	          /* Cette ligne montre l'image dans une fenetre 'dialogue'
-	           * JOptionPane.showMessageDialog(null, lImage);
-	           */
-	          return lImage;
+	          return l_image;
 	       } catch (Exception exceptions) {
 	    	   System.out.println("ERREUR : COULD NOT IMPORT IMAGE!");
 	    	   exceptions.printStackTrace();
@@ -74,20 +86,20 @@ public abstract class Panneau extends JPanel{
 	      return new JLabel("Erreur : image inexistante!");
 	}
 	
+	/*
+	 * Fonction qui construit une image et retourne un objet JButton contenant cette image
+	 */
 	public JButton faire_codebarre(String a_chemin_image)
 	{
 	      try {
-	    	  Bouton lImage = new Bouton(
+	    	  Bouton b_image = new Bouton(
 	        		  (new ImageIcon(
 	        				  ((new ImageIcon(
 	        						  a_chemin_image)).getImage()).getScaledInstance(
 	        								  150, 
 	        								  100, 
 	        								  java.awt.Image.SCALE_SMOOTH))));
-	          /* Cette ligne montre l'image dans une fenetre 'dialogue'
-	           * JOptionPane.showMessageDialog(null, lImage);
-	           */
-	          return lImage;
+	          return b_image;
 	       } catch (Exception exceptions) {
 	    	   System.out.println("ERREUR : COULD NOT IMPORT IMAGE!");
 	    	   exceptions.printStackTrace();

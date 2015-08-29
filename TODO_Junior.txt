@@ -5,17 +5,18 @@
   - [ X ] Mettre un titledBorder sur les tables de centre ETUDIANT avec une font plus grosse
  - [ X ] *** faire une classe scrollPane pour les tables
  - [ X ] Changer les noms des champs de la BD pour les mettre en francais
- - [ ] Jeter un coup d'oeil au comboxBox du panneau Droite
  - [ ] Fixer le problème des accents
  - [ ] s'assurer d'avoir des classes pour construire des object 'outil', 'brutes', etc.. (pour les vérifications)
- - [ ] Jeter un coup d'oeil au comboxBox du panneau Droite
+ - [ X ] Jeter un coup d'oeil au comboxBox du panneau Droite
  - [ ... ] M'assurer que le système ferme toujours sécuritairement
  - [ ] Faire un systeme d'enregistrement de sauvegarde de BD
  - [ ] Vérifier si on peut facilement modifier les accents par conversion
  - [ ] Sur la touche "enter", lancer le bouton associé automatiquement
- - [ ] Améliorer le système de recherche pour différencier les accents et les majuscules.
+ - [ X ] Améliorer le système de recherche pour différencier les accents et les majuscules.
  - [ ] Améliorer la sécurité du système de commande (lancer des locations pour l'étudiant précédemment scanné)
-
+ - [ ] Créer les tables de Bris et Matériel dans la base de données
+ - [ ] Créer les requetes de modification de quantité
+ 
 - [ ] FAIRE DES RECHERCHE SUR LE CODE 128-B
 
 - [ ] ASSOCIER LE PIPE À LA SELECTION DU CHAMP DE LIGNE DE COMMANDE, PROGRAMMER LE SCANNER POUR QU'IL ENTRE LE CODE

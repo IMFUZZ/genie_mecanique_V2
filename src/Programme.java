@@ -12,12 +12,10 @@ public class Programme {
 		String id = "";
 		
 		Fenetre fenetre_principale = new Fenetre();	
-		
-		String temp_secret = "secret";
 
 		System.out.println(Charset.defaultCharset());	
 		
-		while (fenetre_principale.administrateur.est_administrateur != 1)
+		while (!fenetre_principale.administrateur.est_administrateur)
 		{
 			id = (String) JOptionPane.showInputDialog(
 					fenetre_principale, 			// -- Component
@@ -30,7 +28,7 @@ public class Programme {
 					"");  							// -- Texte par défault
 			if (id != null) {
 				Membre temp = fenetre_principale.controlleur.creer_membre(id);
-				if (temp.est_administrateur == 1 || id.equals(temp_secret))
+				if (temp.est_administrateur)
 				{
 					fenetre_principale.set_administrateur(temp);
 					System.out.println(fenetre_principale.administrateur.id);
@@ -43,7 +41,7 @@ public class Programme {
 			}
 		}	
 		// "if" non nécessaire??
-		if (fenetre_principale.administrateur.est_administrateur == 1) 
+		if (fenetre_principale.administrateur.est_administrateur) 
 		{
 			fenetre_principale.setVisible(true);
 			fenetre_principale.current_p_haut.actualiser();
