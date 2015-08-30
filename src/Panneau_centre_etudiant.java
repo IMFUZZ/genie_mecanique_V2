@@ -62,7 +62,7 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 	public void ajouter_tableau_bris() {
 		scroll_tableau_bris.removeAll();
 		t_bris = new Tableau(parent.controlleur.creer_modele_table("dons", parent.etudiant.id));
-		scroll_tableau_bris = new Panneau_scroll("BRUTS", t_bris);
+		scroll_tableau_bris = new Panneau_scroll("BRIS", t_bris);
 		add(scroll_tableau_bris);
 	}
 	

@@ -75,6 +75,7 @@ INSERT INTO membres (Identifiant, Nom, Nom_Famille, Image, Est_Administrateur)
 	VALUES ('1234567', 'Doug', 'McMahon', 'src/images/etudiants/1234567.png', 1);
 
 CREATE TABLE locations(
+	Identifiant TEXT PRIMARY KEY,
 	Identifiant_Objet TEXT NOT NULL,
 	Identifiant_Proprietaire TEXT NOT NULL,
 	Identifiant_Responsable TEXT NOT NULL,
@@ -88,6 +89,7 @@ INSERT INTO locations (Identifiant_Objet, Identifiant_Proprietaire, Identifiant_
 	VALUES ('1', '1245278', '1111111');
 
 CREATE TABLE dons(
+	Identifiant TEXT PRIMARY KEY,
 	Identifiant_Objet TEXT NOT NULL,
 	Identifiant_Proprietaire TEXT NOT NULL,
 	Identifiant_Responsable TEXT NOT NULL,
