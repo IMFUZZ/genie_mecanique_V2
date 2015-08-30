@@ -7,9 +7,9 @@
  - [ X ] Changer les noms des champs de la BD pour les mettre en francais
  - [ ] Fixer le problème des accents
  - [ ] s'assurer d'avoir des classes pour construire des object 'outil', 'brutes', etc.. (pour les vérifications)
+  - [ ] Faire un systeme d'enregistrement de sauvegarde de BD
  - [ X ] Jeter un coup d'oeil au comboxBox du panneau Droite
  - [ ... ] M'assurer que le système ferme toujours sécuritairement
- - [ ] Faire un systeme d'enregistrement de sauvegarde de BD
  - [ ] Vérifier si on peut facilement modifier les accents par conversion
  - [ ] Sur la touche "enter", lancer le bouton associé automatiquement
  - [ X ] Améliorer le système de recherche pour différencier les accents et les majuscules.
@@ -19,7 +19,7 @@
  
 - [ ] FAIRE DES RECHERCHE SUR LE CODE 128-B
 
-- [ ] ASSOCIER LE PIPE À LA SELECTION DU CHAMP DE LIGNE DE COMMANDE, PROGRAMMER LE SCANNER POUR QU'IL ENTRE LE CODE
+- [ X ] ASSOCIER LE PIPE À LA SELECTION DU CHAMP DE LIGNE DE COMMANDE, PROGRAMMER LE SCANNER POUR QU'IL ENTRE LE CODE
  NOTE : 
 
  	Utiliser un système de codebarre avec des lettres pour inventorier les items et un systeme avec des chiffres pour inventorier les membres

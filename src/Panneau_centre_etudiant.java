@@ -20,8 +20,14 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 	/*
 	 * Tableaux 
 	 */
-	Panneau_scroll scroll_tableau_bruts;
-	Panneau_scroll scroll_tableau_bris;
+
+	Tableau t_outils;
+	Tableau t_bruts;
+	Tableau t_bris;
+	
+	Panneau_scroll scroll_tableau_outils = new Panneau_scroll("OUTILS");
+	Panneau_scroll scroll_tableau_bruts = new Panneau_scroll("BRUTS");
+	Panneau_scroll scroll_tableau_bris = new Panneau_scroll("BRUTS");
 	
 	
 	public void rafraichir_tableaux() {
@@ -33,11 +39,9 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 	}
 	
 	public void ajouter_tableau_outils() {
-		
-		scroll_tableau_outils = null;
-		scroll_tableau_outils = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("locations", parent.etudiant.id)));
-		scroll_tableau_outils.set_titre("OUTILS");
-		
+		scroll_tableau_outils.removeAll();
+		t_outils = new Tableau(parent.controlleur.creer_modele_table("locations", parent.etudiant.id));
+		scroll_tableau_outils = new Panneau_scroll("OUTILS", t_outils);
 		add(scroll_tableau_outils);
 	}
 	
@@ -45,9 +49,9 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 	 * Met à jour le tableau des bruts empruntés	
 	 */
 	public void ajouter_tableau_bruts() {
-		
-		scroll_tableau_bruts = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("dons",  parent.etudiant.id)));
-		scroll_tableau_bruts.set_titre("BRUTS");
+		scroll_tableau_bruts.removeAll();
+		t_bruts= new Tableau(parent.controlleur.creer_modele_table("dons",  parent.etudiant.id));
+		scroll_tableau_bruts = new Panneau_scroll("BRUTS", t_bruts);
 		add(scroll_tableau_bruts);
 	}
 	
@@ -56,8 +60,9 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 	 */
 
 	public void ajouter_tableau_bris() {
-		scroll_tableau_bris = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("dons", parent.etudiant.id)));
-		scroll_tableau_bris.set_titre("BRUTS");
+		scroll_tableau_bris.removeAll();
+		t_bris = new Tableau(parent.controlleur.creer_modele_table("dons", parent.etudiant.id));
+		scroll_tableau_bris = new Panneau_scroll("BRUTS", t_bris);
 		add(scroll_tableau_bris);
 	}
 	

@@ -1,6 +1,9 @@
+import java.util.Iterator;
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -12,6 +15,20 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	public Controlleur(Fenetre a_parent)
 	{
 		parent = a_parent;
+		Vector <String> test_colonnes = new Vector<String>(4, 1); ;
+		test_colonnes.addElement("colonne1");
+		test_colonnes.addElement("colonne2");
+		test_colonnes.addElement("colonne3");
+		test_colonnes.addElement("colonne4");
+		test_colonnes.addElement("colonne5");
+		Vector <String> test_data = new Vector<String>(4, 1) ;
+		test_data.addElement("test1");
+		test_data.addElement("test2");
+		test_data.addElement("test3");
+		test_data.addElement("test4");
+		test_data.addElement("test5");
+		faire_ajout("table_test", test_colonnes, test_data);
+		
 	}
 	
 	/*
@@ -49,6 +66,34 @@ public class Controlleur extends Base_de_donnees_sqlite{
 				}
 			}
 		}		
+	}
+	
+	public void faire_ajout(String a_nom_table, Vector<String> a_columnNames, Vector<String> a_data)
+	{
+		String id_outil;
+		
+			StringBuilder stringBuilder = new StringBuilder();
+		if (a_columnNames.size() == a_data.size())
+		{
+			 stringBuilder.append("INSERT INTO " + a_nom_table + " (" + a_columnNames.firstElement());
+			 for (int i = 1; i < a_columnNames.size(); i++)
+			 {
+				 stringBuilder.append(", " + a_columnNames.get(i));
+			 }
+			 stringBuilder.append(") VALUES ('" + a_data.firstElement());
+			 for (int i = 1; i < a_data.size(); i++)
+			 {
+				 stringBuilder.append("', '" + a_data.get(i));
+			 }
+			 stringBuilder.append("');");
+			 
+			 String requete = stringBuilder.toString();
+			 System.out.println(requete);
+		}
+		else
+		{
+			System.out.println("Les listes ne sont pas égales!!");
+		}
 	}
 	
 	/*

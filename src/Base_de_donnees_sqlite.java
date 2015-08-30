@@ -11,7 +11,7 @@ import org.sqlite.SQLiteConfig;
 
 // RENDRE LA CLASSE ABSTRAITE!!
 
-public class Base_de_donnees_sqlite {
+abstract class Base_de_donnees_sqlite {
 	
 	private java.sql.Connection con;
 	private java.sql.Statement stmt;

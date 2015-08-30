@@ -14,6 +14,10 @@ public class Panneau_scroll extends JScrollPane {
 	Font f_titre = new Font("SansSerif", Font.BOLD, 20);
 	TitledBorder border;
 	
+	public Panneau_scroll()
+	{
+		super();
+	}
 	public Panneau_scroll(String a_titre)
 	{
 		super();
@@ -37,6 +41,25 @@ public class Panneau_scroll extends JScrollPane {
 		tableau.setFont(f_champ);
 		
 		border = BorderFactory.createTitledBorder("");
+		border.setTitleFont(f_titre);
+		setBorder(border);
+	}
+	public Panneau_scroll(String a_titre, Tableau a_tableau)
+	{
+		super(a_tableau);
+		tableau = a_tableau;
+		if (tableau.nom_table.equals("membres"))
+		{
+			tableau.setRowHeight(75);
+			tableau.getColumnModel().getColumn(3).setMaxWidth(75);
+		}
+		else
+		{
+			tableau.setRowHeight(35);
+		}
+		tableau.setFont(f_champ);
+		
+		border = BorderFactory.createTitledBorder(a_titre);
 		border.setTitleFont(f_titre);
 		setBorder(border);
 	}

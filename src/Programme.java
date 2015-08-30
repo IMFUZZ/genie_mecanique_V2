@@ -12,8 +12,6 @@ public class Programme {
 		String id = "";
 		
 		Fenetre fenetre_principale = new Fenetre();	
-
-		System.out.println(Charset.defaultCharset());	
 		
 		while (!fenetre_principale.administrateur.est_administrateur)
 		{
@@ -31,7 +29,8 @@ public class Programme {
 				if (temp.est_administrateur)
 				{
 					fenetre_principale.set_administrateur(temp);
-					System.out.println(fenetre_principale.administrateur.id);
+					fenetre_principale.setVisible(true);
+					fenetre_principale.current_p_haut.actualiser();
 				}
 			}
 			else
@@ -40,13 +39,6 @@ public class Programme {
 				System.exit(0); 
 			}
 		}	
-		// "if" non nécessaire??
-		if (fenetre_principale.administrateur.est_administrateur) 
-		{
-			fenetre_principale.setVisible(true);
-			fenetre_principale.current_p_haut.actualiser();
-		}
-
 		
 		//System.exit(0);  // SE DÉBARASSER DE LA FENETRE POUR QUITTER CORRECTEMENT L'APPLICATON!!!!
 		System.out.println("Fin de l'exécution");

@@ -92,10 +92,10 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	 */
 	public void creer_onglets() {
 		tabbed_pane = new JTabbedPane();
-		tabbed_pane.addTab("Étudiants", panneau_etudiants);
-		tabbed_pane.addTab("Outils", panneau_outils);
-		tabbed_pane.addTab("Matériel", panneau_materiel);
-		tabbed_pane.addTab("Bruts", panneau_bruts);
+		tabbed_pane.addTab("", panneau_etudiants);
+		tabbed_pane.addTab("", panneau_outils);
+		tabbed_pane.addTab("", panneau_materiel);
+		tabbed_pane.addTab("", panneau_bruts);
 		
 		JLabel titre_onglet_etudiants = new JLabel("Étudiants");
 		titre_onglet_etudiants.setPreferredSize(dimension_onglets);
@@ -133,7 +133,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	/*
 	 * Vide le panneau_outils et lui ajoute un nouveau tableau contenant les informations sur les outils
 	 */
-	public void rafraichir_panneau_outils(String a_filtre) {
+	public void ajouter_panneau_outils(String a_filtre) {
 		
 		panneau_outils.removeAll();
 		t_outils = new Tableau(parent.controlleur.creer_modele_table("outils", ""));
@@ -145,7 +145,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	/*
 	 * Vide le panneau_materiel et lui ajoute un nouveau tableau contenant les informations sur le matériel
 	 */
-	public void rafraichir_panneau_materiel(String a_filtre) {
+	public void ajouter_panneau_materiel(String a_filtre) {
 		
 		panneau_materiel.removeAll();
 		t_materiaux = new Tableau(parent.controlleur.creer_modele_table("bruts", ""));
@@ -157,7 +157,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	/*
 	 * Vide le panneau_bruts et lui ajoute un nouveau tableau contenant les informations sur les bruts
 	 */
-	public void rafraichir_panneau_bruts(String a_filtre) {
+	public void ajouter_panneau_bruts(String a_filtre) {
 		
 		panneau_bruts.removeAll();
 		t_bruts = new Tableau(parent.controlleur.creer_modele_table("bruts", ""));
@@ -169,9 +169,9 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	public void rafraichir_tableaux(String a_filtre) {
 		parent.setEnabled(false);
 		rafraichir_panneau_etudiants(a_filtre);
-		rafraichir_panneau_outils(a_filtre);
-		rafraichir_panneau_materiel(a_filtre);
-		rafraichir_panneau_bruts(a_filtre);
+		ajouter_panneau_outils(a_filtre);
+		ajouter_panneau_materiel(a_filtre);
+		ajouter_panneau_bruts(a_filtre);
 		revalidate();
 		parent.setEnabled(true);
 	}
