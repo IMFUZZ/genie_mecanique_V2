@@ -19,33 +19,50 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	 */
 	public void faire_location(Membre a_membre)
 	{
+		String nom_table = "Outils";
 		String id_outil;
 		Boolean id_outil_valide = false;
+		Boolean quantite_disponible_valide = false;
 		Boolean a_annule = false;
 		
 		
 		if (a_membre != null) {
-			while (!(a_annule) || !(id_outil_valide)) {
+			while (!(a_annule)) {
 				
 				id_outil = scanner_outil(); // lance un popup qui permet de scanner l'outil
-				id_outil_valide = valider_id_outil(id_outil); // s'assure que l'id retourné correspond à un outil existant
-				
-				if (id_outil_valide) {
-					// création de la location dans la bd
-					faire_update_sqlite(
-							"INSERT INTO locations(Identifiant_Objet, Identifiant_Proprietaire, Identifiant_Responsable) "
-								+ "VALUES "
-								+ "('"+ id_outil
-								+"', '"+ a_membre.id
-								+"', '"+ parent.administrateur.id
-								+"');");
-					// ajouter requête pour modifier quantité disponible de l'outil
-					parent.current_p_centre_etudiant.rafraichir_tableaux();
+					
+				if (id_outil == null) {
+					a_annule = true;
 				}
 				
-				// si l'usager a cliqué sur annuler
-				if (id_outil != null) {
-					a_annule = true;
+				else {
+					id_outil_valide = id_existe(nom_table, id_outil);
+					quantite_disponible_valide = valider_quantite_disponible(nom_table, id_outil);
+					
+					if (id_outil_valide && quantite_disponible_valide) {
+						// création de la location dans la bd
+						faire_update_sqlite(
+								"INSERT INTO locations(Identifiant_Objet, Identifiant_Proprietaire, Identifiant_Responsable) "
+									+ "VALUES "
+									+ "('"+ id_outil
+									+ "', '"+ a_membre.id
+									+ "', '"+ parent.administrateur.id
+									+ "');");
+						// ajouter requête pour modifier quantité disponible de l'outil
+						faire_update_sqlite(
+								"UPDATE outils SET Disponible = Disponible - 1 "
+									+ "WHERE Identifiant = '" + id_outil + "';");
+						
+						parent.current_p_centre_etudiant.rafraichir_tableaux();
+					}
+					
+					else if (!id_outil_valide) {
+						JOptionPane.showMessageDialog(parent, "L'id ne correspond pas à un outil existant");
+					}
+					
+					else if (!quantite_disponible_valide) {
+						JOptionPane.showMessageDialog(parent, "Tous ces outils sont empruntés ou brisés");
+					}
 				}
 			}
 		}		
@@ -78,8 +95,13 @@ public class Controlleur extends Base_de_donnees_sqlite{
 					"Scan de l'étudiant", 	// -- Titre
 					3, new ImageIcon("src/images/icon_128.png"),  // -- Icône personnalisée
 					null, "");
-					
-			if (id_existe("membres", id_etudiant))
+			
+			// si l'usager a cliqué sur annuler
+			if (id_etudiant == null) {
+				a_annule = true;
+			}
+			
+			else if (id_existe("membres", id_etudiant))
 			{
 				// création de la location dans la bd
 				List<Object> result = faire_requete_sqlite(
@@ -90,24 +112,26 @@ public class Controlleur extends Base_de_donnees_sqlite{
 				}
 			}
 			
-			// si l'usager a cliqué sur annuler
-			if (id_etudiant == null) {
-				a_annule = true;
-			}
+			
+			
 		}	
 		return new Membre();
 	}
+
 	
 	/*
-	 * Vérifie que l'id envoyé en argument correspond à l'id d'un outil existant 
-	 * et disponible à la location
+	 * Vérifie que l'id envoyé en argument a une quantité disponible supérieure à 0
 	 */
-	public boolean valider_id_outil(String a_id) {
-		Boolean verification = true;
+	public boolean valider_quantite_disponible(String a_nom_table, String a_id) {
+		// vérifier que c'est une table qui a une quantité disponible?
+		List<Object> result = faire_requete_sqlite(
+				"SELECT * FROM " + a_nom_table + " WHERE Identifiant = '" + a_id + "' AND Disponible > 0;");
+		if (result.size() > 0)
+		{
+			return true;
+		}
 		
-		// *** À faire (requête SQL)
-		
-		return verification;
+		return false;
 	}
 	
 	

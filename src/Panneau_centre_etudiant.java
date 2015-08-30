@@ -57,7 +57,7 @@ public class Panneau_centre_etudiant extends Panneau_centre {
 
 	public void ajouter_tableau_bris() {
 		scroll_tableau_bris = new Panneau_scroll(new Tableau(parent.controlleur.creer_modele_table("dons", parent.etudiant.id)));
-		scroll_tableau_bris.set_titre("BRUTS");
+		scroll_tableau_bris.set_titre("BRIS");
 		add(scroll_tableau_bris);
 	}
 	
