@@ -27,7 +27,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 		test_data.addElement("test3");
 		test_data.addElement("test4");
 		test_data.addElement("test5");
-		faire_ajout("table_test", test_colonnes, test_data);
+		faire_modification("123456", "table_test", test_colonnes, test_data);
 		
 	}
 	
@@ -103,6 +103,29 @@ public class Controlleur extends Base_de_donnees_sqlite{
 				 stringBuilder.append("', '" + a_data.get(i));
 			 }
 			 stringBuilder.append("');");
+			 
+			 String requete = stringBuilder.toString();
+			 System.out.println(requete);
+		}
+		else
+		{
+			System.out.println("Les listes ne sont pas égales!!");
+		}
+	}
+	
+	public void faire_modification(String a_identifiant, String a_nom_table, Vector<String> a_columnNames, Vector<String> a_data)
+	{		
+		StringBuilder stringBuilder = new StringBuilder();
+		if (a_columnNames.size() == a_data.size())
+		{
+			 stringBuilder.append("UPDATE " + a_nom_table + " SET ");
+			 stringBuilder.append(a_columnNames.get(0) + " = '" + a_data.get(0));
+			 for (int i = 1; i < a_columnNames.size(); i++)
+			 {
+				 stringBuilder.append("', " + a_columnNames.get(i) + " = '" + a_data.get(i));
+			 }
+			 stringBuilder.append("' WHERE identifiant = '" + a_identifiant + "';");
+
 			 
 			 String requete = stringBuilder.toString();
 			 System.out.println(requete);

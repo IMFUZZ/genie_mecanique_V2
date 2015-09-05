@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -31,6 +32,39 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		creer_contenu_onglets();
 		creer_onglets();
 		add(tabbed_pane);
+		
+		t_materiaux.addMouseListener(new java.awt.event.MouseAdapter()
+	    {
+			public void mouseClicked(java.awt.event.MouseEvent e)
+			{
+			int row=t_materiaux.rowAtPoint(e.getPoint());
+			System.out.println(t_materiaux.getValueAt(row,0).toString());
+			}
+	    });
+		t_etudiants.addMouseListener(new java.awt.event.MouseAdapter()
+	    {
+			public void mouseClicked(java.awt.event.MouseEvent e)
+			{
+			int row=t_etudiants.rowAtPoint(e.getPoint());
+			System.out.println(t_etudiants.getValueAt(row,0).toString());
+			}
+	    });
+		t_outils.addMouseListener(new java.awt.event.MouseAdapter()
+	    {
+			public void mouseClicked(java.awt.event.MouseEvent e)
+			{
+			int row=t_outils.rowAtPoint(e.getPoint());
+			System.out.println(t_outils.getValueAt(row,0).toString());
+			}
+	    });
+		t_bruts.addMouseListener(new java.awt.event.MouseAdapter()
+	    {
+			public void mouseClicked(java.awt.event.MouseEvent e)
+			{
+			int row=t_bruts.rowAtPoint(e.getPoint());
+			System.out.println(t_bruts.getValueAt(row,0).toString());
+			}
+	    });
 
 	}
 
