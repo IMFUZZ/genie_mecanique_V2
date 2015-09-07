@@ -115,7 +115,12 @@ abstract class Base_de_donnees_sqlite {
 			    }
 				stmt.close();
 				con.close();
-				return new Modele_table(a_nom_table, data, columnNames);
+				return new Modele_table(a_nom_table, data, columnNames){
+				    public boolean isCellEditable(int row, int column)
+				    {
+				      return false;//This causes all cells to be not editable
+				    }
+				};
 			}
 		} catch (Exception e) {
 			System.out.println("Impossible d'obtenir le ResultSet de la base de données!");

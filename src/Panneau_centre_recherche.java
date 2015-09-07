@@ -6,6 +6,7 @@
  */
 
 import java.awt.Dimension;
+import java.util.LinkedList;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -26,6 +27,8 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	Tableau t_outils;
 	Tableau t_bruts;
 	
+	Tableau[] liste_tableaux = {t_materiaux, t_etudiants, t_outils, t_bruts};
+	
 	public Panneau_centre_recherche(Fenetre a_parent) {
 		
 		super(a_parent);
@@ -33,36 +36,72 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		creer_onglets();
 		add(tabbed_pane);
 		
+/*		for(final Tableau tableau : liste_tableaux)
+		{
+			tableau.addMouseListener(new java.awt.event.MouseAdapter()
+		    {
+				public void mousePressed(java.awt.event.MouseEvent e)
+				{
+					if (e.getClickCount() == 2) {
+						LinkedList<Object> a_noms_colonnes = new LinkedList<Object>();
+						LinkedList<Object> a_donnees_ligne = new LinkedList<Object>();
+						int row=tableau.rowAtPoint(e.getPoint());
+						for(int i = 0;i < tableau.getColumnCount(); i++)
+						{
+							a_noms_colonnes.add(tableau.getColumnName(i));
+							a_donnees_ligne.add(tableau.getValueAt(row,i).toString());					
+						}
+						parent.controlleur.optionPane_dynamique(a_noms_colonnes.toArray(), a_donnees_ligne.toArray());
+					}
+				}
+		    });
+		}*/
+		
 		t_materiaux.addMouseListener(new java.awt.event.MouseAdapter()
 	    {
-			public void mouseClicked(java.awt.event.MouseEvent e)
+			public void mousePressed(java.awt.event.MouseEvent e)
 			{
-			int row=t_materiaux.rowAtPoint(e.getPoint());
-			System.out.println(t_materiaux.getValueAt(row,0).toString());
+				if (e.getClickCount() == 2) {
+					LinkedList<Object> a_noms_colonnes = new LinkedList<Object>();
+					LinkedList<Object> a_donnees_ligne = new LinkedList<Object>();
+					int row=t_materiaux.rowAtPoint(e.getPoint());
+					for(int i = 0;i < t_materiaux.getColumnCount(); i++)
+					{
+						a_noms_colonnes.add(t_materiaux.getColumnName(i));
+						a_donnees_ligne.add(t_materiaux.getValueAt(row,i).toString());					
+					}
+					parent.controlleur.optionPane_dynamique(a_noms_colonnes.toArray(), a_donnees_ligne.toArray());
+				}
 			}
 	    });
 		t_etudiants.addMouseListener(new java.awt.event.MouseAdapter()
 	    {
-			public void mouseClicked(java.awt.event.MouseEvent e)
+			public void mousePressed(java.awt.event.MouseEvent e)
 			{
-			int row=t_etudiants.rowAtPoint(e.getPoint());
-			System.out.println(t_etudiants.getValueAt(row,0).toString());
+				if (e.getClickCount() == 2) {
+					int row=t_etudiants.rowAtPoint(e.getPoint());
+					System.out.println(t_etudiants.getValueAt(row,0).toString());
+				}
 			}
 	    });
 		t_outils.addMouseListener(new java.awt.event.MouseAdapter()
 	    {
-			public void mouseClicked(java.awt.event.MouseEvent e)
+			public void mousePressed(java.awt.event.MouseEvent e)
 			{
-			int row=t_outils.rowAtPoint(e.getPoint());
-			System.out.println(t_outils.getValueAt(row,0).toString());
+				if (e.getClickCount() == 2) {
+					int row=t_outils.rowAtPoint(e.getPoint());
+					System.out.println(t_outils.getValueAt(row,0).toString());
+				}
 			}
 	    });
 		t_bruts.addMouseListener(new java.awt.event.MouseAdapter()
 	    {
-			public void mouseClicked(java.awt.event.MouseEvent e)
+			public void mousePressed(java.awt.event.MouseEvent e)
 			{
-			int row=t_bruts.rowAtPoint(e.getPoint());
-			System.out.println(t_bruts.getValueAt(row,0).toString());
+				if (e.getClickCount() == 2) {
+					int row=t_bruts.rowAtPoint(e.getPoint());
+					System.out.println(t_bruts.getValueAt(row,0).toString());
+				}
 			}
 	    });
 

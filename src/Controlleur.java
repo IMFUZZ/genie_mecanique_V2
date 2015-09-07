@@ -1,11 +1,11 @@
-import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 
 public class Controlleur extends Base_de_donnees_sqlite{
@@ -29,6 +29,9 @@ public class Controlleur extends Base_de_donnees_sqlite{
 		test_data.addElement("test5");
 		faire_modification("123456", "table_test", test_colonnes, test_data);
 		
+		Object[] columns = {"Id", "Nom", "Prenom"};
+		Object[] values = {"1245278", "Dube", "Daniel-Junior"};
+		optionPane_dynamique(columns, values);
 	}
 	
 	/*
@@ -320,5 +323,42 @@ public class Controlleur extends Base_de_donnees_sqlite{
 		return new Membre();
 	}
 	
-	
+	/*
+	 * Retourne Object[] qui correspond aux informations retournées par un OptionPane. Ce OptionPane
+	 * est conçu dynamiquement par la concaténation des Object[] reçues en argument. L'ordre des données
+	 * contenues dans les Object[] est très importantes, elle sont associées d'une liste à l'autre selon
+	 * leur index
+	 */
+	public Object[] optionPane_dynamique(Object[] a_noms_colonnes, Object[] a_donnees_ligne)
+	{
+		if(a_noms_colonnes.length == a_donnees_ligne.length)
+		{
+			LinkedList<Object> liste_objects = new LinkedList<Object>();
+			LinkedList<JTextField> liste_JTextField = new LinkedList<JTextField>();
+			
+			for(int i = 0 ; i < a_noms_colonnes.length; i++)
+			{
+				liste_objects.add((String) a_noms_colonnes[i]+" : ");
+				liste_JTextField.add(new JTextField((String) a_donnees_ligne[i]));
+				liste_objects.add(liste_JTextField.get(i));
+			} 
+			JOptionPane.showConfirmDialog(
+				null, 
+				liste_objects.toArray(), 
+				"Modification d'un champ",
+				JOptionPane.OK_CANCEL_OPTION
+			);
+			liste_objects.clear();
+			for(int i = 0 ; i < liste_JTextField.size(); i++)
+			{
+				liste_objects.add(liste_JTextField.get(i).getText());
+			} 
+			return (Object[])liste_objects.toArray();
+		}
+		else
+		{
+			System.out.println("ERREUR : La liste des noms de colonnes et la liste des valeurs de la ligne ne sont pas de même longueur!");
+			return a_donnees_ligne;
+		}
+	}
 }

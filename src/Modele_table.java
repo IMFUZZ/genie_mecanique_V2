@@ -1,15 +1,16 @@
 import java.awt.Image;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
 
 public class Modele_table extends DefaultTableModel {
     
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String nom_table;
 	
     public Modele_table(String a_nom_table, Vector<Vector<Object>> data, Vector<String> columnNames)
