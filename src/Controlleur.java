@@ -15,23 +15,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	public Controlleur(Fenetre a_parent)
 	{
 		parent = a_parent;
-		Vector <String> test_colonnes = new Vector<String>(4, 1); ;
-		test_colonnes.addElement("colonne1");
-		test_colonnes.addElement("colonne2");
-		test_colonnes.addElement("colonne3");
-		test_colonnes.addElement("colonne4");
-		test_colonnes.addElement("colonne5");
-		Vector <String> test_data = new Vector<String>(4, 1) ;
-		test_data.addElement("test1");
-		test_data.addElement("test2");
-		test_data.addElement("test3");
-		test_data.addElement("test4");
-		test_data.addElement("test5");
-		faire_modification("123456", "table_test", test_colonnes, test_data);
 		
-		Object[] columns = {"Id", "Nom", "Prenom"};
-		Object[] values = {"1245278", "Dube", "Daniel-Junior"};
-		optionPane_dynamique(columns, values);
 	}
 	
 	/*
@@ -88,27 +72,28 @@ public class Controlleur extends Base_de_donnees_sqlite{
 		}		
 	}
 	
-	public void faire_ajout(String a_nom_table, Vector<String> a_columnNames, Vector<String> a_data)
+	/*
+	 * Cette fonction permet d'effectuer un ajout dans la base de données, 
+	 * peu importe le nombre d'argument envoyé à la requete 'insert'.
+	 */
+	public void faire_ajout(String a_nom_table, Object[] a_columnNames, Object[] a_data)
 	{
-		String id_outil;
-		
-			StringBuilder stringBuilder = new StringBuilder();
-		if (a_columnNames.size() == a_data.size())
+		StringBuilder stringBuilder = new StringBuilder();
+		if (a_columnNames.length == a_data.length)
 		{
-			 stringBuilder.append("INSERT INTO " + a_nom_table + " (" + a_columnNames.firstElement());
-			 for (int i = 1; i < a_columnNames.size(); i++)
+			 stringBuilder.append("INSERT INTO " + a_nom_table + " (" + a_columnNames[0]);
+			 for (int i = 1; i < a_columnNames.length; i++)
 			 {
-				 stringBuilder.append(", " + a_columnNames.get(i));
+				 stringBuilder.append(", " + a_columnNames[i]);
 			 }
-			 stringBuilder.append(") VALUES ('" + a_data.firstElement());
-			 for (int i = 1; i < a_data.size(); i++)
+			 stringBuilder.append(") VALUES ('" + a_data[0]);
+			 for (int i = 1; i < a_data.length; i++)
 			 {
-				 stringBuilder.append("', '" + a_data.get(i));
+				 stringBuilder.append("', '" + a_data[i]);
 			 }
 			 stringBuilder.append("');");
 			 
-			 String requete = stringBuilder.toString();
-			 System.out.println(requete);
+			 faire_requete_sqlite(stringBuilder.toString());
 		}
 		else
 		{
@@ -116,22 +101,24 @@ public class Controlleur extends Base_de_donnees_sqlite{
 		}
 	}
 	
-	public void faire_modification(String a_identifiant, String a_nom_table, Vector<String> a_columnNames, Vector<String> a_data)
+	/*
+	 * Cette fonction permet d'effectuer une modification dans la 
+	 * base de données, peu importe le nombre d'argument envoyé à la requete 'update'.
+	 */
+	public void faire_modification(String a_identifiant, String a_nom_table, Object[] a_columnNames, Object[] a_data)
 	{		
 		StringBuilder stringBuilder = new StringBuilder();
-		if (a_columnNames.size() == a_data.size())
+		if (a_columnNames.length == a_data.length)
 		{
 			 stringBuilder.append("UPDATE " + a_nom_table + " SET ");
-			 stringBuilder.append(a_columnNames.get(0) + " = '" + a_data.get(0));
-			 for (int i = 1; i < a_columnNames.size(); i++)
+			 stringBuilder.append(a_columnNames[0] + " = '" + a_data[0]);
+			 for (int i = 1; i < a_columnNames.length; i++)
 			 {
-				 stringBuilder.append("', " + a_columnNames.get(i) + " = '" + a_data.get(i));
+				 stringBuilder.append("', " + a_columnNames[i] + " = '" + a_data[i]);
 			 }
 			 stringBuilder.append("' WHERE identifiant = '" + a_identifiant + "';");
 
-			 
-			 String requete = stringBuilder.toString();
-			 System.out.println(requete);
+			 faire_update_sqlite(stringBuilder.toString());
 		}
 		else
 		{
@@ -342,7 +329,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 				liste_JTextField.add(new JTextField((String) a_donnees_ligne[i]));
 				liste_objects.add(liste_JTextField.get(i));
 			} 
-			JOptionPane.showConfirmDialog(
+			int optionPane_return_value = JOptionPane.showConfirmDialog(
 				null, 
 				liste_objects.toArray(), 
 				"Modification d'un champ",
@@ -353,7 +340,15 @@ public class Controlleur extends Base_de_donnees_sqlite{
 			{
 				liste_objects.add(liste_JTextField.get(i).getText());
 			} 
-			return (Object[])liste_objects.toArray();
+			
+			if (optionPane_return_value == 0)
+			{
+				return (Object[])liste_objects.toArray();
+			}
+			else
+			{
+				return a_donnees_ligne;
+			}
 		}
 		else
 		{

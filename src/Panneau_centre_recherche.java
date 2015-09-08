@@ -35,75 +35,6 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		creer_contenu_onglets();
 		creer_onglets();
 		add(tabbed_pane);
-		
-/*		for(final Tableau tableau : liste_tableaux)
-		{
-			tableau.addMouseListener(new java.awt.event.MouseAdapter()
-		    {
-				public void mousePressed(java.awt.event.MouseEvent e)
-				{
-					if (e.getClickCount() == 2) {
-						LinkedList<Object> a_noms_colonnes = new LinkedList<Object>();
-						LinkedList<Object> a_donnees_ligne = new LinkedList<Object>();
-						int row=tableau.rowAtPoint(e.getPoint());
-						for(int i = 0;i < tableau.getColumnCount(); i++)
-						{
-							a_noms_colonnes.add(tableau.getColumnName(i));
-							a_donnees_ligne.add(tableau.getValueAt(row,i).toString());					
-						}
-						parent.controlleur.optionPane_dynamique(a_noms_colonnes.toArray(), a_donnees_ligne.toArray());
-					}
-				}
-		    });
-		}*/
-		
-		t_materiaux.addMouseListener(new java.awt.event.MouseAdapter()
-	    {
-			public void mousePressed(java.awt.event.MouseEvent e)
-			{
-				if (e.getClickCount() == 2) {
-					LinkedList<Object> a_noms_colonnes = new LinkedList<Object>();
-					LinkedList<Object> a_donnees_ligne = new LinkedList<Object>();
-					int row=t_materiaux.rowAtPoint(e.getPoint());
-					for(int i = 0;i < t_materiaux.getColumnCount(); i++)
-					{
-						a_noms_colonnes.add(t_materiaux.getColumnName(i));
-						a_donnees_ligne.add(t_materiaux.getValueAt(row,i).toString());					
-					}
-					parent.controlleur.optionPane_dynamique(a_noms_colonnes.toArray(), a_donnees_ligne.toArray());
-				}
-			}
-	    });
-		t_etudiants.addMouseListener(new java.awt.event.MouseAdapter()
-	    {
-			public void mousePressed(java.awt.event.MouseEvent e)
-			{
-				if (e.getClickCount() == 2) {
-					int row=t_etudiants.rowAtPoint(e.getPoint());
-					System.out.println(t_etudiants.getValueAt(row,0).toString());
-				}
-			}
-	    });
-		t_outils.addMouseListener(new java.awt.event.MouseAdapter()
-	    {
-			public void mousePressed(java.awt.event.MouseEvent e)
-			{
-				if (e.getClickCount() == 2) {
-					int row=t_outils.rowAtPoint(e.getPoint());
-					System.out.println(t_outils.getValueAt(row,0).toString());
-				}
-			}
-	    });
-		t_bruts.addMouseListener(new java.awt.event.MouseAdapter()
-	    {
-			public void mousePressed(java.awt.event.MouseEvent e)
-			{
-				if (e.getClickCount() == 2) {
-					int row=t_bruts.rowAtPoint(e.getPoint());
-					System.out.println(t_bruts.getValueAt(row,0).toString());
-				}
-			}
-	    });
 
 	}
 
@@ -195,12 +126,37 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	/*
 	 * Vide le panneau_etudiants et lui ajoute un nouveau tableau contenant les informations sur les étudiants
 	 */
-	public void rafraichir_panneau_etudiants(String a_filtre) {
+	public void ajouer_panneau_etudiants(String a_filtre) {
 		panneau_etudiants.removeAll();		
 		t_etudiants = new Tableau(parent.controlleur.creer_modele_table("membres", ""));
 		t_etudiants.sorter.setRowFilter(RowFilter.regexFilter("(?i)" + a_filtre));
 		scroll_tableau_etudiants = new Panneau_scroll(t_etudiants);
 		panneau_etudiants.add(scroll_tableau_etudiants);
+		t_etudiants.addMouseListener(new java.awt.event.MouseAdapter()
+	    {
+			public void mousePressed(java.awt.event.MouseEvent e)
+			{
+				if (e.getClickCount() == 2) {
+					LinkedList<Object> a_noms_colonnes = new LinkedList<Object>();
+					LinkedList<Object> a_donnees_ligne = new LinkedList<Object>();
+					int row=t_etudiants.rowAtPoint(e.getPoint());
+					for(int i = 0;i < t_etudiants.getColumnCount(); i++)
+					{
+						if (!t_etudiants.getColumnName(i).equals("Photos")) {
+							a_noms_colonnes.add(t_etudiants.getColumnName(i));
+							a_donnees_ligne.add(t_etudiants.getValueAt(row,i).toString());					
+						}				
+					}
+					Object[] nouvelle_valeurs = parent.controlleur.optionPane_dynamique(a_noms_colonnes.toArray(), a_donnees_ligne.toArray());
+					parent.controlleur.faire_modification(
+							(String)nouvelle_valeurs[0], 
+							t_etudiants.nom_table, 
+							a_noms_colonnes.toArray(), 
+							nouvelle_valeurs);
+					rafraichir_tableaux("");
+				}
+			}
+	    });
 	}
 	
 	/*
@@ -213,6 +169,29 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		t_outils.sorter.setRowFilter(RowFilter.regexFilter("(?i)" + a_filtre));
 		scroll_tableau_outils = new Panneau_scroll(t_outils);
 		panneau_outils.add(scroll_tableau_outils);
+		t_outils.addMouseListener(new java.awt.event.MouseAdapter()
+	    {
+			public void mousePressed(java.awt.event.MouseEvent e)
+			{
+				if (e.getClickCount() == 2) {
+					LinkedList<Object> a_noms_colonnes = new LinkedList<Object>();
+					LinkedList<Object> a_donnees_ligne = new LinkedList<Object>();
+					int row=t_outils.rowAtPoint(e.getPoint());
+					for(int i = 0;i < t_outils.getColumnCount(); i++)
+					{
+						a_noms_colonnes.add(t_outils.getColumnName(i));
+						a_donnees_ligne.add(t_outils.getValueAt(row,i).toString());					
+					}
+					Object[] nouvelle_valeurs = parent.controlleur.optionPane_dynamique(a_noms_colonnes.toArray(), a_donnees_ligne.toArray());
+					parent.controlleur.faire_modification(
+							(String)nouvelle_valeurs[0], 
+							t_outils.nom_table, 
+							a_noms_colonnes.toArray(), 
+							nouvelle_valeurs);
+					rafraichir_tableaux("");
+				}
+			}
+	    });
 	}
 	
 	/*
@@ -225,6 +204,29 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		t_materiaux.sorter.setRowFilter(RowFilter.regexFilter("(?i)" + a_filtre));
 		scroll_tableau_materiel = new Panneau_scroll(t_materiaux);
 		panneau_materiel.add(scroll_tableau_materiel);
+		t_materiaux.addMouseListener(new java.awt.event.MouseAdapter()
+	    {
+			public void mousePressed(java.awt.event.MouseEvent e)
+			{
+				if (e.getClickCount() == 2) {
+					LinkedList<Object> a_noms_colonnes = new LinkedList<Object>();
+					LinkedList<Object> a_donnees_ligne = new LinkedList<Object>();
+					int row=t_materiaux.rowAtPoint(e.getPoint());
+					for(int i = 0;i < t_materiaux.getColumnCount(); i++)
+					{
+						a_noms_colonnes.add(t_materiaux.getColumnName(i));
+						a_donnees_ligne.add(t_materiaux.getValueAt(row,i).toString());					
+					}
+					Object[] nouvelle_valeurs = parent.controlleur.optionPane_dynamique(a_noms_colonnes.toArray(), a_donnees_ligne.toArray());
+					parent.controlleur.faire_modification(
+							(String)nouvelle_valeurs[0], 
+							t_materiaux.nom_table, 
+							a_noms_colonnes.toArray(), 
+							nouvelle_valeurs);
+					rafraichir_tableaux("");
+				}
+			}
+	    });
 	}
 	
 	/*
@@ -237,11 +239,34 @@ public class Panneau_centre_recherche extends Panneau_centre {
 		t_bruts.sorter.setRowFilter(RowFilter.regexFilter("(?i)" + a_filtre));
 		scroll_tableau_bruts = new Panneau_scroll(t_bruts);
 		panneau_bruts.add(scroll_tableau_bruts);
+		t_bruts.addMouseListener(new java.awt.event.MouseAdapter()
+	    {
+			public void mousePressed(java.awt.event.MouseEvent e)
+			{
+				if (e.getClickCount() == 2) {
+					LinkedList<Object> a_noms_colonnes = new LinkedList<Object>();
+					LinkedList<Object> a_donnees_ligne = new LinkedList<Object>();
+					int row=t_bruts.rowAtPoint(e.getPoint());
+					for(int i = 0;i < t_bruts.getColumnCount(); i++)
+					{
+						a_noms_colonnes.add(t_bruts.getColumnName(i));
+						a_donnees_ligne.add(t_bruts.getValueAt(row,i).toString());					
+					}
+					Object[] nouvelle_valeurs = parent.controlleur.optionPane_dynamique(a_noms_colonnes.toArray(), a_donnees_ligne.toArray());
+					parent.controlleur.faire_modification(
+							(String)nouvelle_valeurs[0], 
+							t_bruts.nom_table, 
+							a_noms_colonnes.toArray(), 
+							nouvelle_valeurs);
+					rafraichir_tableaux("");
+				}
+			}
+	    });
 	}
 	
 	public void rafraichir_tableaux(String a_filtre) {
 		parent.setEnabled(false);
-		rafraichir_panneau_etudiants(a_filtre);
+		ajouer_panneau_etudiants(a_filtre);
 		ajouter_panneau_outils(a_filtre);
 		ajouter_panneau_materiel(a_filtre);
 		ajouter_panneau_bruts(a_filtre);
