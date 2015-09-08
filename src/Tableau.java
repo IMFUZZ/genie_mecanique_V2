@@ -22,8 +22,8 @@ public class Tableau extends JTable {
 		setFillsViewportHeight(true);
 		
 		sorter.setRowFilter(RowFilter.regexFilter(""));
-		
-		
+	
+		this.getTableHeader().setReorderingAllowed(false);
 	}
 
 }
