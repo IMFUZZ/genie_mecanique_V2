@@ -1,101 +1,146 @@
 ﻿
 
-CREATE TABLE outils(
-	Identifiant TEXT PRIMARY KEY,
+CREATE TABLE Outils (
+	Id TEXT PRIMARY KEY,
 	Nom TEXT NOT NULL,
 	Description TEXT,
-	Quantite INT
+	Quantite_Disponible INT
 		NOT NULL,
-	Disponible TINYINT 
-		DEFAULT 1,
-	Brise TINYINT
-		DEFAULT 0,
-	Commande_Requise TINYINT
-		DEFAULT 0
+	Quantite_Loue INT
+		NOT NULL,
+	Quantite_Brise INT
+		NOT NULL,
+	Seuil_Approvisionnement INT
+		NOT NULL
 );
+-- ajouter quantité totale?
+
 	
-INSERT INTO outils (Identifiant, Nom, Description, Quantite) VALUES ('O1', 'Marteau', "Outil servant a planter des clous.....", 100);
-INSERT INTO outils (Identifiant, Nom, Description, Quantite) VALUES ('O2', 'Tournevis', "Outil servant a visser des vis.....", 20);
-INSERT INTO outils (Identifiant, Nom, Description, Quantite) VALUES ('O3', 'Clé Anglaise', "Outil permettant d'effectuer des réparations.....", 100);
+INSERT INTO Outils (Id,	Nom, Description, Quantite_Disponible,	Quantite_Loue, Quantite_Brise, Seuil_Approvisionnement) 
+	VALUES ('OUT0001', 'Marteau', "Outil servant a planter des clous", 10, 0, 0, 2);
+INSERT INTO Outils (Id,	Nom, Description, Quantite_Disponible,	Quantite_Loue, Quantite_Brise, Seuil_Approvisionnement) 
+	VALUES ('OUT0002', 'Tournevis', "Outil servant a visser des vis", 25, 0, 0, 5);
+INSERT INTO Outils (Id,	Nom, Description, Quantite_Disponible,	Quantite_Loue, Quantite_Brise, Seuil_Approvisionnement) 
+	VALUES ('OUT0003', 'Cle anglaise', "Outil permettant d'effectuer des reparations", 14, 0, 0, 6);
 
-CREATE TABLE bruts(
-	Identifiant TEXT PRIMARY KEY,
+
+
+CREATE TABLE Bruts (
+	Id TEXT PRIMARY KEY,
 	Nom TEXT NOT NULL,
 	Description TEXT,
-	Quantite INT
+	Quantite_Initiale INT
 		NOT NULL,
-	Disponible TINYINT 
-		DEFAULT 1,
-	Commande_Requise TINYINT
-		DEFAULT 0
+	Quantite_Restante INT
+		NOT NULL
 );
 
-INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
-	VALUES ("B1", "Planche chêne 2x4", "Planche de chêne de 2x4x10", 10);
-INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
-	VALUES ("B2", "Planche érable 3*6", "Planche d'érable de 3*6x10", 10);
-INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
-	VALUES ("B3", "Planche chêne 4*4", "Planche de chêne de 4*4x10", 10);
-INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
-	VALUES ("B4", "Barre aluminium", "Planche de chêne de 2x4x10", 10);
+INSERT INTO Bruts (Id, Nom, Description, Quantite_Initiale, Quantite_Restante)
+	VALUES ("BRU0001", "Planche chene 2x4", "Planche de chene de 2x4x10", 10, 10);
+INSERT INTO Bruts (Id, Nom, Description, Quantite_Initiale, Quantite_Restante)
+	VALUES ("BRU0002", "Planche erable 3*6", "Planche d'erable de 3*6x10", 10, 10);
+INSERT INTO Bruts (Id, Nom, Description, Quantite_Initiale, Quantite_Restante)
+	VALUES ("BRU0003", "Planche chene 4*4", "Planche de chene de 4*4x10", 10, 10);
+INSERT INTO Bruts (Id, Nom, Description, Quantite_Initiale, Quantite_Restante)
+	VALUES ("BRU0004", "Barre aluminium", "Planche de chene de 2x4x10", 10, 10);
+INSERT INTO Bruts (Id, Nom, Description, Quantite_Initiale, Quantite_Restante)
+	VALUES ("BRU0005", "Planche chene 2x4", "Planche de chene de 2x4x10", 10, 10);
+INSERT INTO Bruts (Id, Nom, Description, Quantite_Initiale, Quantite_Restante)
+	VALUES ("BRU0006", "Planche erable 3*6", "Planche d'erable de 3*6x10", 10, 10);
+INSERT INTO Bruts (Id, Nom, Description, Quantite_Initiale, Quantite_Restante)
+	VALUES ("BRU0007", "Planche chene 4*4", "Planche de chene de 4*4x10", 10, 10);
+INSERT INTO Bruts (Id, Nom, Description, Quantite_Initiale, Quantite_Restante)
+	VALUES ("BRU0008", "Barre aluminium", "Planche de chene de 2x4x10", 10, 10);
+INSERT INTO Bruts (Id, Nom, Description, Quantite_Initiale, Quantite_Restante)
+	VALUES ("BRU0009", "Planche chene 2x4", "Planche de chene de 2x4x10", 10, 10);
+INSERT INTO Bruts (Id, Nom, Description, Quantite_Initiale, Quantite_Restante)
+	VALUES ("BRU0010", "Planche erable 3*6", "Planche d'erable de 3*6x10", 10, 10);
+INSERT INTO Bruts (Id, Nom, Description, Quantite_Initiale, Quantite_Restante)
+	VALUES ("BRU0011", "Planche chene 4*4", "Planche de chene de 4*4x10", 10, 10);
+INSERT INTO Bruts (Id, Nom, Description, Quantite_Initiale, Quantite_Restante)
+	VALUES ("BRU0012", "Barre aluminium", "Planche de chene de 2x4x10", 10, 10);
+INSERT INTO Bruts (Id, Nom, Description, Quantite_Initiale, Quantite_Restante)
+	VALUES ("BRU0013", "Planche erable 3*6", "Planche d'erable de 3*6x10", 10, 10);
+INSERT INTO Bruts (Id, Nom, Description, Quantite_Initiale, Quantite_Restante)
+	VALUES ("BRU0014", "Planche chene 4*4", "Planche de chene de 4*4x10", 10, 10);
+INSERT INTO Bruts (Id, Nom, Description, Quantite_Initiale, Quantite_Restante)
+	VALUES ("BRU0015", "Barre aluminium", "Planche de chene de 2x4x10", 10, 10);
 
-INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
-	VALUES ("B5", "Planche chêne 2x4", "Planche de chêne de 2x4x10", 10);
-INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
-	VALUES ("B6", "Planche érable 3*6", "Planche d'érable de 3*6x10", 10);
-INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
-	VALUES ("B7", "Planche chêne 4*4", "Planche de chêne de 4*4x10", 10);
-INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
-	VALUES ("B8", "Barre aluminium", "Planche de chêne de 2x4x10", 10);
-
-INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
-	VALUES ("B10", "Planche chêne 2x4", "Planche de chêne de 2x4x10", 10);
-INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
-	VALUES ("B11", "Planche érable 3*6", "Planche d'érable de 3*6x10", 10);
-INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
-	VALUES ("B12", "Planche chêne 4*4", "Planche de chêne de 4*4x10", 10);
-INSERT INTO bruts (Identifiant, Nom, Description, Quantite)
-	VALUES ("B13", "Barre aluminium", "Planche de chêne de 2x4x10", 10);
 
 
-CREATE TABLE membres(
-	Identifiant TEXT PRIMARY KEY,
-	Nom TEXT NOT NULL,
+CREATE TABLE Materiel (
+	Id TEXT PRIMARY KEY,
+	Type TEXT NOT NULL,
+	Dimensions TEXT NOT NULL,
+	Materiau TEXT NOT NULL,
+	Quantite_Initiale INT
+		NOT NULL,
+	Quantite_Restante INT
+		NOT NULL,
+	Seuil_Approvisionnement INT
+		NOT NULL
+);
+
+INSERT INTO Materiel (Id, Type, Dimensions, Materiau, Quantite_Initiale, Quantite_Restante, Seuil_Approvisionnement)
+	VALUES ("MAT0001", "Profile rond", "3", "Aluminium", 260, 230, 24);
+INSERT INTO Materiel (Id, Type, Dimensions, Materiau, Quantite_Initiale, Quantite_Restante, Seuil_Approvisionnement)
+	VALUES ("MAT0002", "Barre", "1 x 4", "Acier 1020", 200, 140, 0);
+
+
+
+CREATE TABLE Membres (
+	Id TEXT PRIMARY KEY,
+	Prenom TEXT NOT NULL,
 	Nom_Famille TEXT NOT NULL,
-	Image TEXT,
+	Photo TEXT,
 	Est_Administrateur TINYINT 
 		DEFAULT 0
 );
 
-INSERT INTO membres (Identifiant, Nom, Nom_Famille, Image, Est_Administrateur)
-	VALUES ('1245278', 'Daniel-Junior', 'Dubé', 'src/images/etudiants/1245278.png', 1);
-INSERT INTO membres (Identifiant, Nom, Nom_Famille, Image, Est_Administrateur)
+INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
+	VALUES ('1245278', 'Daniel-Junior', 'Dube', 'src/images/etudiants/1245278.png', 1);
+INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
 	VALUES ('1357059', 'Sarah', 'Laflamme', 'src/images/etudiants/1357059.png', 1);
-INSERT INTO membres (Identifiant, Nom, Nom_Famille, Image, Est_Administrateur)
+INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
 	VALUES ('1234567', 'Doug', 'McMahon', 'src/images/etudiants/1234567.png', 1);
 
-CREATE TABLE locations(
-	Identifiant TEXT PRIMARY KEY,
-	Identifiant_Objet TEXT NOT NULL,
-	Identifiant_Proprietaire TEXT NOT NULL,
-	Identifiant_Responsable TEXT NOT NULL,
-	Date DATE
+
+
+
+CREATE TABLE Locations (
+	Id INTEGER PRIMARY KEY,
+	Id_Outil TEXT NOT NULL,
+	Id_Proprietaire TEXT NOT NULL,
+	Id_Responsable TEXT NOT NULL,
+	Date_Emprunt DATE
 		DEFAULT (datetime('now','localtime')),
-	Retourne TINYINT
-		DEFAULT 0
+	Date_Retour DATE
 );
 
-INSERT INTO locations (Identifiant_Objet, Identifiant_Proprietaire, Identifiant_Responsable)
-	VALUES ('1', '1245278', '1111111');
+INSERT INTO Locations (Id_Outil, Id_Proprietaire, Id_Responsable)
+	VALUES ('OUT0001', '1245278', '1111111');
 
-CREATE TABLE dons(
-	Identifiant TEXT PRIMARY KEY,
-	Identifiant_Objet TEXT NOT NULL,
-	Identifiant_Proprietaire TEXT NOT NULL,
-	Identifiant_Responsable TEXT NOT NULL,
+CREATE TABLE Bris (
+	Id INTEGER PRIMARY KEY,
+	Id_Outil TEXT NOT NULL,
+	Id_Proprietaire TEXT NOT NULL,
+	Id_Responsable TEXT NOT NULL,
+	Date_Bris DATE
+		DEFAULT (datetime('now','localtime'))
+);
+
+INSERT INTO Bris (Id_Outil, Id_Proprietaire, Id_Responsable)
+	VALUES ('OUT0003', '1245278', '1111111');
+
+
+CREATE TABLE Dons (
+	Id INTEGER PRIMARY KEY,
+	Id_Brut TEXT NOT NULL,
+	Id_Proprietaire TEXT NOT NULL,
+	Id_Responsable TEXT NOT NULL,
 	Date DATE
 		DEFAULT (datetime('now','localtime'))
 );
 
-INSERT INTO dons(Identifiant_Objet, Identifiant_Proprietaire, Identifiant_Responsable)
-	VALUES ('1', '1245278', '1111111');
+INSERT INTO Dons (Id_Brut, Id_Proprietaire, Id_Responsable)
+	VALUES ('BRU0015', '1245278', '1111111');
