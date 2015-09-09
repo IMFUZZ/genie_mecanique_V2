@@ -46,7 +46,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 					if (id_outil_valide && quantite_disponible_valide) {
 						// création de la location dans la bd
 						faire_update_sqlite(
-								"INSERT INTO locations(Identifiant_Objet, Identifiant_Proprietaire, Identifiant_Responsable) "
+								"INSERT INTO locations(Id_Outil, Id_Proprietaire, Id_Responsable) "
 									+ "VALUES "
 									+ "('"+ id_outil
 									+ "', '"+ a_membre.id
@@ -55,7 +55,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 						// ajouter requête pour modifier quantité disponible de l'outil
 						faire_update_sqlite(
 								"UPDATE outils SET Disponible = Disponible - 1 "
-									+ "WHERE Identifiant = '" + id_outil + "';");
+									+ "WHERE Id = '" + id_outil + "';");
 						
 						parent.current_p_centre_etudiant.rafraichir_tableaux();
 					}
@@ -105,7 +105,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	 * Cette fonction permet d'effectuer une modification dans la 
 	 * base de données, peu importe le nombre d'argument envoyé à la requete 'update'.
 	 */
-	public void faire_modification(String a_identifiant, String a_nom_table, Object[] a_columnNames, Object[] a_data)
+	public void faire_modification(String a_Id, String a_nom_table, Object[] a_columnNames, Object[] a_data)
 	{		
 		StringBuilder stringBuilder = new StringBuilder();
 		if (a_columnNames.length == a_data.length)
@@ -116,7 +116,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 			 {
 				 stringBuilder.append("', " + a_columnNames[i] + " = '" + a_data[i]);
 			 }
-			 stringBuilder.append("' WHERE identifiant = '" + a_identifiant + "';");
+			 stringBuilder.append("' WHERE Id = '" + a_Id + "';");
 
 			 faire_update_sqlite(stringBuilder.toString());
 		}
@@ -163,7 +163,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 			{
 				// création de la location dans la bd
 				List<Object> result = faire_requete_sqlite(
-					"SELECT * FROM membres WHERE Identifiant = '" + id_etudiant + "';");
+					"SELECT * FROM membres WHERE Id = '" + id_etudiant + "';");
 				if (result.size() == 5)
 				{
 					return new Membre(result.get(0), result.get(1), result.get(2), result.get(3), result.get(4));
@@ -183,7 +183,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	public boolean valider_quantite_disponible(String a_nom_table, String a_id) {
 		// vérifier que c'est une table qui a une quantité disponible?
 		List<Object> result = faire_requete_sqlite(
-				"SELECT * FROM " + a_nom_table + " WHERE Identifiant = '" + a_id + "' AND Disponible > 0;");
+				"SELECT * FROM " + a_nom_table + " WHERE Id = '" + a_id + "' AND Disponible > 0;");
 		if (result.size() > 0)
 		{
 			return true;
@@ -199,7 +199,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	public void faire_don(String a_id_proprietaire, String a_id_brut)
 	{
 		faire_requete_sqlite(
-				"INSERT INTO dons(Identifiant_Objet, Identifiant_Propriétaire, Identifiant_Responsable) "
+				"INSERT INTO dons(Id_Objet, Id_Propriétaire, Id_Responsable) "
 					+ "VALUES "
 					+ "('"+ a_id_brut
 					+"', '"+ a_id_proprietaire
@@ -214,7 +214,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	public void ajouter_etudiant(String a_id_etudiant, String a_prenom, String a_nom)
 	{
 		faire_requete_sqlite(
-				"INSERT INTO membres(Identifiant, Nom, Nom_Famille) "
+				"INSERT INTO membres(Id, Nom, Nom_Famille) "
 					+ "VALUES "
 					+ "('"+ a_id_etudiant
 					+"', '"+ a_prenom
@@ -228,7 +228,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	public void ajouter_administrateur(String a_id_admin, String a_prenom, String a_nom)
 	{
 		faire_requete_sqlite(
-				"INSERT INTO membres(Identifiant, Nom, Nom_Famille, Est_Administrateur) "
+				"INSERT INTO membres(Id, Nom, Nom_Famille, Est_Administrateur) "
 					+ "VALUES "
 					+ "('"+ a_id_admin
 					+"', '"+ a_prenom
@@ -243,7 +243,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	public void ajouter_outil(String a_id_outil, String a_nom, String a_description)
 	{
 		faire_requete_sqlite(
-				"INSERT INTO outils(Identifiant, Nom, Description) "
+				"INSERT INTO outils(Id, Nom, Description) "
 					+ "VALUES "
 					+ "('"+ a_id_outil
 					+"', '"+ a_nom
@@ -257,7 +257,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	public void ajouter_brut(String a_id_brut, String a_nom, String a_description, int a_quantity)
 	{
 		faire_requete_sqlite(
-				"INSERT INTO bruts(Identifiant, Nom, Description, Quantité) "
+				"INSERT INTO bruts(Id, Nom, Description, Quantité) "
 					+ "VALUES "
 					+ "('"+ a_id_brut
 					+"', '"+ a_nom
@@ -273,7 +273,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	{
 		faire_update_sqlite(
 				"UPDATE outils SET Brisé = 1 "
-					+ "WHERE Identifiant = "
+					+ "WHERE Id = "
 					+ a_id_outil
 					+";");
 	}
@@ -285,7 +285,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	public boolean id_existe(String a_table, String a_id) // ----- FONCTIONNEL -----
 	{
 		List<Object> result = faire_requete_sqlite(
-				"SELECT * FROM " + a_table + " WHERE Identifiant = '" + a_id + "';");
+				"SELECT * FROM " + a_table + " WHERE Id = '" + a_id + "';");
 		if (result.size() > 0)
 		{
 			return true;
@@ -301,7 +301,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 		if (id_existe("membres", a_id))
 		{
 			List<Object> result = faire_requete_sqlite(
-					"SELECT * FROM membres WHERE Identifiant = '" + a_id + "';");
+					"SELECT * FROM membres WHERE Id = '" + a_id + "';");
 			if (result.size() == 5)
 			{
 				return new Membre(result.get(0), result.get(1), result.get(2), result.get(3), result.get(4));
