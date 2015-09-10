@@ -104,6 +104,9 @@ INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
 INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
 	VALUES ('1234567', 'Doug', 'McMahon', 'src/images/etudiants/1234567.png', 1);
 
+INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
+    VALUES ('2345678', 'André', 'éèéè', 'src/images/etudiants/1234567.png', 1);
+
 
 
 
