@@ -39,7 +39,7 @@ abstract class Base_de_donnees_sqlite {
 			con.setAutoCommit(false);
 			p_stmt = con.prepareStatement(a_requete_prepare); 
 			for (int i = 0; i < a_liste_data.length; i++) {
-				p_stmt.setObject(i, a_liste_data[i]);
+				p_stmt.setObject(i+1, a_liste_data[i]);
 			}
 			
 			rs = p_stmt.executeQuery();
@@ -81,7 +81,7 @@ abstract class Base_de_donnees_sqlite {
 	 * fonction utilise des boucles pour remplir 
 	 * les données d'un vecteur de vecteur et l'
 	 * attribut ensuite au modèle table.*/
-	public Modele_table creer_modele_table(String a_nom_table) {
+	public Modele_table creer_modele_table(String a_nom_table, String id_membre_choisit) {
 
 		ResultSet rs = null;
 		try {
@@ -144,7 +144,7 @@ abstract class Base_de_donnees_sqlite {
 			con.setAutoCommit(false);
 			p_stmt = con.prepareStatement(a_requete_prepare); 
 			for (int i = 0; i < a_liste_data.length; i++) {
-				p_stmt.setObject(i, a_liste_data[i]);
+				p_stmt.setObject(i+1, a_liste_data[i]);
 			}
 			p_stmt.executeUpdate();
 			p_stmt.close();

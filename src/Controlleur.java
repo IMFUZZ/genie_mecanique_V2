@@ -88,9 +88,9 @@ public class Controlleur extends Base_de_donnees_sqlite{
 			 stringBuilder.append(") VALUES (?");
 			 for (int i = 1; i < a_data.length; i++)
 			 {
-				 stringBuilder.append(", ?");
+				 stringBuilder.append("', ?");
 			 }
-			 stringBuilder.append(");");
+			 stringBuilder.append("');");
 			 
 			 faire_requete_sqlite(stringBuilder.toString(), a_data);
 		}
@@ -113,9 +113,9 @@ public class Controlleur extends Base_de_donnees_sqlite{
 			 stringBuilder.append(a_columnNames[0] + " = ?");
 			 for (int i = 1; i < a_columnNames.length; i++)
 			 {
-				 stringBuilder.append("', " + a_columnNames[i] + " = ?");
+				 stringBuilder.append(", " + a_columnNames[i] + " = ?");
 			 }
-			 stringBuilder.append("' WHERE Id = '" + a_data[0] + "';");
+			 stringBuilder.append(" WHERE Id = '" + a_data[0] + "';");
 
 			 faire_update_sqlite(stringBuilder.toString(), a_data);
 		}
