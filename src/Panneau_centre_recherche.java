@@ -149,6 +149,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 					}
 					Object[] nouvelle_valeurs = parent.controlleur.optionPane_dynamique(a_noms_colonnes.toArray(), a_donnees_ligne.toArray());
 					parent.controlleur.faire_modification(
+							t_etudiants.getValueAt(row, 0),
 							t_etudiants.nom_table, 
 							a_noms_colonnes.toArray(), 
 							nouvelle_valeurs);
@@ -183,6 +184,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 					}
 					Object[] nouvelle_valeurs = parent.controlleur.optionPane_dynamique(a_noms_colonnes.toArray(), a_donnees_ligne.toArray());
 					parent.controlleur.faire_modification(
+							t_outils.getValueAt(row, 0),
 							t_outils.nom_table, 
 							a_noms_colonnes.toArray(), 
 							nouvelle_valeurs);
@@ -217,6 +219,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 					}
 					Object[] nouvelle_valeurs = parent.controlleur.optionPane_dynamique(a_noms_colonnes.toArray(), a_donnees_ligne.toArray());
 					parent.controlleur.faire_modification( 
+							t_materiaux.getValueAt(row, 0),
 							t_materiaux.nom_table, 
 							a_noms_colonnes.toArray(), 
 							nouvelle_valeurs);
@@ -251,6 +254,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 					}
 					Object[] nouvelle_valeurs = parent.controlleur.optionPane_dynamique(a_noms_colonnes.toArray(), a_donnees_ligne.toArray());
 					parent.controlleur.faire_modification(
+							t_bruts.getValueAt(row, 0),
 							t_bruts.nom_table, 
 							a_noms_colonnes.toArray(), 
 							nouvelle_valeurs);
