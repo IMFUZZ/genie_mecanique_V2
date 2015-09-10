@@ -89,9 +89,9 @@ public class Controlleur extends Base_de_donnees_sqlite{
 			 stringBuilder.append(") VALUES (?");
 			 for (int i = 1; i < a_data.length; i++)
 			 {
-				 stringBuilder.append("', ?");
+				 stringBuilder.append(", ?");
 			 }
-			 stringBuilder.append("');");
+			 stringBuilder.append(");");
 			 
 			 faire_requete_sqlite(stringBuilder.toString(), a_data);
 		}
