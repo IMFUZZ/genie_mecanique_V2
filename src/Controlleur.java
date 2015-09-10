@@ -104,7 +104,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	 * Cette fonction permet d'effectuer une modification dans la 
 	 * base de données, peu importe le nombre d'argument envoyé à la requete 'update'.
 	 */
-	public void faire_modification(String a_nom_table, Object[] a_columnNames, Object[] a_data)
+	public void faire_modification(String a_id, String a_nom_table, Object[] a_columnNames, Object[] a_data)
 	{		
 		StringBuilder stringBuilder = new StringBuilder();
 		if (a_columnNames.length == a_data.length)
@@ -115,7 +115,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 			 {
 				 stringBuilder.append(", " + a_columnNames[i] + " = ?");
 			 }
-			 stringBuilder.append(" WHERE Id = '" + a_data[0] + "';");
+			 stringBuilder.append(" WHERE Id = '" + a_id + "';");
 
 			 faire_update_sqlite(stringBuilder.toString(), a_data);
 		}
