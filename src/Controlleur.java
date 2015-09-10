@@ -1,6 +1,5 @@
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -45,7 +44,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 					
 					if (id_outil_valide && quantite_disponible_valide) {
 						// création de la location dans la bd
-						faire_update_sqlite(
+/*						faire_update_sqlite(
 								"INSERT INTO locations(Id_Outil, Id_Proprietaire, Id_Responsable) "
 									+ "VALUES "
 									+ "('"+ id_outil
@@ -55,7 +54,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 						// ajouter requête pour modifier quantité disponible de l'outil
 						faire_update_sqlite(
 								"UPDATE outils SET Disponible = Disponible - 1 "
-									+ "WHERE Id = '" + id_outil + "';");
+									+ "WHERE Id = '" + id_outil + "';");*/
 						
 						parent.current_p_centre_etudiant.rafraichir_tableaux();
 					}
@@ -142,7 +141,6 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	public Membre Scanner_etudiant()
 	{
 		String id_etudiant;
-		Boolean id_outil_valide = false;
 		Boolean a_annule = false;
 		
 		while (!(a_annule)) {
@@ -162,8 +160,9 @@ public class Controlleur extends Base_de_donnees_sqlite{
 			else if (id_existe("membres", id_etudiant))
 			{
 				// création de la location dans la bd
+				Object[] data = {id_etudiant};
 				List<Object> result = faire_requete_sqlite(
-					"SELECT * FROM membres WHERE Id = '" + id_etudiant + "';");
+					"SELECT * FROM membres WHERE Id = ?;", data);
 				if (result.size() == 5)
 				{
 					return new Membre(result.get(0), result.get(1), result.get(2), result.get(3), result.get(4));
@@ -182,8 +181,9 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	 */
 	public boolean valider_quantite_disponible(String a_nom_table, String a_id) {
 		// vérifier que c'est une table qui a une quantité disponible?
+		Object[] data = {a_id};
 		List<Object> result = faire_requete_sqlite(
-				"SELECT * FROM " + a_nom_table + " WHERE Id = '" + a_id + "' AND Disponible > 0;");
+				"SELECT * FROM " + a_nom_table + " WHERE Id = ? AND Disponible > 0;", data);
 		if (result.size() > 0)
 		{
 			return true;
@@ -201,8 +201,9 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	
 	public boolean id_existe(String a_table, String a_id) // ----- FONCTIONNEL -----
 	{
+		Object[] data = {a_id};
 		List<Object> result = faire_requete_sqlite(
-				"SELECT * FROM " + a_table + " WHERE Id = '" + a_id + "';");
+				"SELECT * FROM " + a_table + " WHERE Id = ?;", data);
 		if (result.size() > 0)
 		{
 			return true;
@@ -217,8 +218,9 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	{
 		if (id_existe("membres", a_id))
 		{
+			Object[] data = {a_id};
 			List<Object> result = faire_requete_sqlite(
-					"SELECT * FROM membres WHERE Id = '" + a_id + "';");
+					"SELECT * FROM membres WHERE Id = ?;", data);
 			if (result.size() == 5)
 			{
 				return new Membre(result.get(0), result.get(1), result.get(2), result.get(3), result.get(4));
