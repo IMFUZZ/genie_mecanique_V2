@@ -105,20 +105,20 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	 * Cette fonction permet d'effectuer une modification dans la 
 	 * base de données, peu importe le nombre d'argument envoyé à la requete 'update'.
 	 */
-	public void faire_modification(String a_Id, String a_nom_table, Object[] a_columnNames, Object[] a_data)
+	public void faire_modification(String a_nom_table, Object[] a_columnNames, Object[] a_data)
 	{		
 		StringBuilder stringBuilder = new StringBuilder();
 		if (a_columnNames.length == a_data.length)
 		{
 			 stringBuilder.append("UPDATE " + a_nom_table + " SET ");
-			 stringBuilder.append(a_columnNames[0] + " = '" + a_data[0]);
+			 stringBuilder.append(a_columnNames[0] + " = ?");
 			 for (int i = 1; i < a_columnNames.length; i++)
 			 {
-				 stringBuilder.append("', " + a_columnNames[i] + " = '" + a_data[i]);
+				 stringBuilder.append("', " + a_columnNames[i] + " = ?");
 			 }
-			 stringBuilder.append("' WHERE Id = '" + a_Id + "';");
+			 stringBuilder.append("' WHERE Id = '" + a_data[0] + "';");
 
-			 faire_update_sqlite(stringBuilder.toString());
+			 faire_update_sqlite(stringBuilder.toString(), a_data);
 		}
 		else
 		{
@@ -193,90 +193,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	}
 	
 	
-	/*
-	 * 
-	 */
-	public void faire_don(String a_id_proprietaire, String a_id_brut)
-	{
-		faire_requete_sqlite(
-				"INSERT INTO dons(Id_Objet, Id_Propriétaire, Id_Responsable) "
-					+ "VALUES "
-					+ "('"+ a_id_brut
-					+"', '"+ a_id_proprietaire
-					+"', '"+ parent.administrateur.id
-					+"');");
-	}
-	
-	
-	/*
-	 * 
-	 */
-	public void ajouter_etudiant(String a_id_etudiant, String a_prenom, String a_nom)
-	{
-		faire_requete_sqlite(
-				"INSERT INTO membres(Id, Nom, Nom_Famille) "
-					+ "VALUES "
-					+ "('"+ a_id_etudiant
-					+"', '"+ a_prenom
-					+"', '"+ a_nom
-					+"');");
-	}
-	
-	/*
-	 * 
-	 */
-	public void ajouter_administrateur(String a_id_admin, String a_prenom, String a_nom)
-	{
-		faire_requete_sqlite(
-				"INSERT INTO membres(Id, Nom, Nom_Famille, Est_Administrateur) "
-					+ "VALUES "
-					+ "('"+ a_id_admin
-					+"', '"+ a_prenom
-					+"', '"+ a_nom
-					+"', "+ 1
-					+");");
-	}
-	
-	/*
-	 * 
-	 */
-	public void ajouter_outil(String a_id_outil, String a_nom, String a_description)
-	{
-		faire_requete_sqlite(
-				"INSERT INTO outils(Id, Nom, Description) "
-					+ "VALUES "
-					+ "('"+ a_id_outil
-					+"', '"+ a_nom
-					+"', '"+ a_description
-					+"');");
-	}
-	
-	/*
-	 * 
-	 */
-	public void ajouter_brut(String a_id_brut, String a_nom, String a_description, int a_quantity)
-	{
-		faire_requete_sqlite(
-				"INSERT INTO bruts(Id, Nom, Description, Quantité) "
-					+ "VALUES "
-					+ "('"+ a_id_brut
-					+"', '"+ a_nom
-					+"', '"+ a_description
-					+"', "+ a_quantity
-					+");");
-	}
-	
-	/*
-	 * 
-	 */
-	public void declarer_bris(int a_id_outil)
-	{
-		faire_update_sqlite(
-				"UPDATE outils SET Brisé = 1 "
-					+ "WHERE Id = "
-					+ a_id_outil
-					+";");
-	}
+
 	
 	/*
 	 * 
