@@ -126,7 +126,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	/*
 	 * Vide le panneau_etudiants et lui ajoute un nouveau tableau contenant les informations sur les étudiants
 	 */
-	public void ajouer_panneau_etudiants(String a_filtre) {
+	public void ajouter_panneau_etudiants(String a_filtre) {
 		panneau_etudiants.removeAll();		
 		t_etudiants = new Tableau(parent.controlleur.creer_modele_table("membres", ""));
 		t_etudiants.sorter.setRowFilter(RowFilter.regexFilter("(?i)" + a_filtre));
@@ -149,7 +149,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 					}
 					Object[] nouvelle_valeurs = parent.controlleur.optionPane_dynamique(a_noms_colonnes.toArray(), a_donnees_ligne.toArray());
 					parent.controlleur.faire_modification(
-							t_etudiants.getValueAt(row, 0),
+							t_etudiants.getValueAt(row, 0).toString(),
 							t_etudiants.nom_table, 
 							a_noms_colonnes.toArray(), 
 							nouvelle_valeurs);
@@ -184,7 +184,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 					}
 					Object[] nouvelle_valeurs = parent.controlleur.optionPane_dynamique(a_noms_colonnes.toArray(), a_donnees_ligne.toArray());
 					parent.controlleur.faire_modification(
-							t_outils.getValueAt(row, 0),
+							t_outils.getValueAt(row, 0).toString(),
 							t_outils.nom_table, 
 							a_noms_colonnes.toArray(), 
 							nouvelle_valeurs);
@@ -219,7 +219,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 					}
 					Object[] nouvelle_valeurs = parent.controlleur.optionPane_dynamique(a_noms_colonnes.toArray(), a_donnees_ligne.toArray());
 					parent.controlleur.faire_modification( 
-							t_materiaux.getValueAt(row, 0),
+							t_materiaux.getValueAt(row, 0).toString(),
 							t_materiaux.nom_table, 
 							a_noms_colonnes.toArray(), 
 							nouvelle_valeurs);
@@ -254,7 +254,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 					}
 					Object[] nouvelle_valeurs = parent.controlleur.optionPane_dynamique(a_noms_colonnes.toArray(), a_donnees_ligne.toArray());
 					parent.controlleur.faire_modification(
-							t_bruts.getValueAt(row, 0),
+							t_bruts.getValueAt(row, 0).toString(),
 							t_bruts.nom_table, 
 							a_noms_colonnes.toArray(), 
 							nouvelle_valeurs);
@@ -266,7 +266,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	
 	public void rafraichir_tableaux(String a_filtre) {
 		parent.setEnabled(false);
-		ajouer_panneau_etudiants(a_filtre);
+		ajouter_panneau_etudiants(a_filtre);
 		ajouter_panneau_outils(a_filtre);
 		ajouter_panneau_materiel(a_filtre);
 		ajouter_panneau_bruts(a_filtre);

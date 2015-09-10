@@ -92,7 +92,12 @@ abstract class Base_de_donnees_sqlite {
 			con.setAutoCommit(false);
 			stmt = con.createStatement();
 			
-			rs = stmt.executeQuery("select * from " + a_nom_table + ";");
+			if (id_membre_choisit.equals("")){
+				rs = stmt.executeQuery("select * from " + a_nom_table + ";");
+			}
+			else{
+				rs = stmt.executeQuery("select * from " + a_nom_table + " where Id_Proprietaire = '" + id_membre_choisit+"';");
+			}
 			
 			ResultSetMetaData rm = rs.getMetaData();
 			
