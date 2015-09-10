@@ -140,9 +140,9 @@ public class Panneau_centre_recherche extends Panneau_centre {
 					LinkedList<Object> a_noms_colonnes = new LinkedList<Object>();
 					LinkedList<Object> a_donnees_ligne = new LinkedList<Object>();
 					int row=t_etudiants.rowAtPoint(e.getPoint());
-					for(int i = 0;i < t_etudiants.getColumnCount(); i++)
+					for(int i = 1;i < t_etudiants.getColumnCount(); i++)
 					{
-						if (!t_etudiants.getColumnName(i).equals("Photos")) {
+						if (!t_etudiants.getColumnName(i).equals("Photo")) {
 							a_noms_colonnes.add(t_etudiants.getColumnName(i));
 							a_donnees_ligne.add(t_etudiants.getValueAt(row,i).toString());					
 						}				
@@ -176,7 +176,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 					LinkedList<Object> a_noms_colonnes = new LinkedList<Object>();
 					LinkedList<Object> a_donnees_ligne = new LinkedList<Object>();
 					int row=t_outils.rowAtPoint(e.getPoint());
-					for(int i = 0;i < t_outils.getColumnCount(); i++)
+					for(int i = 1;i < t_outils.getColumnCount(); i++)
 					{
 						a_noms_colonnes.add(t_outils.getColumnName(i));
 						a_donnees_ligne.add(t_outils.getValueAt(row,i).toString());					
@@ -210,7 +210,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 					LinkedList<Object> a_noms_colonnes = new LinkedList<Object>();
 					LinkedList<Object> a_donnees_ligne = new LinkedList<Object>();
 					int row=t_materiaux.rowAtPoint(e.getPoint());
-					for(int i = 0;i < t_materiaux.getColumnCount(); i++)
+					for(int i = 1;i < t_materiaux.getColumnCount(); i++)
 					{
 						a_noms_colonnes.add(t_materiaux.getColumnName(i));
 						a_donnees_ligne.add(t_materiaux.getValueAt(row,i).toString());					
@@ -244,7 +244,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 					LinkedList<Object> a_noms_colonnes = new LinkedList<Object>();
 					LinkedList<Object> a_donnees_ligne = new LinkedList<Object>();
 					int row=t_bruts.rowAtPoint(e.getPoint());
-					for(int i = 0;i < t_bruts.getColumnCount(); i++)
+					for(int i = 1;i < t_bruts.getColumnCount(); i++)
 					{
 						a_noms_colonnes.add(t_bruts.getColumnName(i));
 						a_donnees_ligne.add(t_bruts.getValueAt(row,i).toString());					
