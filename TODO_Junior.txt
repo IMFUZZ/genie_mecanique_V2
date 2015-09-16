@@ -1,4 +1,4 @@
- THIS IS YOUR TODO LIST!!
+﻿ THIS IS YOUR TODO LIST!!
  
  - [ X ] Faire en sorte que la BDSQLITE supporte tout les datatypes
  - [ X ] Transformer les images codebarres en bouton avec l'image par-dessus
@@ -26,4 +26,8 @@
 
  - [ ] Construction dynamique d'une requete sqlite3
  - [ ] normalisation des tableaux des panneaux centre
- - [ ] 
+
+ - [ ] Ajouter et supprimer données
+ - [ ] Location, Retour et Bris
+ - [ ] Notifications lorsqu'un item atteint le seul de réapprovisionnement
+ - [ ] BD: Ajouter Propriétaire (TGM ou Paul-Rousseau) pour les outils
