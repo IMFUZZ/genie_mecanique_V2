@@ -101,6 +101,7 @@ abstract class Base_de_donnees_sqlite {
 			
 			ResultSetMetaData rm = rs.getMetaData();
 			
+			
 		    // names of columns
 		    Vector<String> columnNames = new Vector<String>();
 		    int columnCount = rm.getColumnCount();
