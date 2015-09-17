@@ -17,59 +17,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 		
 	}
 	
-	/*
-	 * Effectue une location d'outil pour le membre connecté (celui envoyé en argument)
-	 */
-	public void faire_location(Membre a_membre)
-	{
-		String nom_table = "Outils";
-		String id_outil;
-		Boolean id_outil_valide = false;
-		Boolean quantite_disponible_valide = false;
-		Boolean a_annule = false;
-		
-		
-		if (a_membre != null) {
-			while (!(a_annule)) {
-				
-				id_outil = scanner_outil(); // lance un popup qui permet de scanner l'outil
-					
-				if (id_outil == null) {
-					a_annule = true;
-				}
-				
-				else {
-					id_outil_valide = id_existe(nom_table, id_outil);
-					quantite_disponible_valide = valider_quantite_disponible(nom_table, id_outil);
-					
-					if (id_outil_valide && quantite_disponible_valide) {
-						// création de la location dans la bd
-/*						faire_update_sqlite(
-								"INSERT INTO locations(Id_Outil, Id_Proprietaire, Id_Responsable) "
-									+ "VALUES "
-									+ "('"+ id_outil
-									+ "', '"+ a_membre.id
-									+ "', '"+ parent.administrateur.id
-									+ "');");
-						// ajouter requête pour modifier quantité disponible de l'outil
-						faire_update_sqlite(
-								"UPDATE outils SET Disponible = Disponible - 1 "
-									+ "WHERE Id = '" + id_outil + "';");*/
-						
-						parent.current_p_centre_etudiant.rafraichir_tableaux();
-					}
-					
-					else if (!id_outil_valide) {
-						JOptionPane.showMessageDialog(parent, "L'id ne correspond pas à un outil existant");
-					}
-					
-					else if (!quantite_disponible_valide) {
-						JOptionPane.showMessageDialog(parent, "Tous ces outils sont empruntés ou brisés");
-					}
-				}
-			}
-		}		
-	}
+
 	
 	/*
 	 * Cette fonction permet d'effectuer un ajout dans la base de données, 
@@ -88,9 +36,9 @@ public class Controlleur extends Base_de_donnees_sqlite{
 			 stringBuilder.append(") VALUES (?");
 			 for (int i = 1; i < a_data.length; i++)
 			 {
-				 stringBuilder.append("', ?");
+				 stringBuilder.append(", ?");
 			 }
-			 stringBuilder.append("');");
+			 stringBuilder.append(");");
 			 
 			 faire_requete_sqlite(stringBuilder.toString(), a_data);
 		}
@@ -126,6 +74,57 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	}
 	
 	/*
+	 * Effectue une location d'outil pour le membre connecté (celui envoyé en argument)
+	 */
+	public void faire_location(Membre a_membre)
+	{
+		String nom_table = "Outils";
+		String id_outil;
+		Boolean id_outil_valide = false;
+		Boolean quantite_disponible_valide = false;
+		Boolean a_annule = false;
+		
+		
+		if (a_membre != null) {
+			while (!(a_annule)) {
+				
+				id_outil = scanner_outil(); // lance un popup qui permet de scanner l'outil
+					
+				if (id_outil == null) {
+					a_annule = true;
+				}
+				
+				else {
+					id_outil_valide = id_existe(nom_table, id_outil);
+					quantite_disponible_valide = valider_quantite_disponible(nom_table, id_outil);
+					
+					if (id_outil_valide && quantite_disponible_valide) {
+						Object[] colonnes_location = {"Id_Outil", "Id_Proprietaire", "Id_Responsable"};
+						Object[] data_location = {id_outil, a_membre.id, parent.administrateur.id};
+						Object[] data_outil = {id_outil};
+						
+						faire_ajout("Locations", colonnes_location, data_location);
+						faire_update_sqlite(
+								"UPDATE outils SET Quantite_Disponible = Quantite_Disponible - 1 "
+									+ "WHERE Id = ?;", data_outil);
+						
+						a_annule = true;
+						parent.current_p_centre_etudiant.rafraichir_tableaux();
+					}
+					
+					else if (!id_outil_valide) {
+						JOptionPane.showMessageDialog(parent, "L'id ne correspond pas à un outil existant");
+					}
+					
+					else if (!quantite_disponible_valide) {
+						JOptionPane.showMessageDialog(parent, "Tous ces outils sont empruntés ou brisés");
+					}
+				}
+			}
+		}		
+	}
+	
+	/*
 	 * Ouvre un popup permettant de scanner le code-barre d'un outil
 	 * Retourne l'id scanné
 	 */
@@ -136,8 +135,14 @@ public class Controlleur extends Base_de_donnees_sqlite{
 				"Scan de l'outil", 	// -- Titre
 				3, new ImageIcon("src/images/icon_128.png"),  // -- Icône personnalisée
 				null, "");
+		
+		
 	}
 	
+	/*
+	 * Ouvre un popup permettant d'entrer l'id d'un étudiant (manuellement ou en scannant sa carte)
+	 * Retourne le membre
+	 */	
 	public Membre Scanner_etudiant()
 	{
 		String id_etudiant;
@@ -183,7 +188,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 		// vérifier que c'est une table qui a une quantité disponible?
 		Object[] data = {a_id};
 		List<Object> result = faire_requete_sqlite(
-				"SELECT * FROM " + a_nom_table + " WHERE Id = ? AND Disponible > 0;", data);
+				"SELECT * FROM " + a_nom_table + " WHERE Id = ? AND Quantite_Disponible > 0;", data);
 		if (result.size() > 0)
 		{
 			return true;
@@ -232,7 +237,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 	/*
 	 * Retourne Object[] qui correspond aux informations retournées par un OptionPane. Ce OptionPane
 	 * est conçu dynamiquement par la concaténation des Object[] reçues en argument. L'ordre des données
-	 * contenues dans les Object[] est très importantes, elle sont associées d'une liste à l'autre selon
+	 * contenues dans les Object[] est très importante, elles sont associées d'une liste à l'autre selon
 	 * leur index
 	 */
 	public Object[] optionPane_dynamique(Object[] a_noms_colonnes, Object[] a_donnees_ligne)
