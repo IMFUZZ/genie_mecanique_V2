@@ -116,24 +116,27 @@ CREATE TABLE Locations (
 	Id_Proprietaire TEXT NOT NULL,
 	Id_Responsable TEXT NOT NULL,
 	Date_Emprunt DATE
-		DEFAULT (datetime('now','localtime')),
-	Date_Retour DATE
+		DEFAULT (datetime('now','localtime'))
 );
 
 INSERT INTO Locations (Id_Outil, Id_Proprietaire, Id_Responsable)
 	VALUES ('OUT0001', '1245278', '1111111');
 
-CREATE TABLE Bris (
+
+
+CREATE TABLE Retours(
 	Id INTEGER PRIMARY KEY,
 	Id_Outil TEXT NOT NULL,
 	Id_Proprietaire TEXT NOT NULL,
 	Id_Responsable TEXT NOT NULL,
-	Date_Bris DATE
-		DEFAULT (datetime('now','localtime'))
+	Date_Retour DATE
+		DEFAULT (datetime('now','localtime')),
+	Bris TINYINT 
+		DEFAULT 0
 );
 
-INSERT INTO Bris (Id_Outil, Id_Proprietaire, Id_Responsable)
-	VALUES ('OUT0003', '1245278', '1111111');
+INSERT INTO Retours (Id_Outil, Id_Proprietaire, Id_Responsable, Date_Emprunt)
+	VALUES ('OUT0001', '1245278', '1111111', datetime('now','localtime'));
 
 
 CREATE TABLE Dons (

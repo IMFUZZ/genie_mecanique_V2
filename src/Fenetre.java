@@ -156,7 +156,7 @@ public class Fenetre extends JFrame{
 	}
 	public void charger_panneau_etudiant()
 	{
-		etudiant = controlleur.Scanner_etudiant();
+		etudiant = controlleur.scanner_etudiant();
 		if (etudiant.id != null) 
 		{	
 			if (etudiant.id != "")

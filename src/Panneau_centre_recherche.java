@@ -200,7 +200,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	public void ajouter_panneau_materiel(String a_filtre) {
 		
 		panneau_materiel.removeAll();
-		t_materiaux = new Tableau(parent.controlleur.creer_modele_table("bruts", ""));
+		t_materiaux = new Tableau(parent.controlleur.creer_modele_table("materiel", ""));
 		t_materiaux.sorter.setRowFilter(RowFilter.regexFilter("(?i)" + a_filtre));
 		scroll_tableau_materiel = new Panneau_scroll(t_materiaux);
 		panneau_materiel.add(scroll_tableau_materiel);
