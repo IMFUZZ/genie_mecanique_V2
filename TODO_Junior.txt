@@ -24,10 +24,12 @@
 
  	*** Utiliser un système de codebarre avec des lettres pour inventorier les items et un systeme avec des chiffres pour inventorier les membres
 
- - [ ] Construction dynamique d'une requete sqlite3
- - [ ] normalisation des tableaux des panneaux centre
+ - [ X ] Construction dynamique d'une requete sqlite3
+ - [ X ] normalisation des tableaux des panneaux centre
 
  - [ ] Ajouter et supprimer données
  - [ ] Location, Retour et Bris
  - [ ] Notifications lorsqu'un item atteint le seul de réapprovisionnement
  - [ ] BD: Ajouter Propriétaire (TGM ou Paul-Rousseau) pour les outils
+ - [ ] S'assurer que la colonne d'image d'intervienne pas avec le filtre (barre de recherche)
+ - [ ] Faire une fonction qui permet de retourner un boolean indiquant si la liste de data d'une optionpanedynamique continent une valeur null ****
