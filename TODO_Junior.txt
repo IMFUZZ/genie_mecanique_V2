@@ -33,3 +33,6 @@
  - [ ] BD: Ajouter Propriétaire (TGM ou Paul-Rousseau) pour les outils
  - [ ] S'assurer que la colonne d'image d'intervienne pas avec le filtre (barre de recherche)
  - [ ] Faire une fonction qui permet de retourner un boolean indiquant si la liste de data d'une optionpanedynamique continent une valeur null ****
+ - [ ] Vérifier voir si le changement des types (modification de table / conversion de data sqlite) peut causer un problème.
+
+ - [ ] L'optionPaneDynamique retourne uniquement des String À CORRIGER!

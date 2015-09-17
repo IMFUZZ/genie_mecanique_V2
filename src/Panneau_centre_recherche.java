@@ -141,7 +141,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 					int row=t_etudiants.rowAtPoint(e.getPoint());
 					for(int i = 0;i < t_etudiants.getColumnCount(); i++)
 					{
-						if (!t_etudiants.getColumnName(i).equals("Photos")) {
+						if (!t_etudiants.getColumnName(i).equals("Photo")) {
 							a_noms_colonnes.add(t_etudiants.getColumnName(i));
 							a_donnees_ligne.add(t_etudiants.getValueAt(row,i).toString());					
 						}				

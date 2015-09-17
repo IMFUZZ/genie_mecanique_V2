@@ -40,7 +40,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 			 }
 			 stringBuilder.append(");");
 			 
-			 faire_requete_sqlite(stringBuilder.toString(), a_data);
+			 faire_update_sqlite(stringBuilder.toString(), a_data);
 		}
 		else
 		{
