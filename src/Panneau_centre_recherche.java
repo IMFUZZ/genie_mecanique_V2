@@ -27,7 +27,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	Tableau t_outils;
 	Tableau t_bruts;
 	
-	Tableau[] liste_tableaux = {t_materiaux, t_etudiants, t_outils, t_bruts};
+	Object[] liste_tableaux = {"", "", "", ""};
 	
 	public Panneau_centre_recherche(Fenetre a_parent) {
 		
@@ -69,7 +69,6 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	JTable tableau_materiel;
 	JLabel titre_tableau_materiel;
 	Panneau_scroll scroll_tableau_materiel;
-	
 	
 	/*
 	 * Crée les JPanel qui vont contenir les tableaux
@@ -157,6 +156,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 				}
 			}
 	    });
+		liste_tableaux[0] = t_etudiants;
 	}
 	
 	/*
@@ -192,6 +192,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 				}
 			}
 	    });
+		liste_tableaux[1] = t_outils;
 	}
 	
 	/*
@@ -227,6 +228,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 				}
 			}
 	    });
+		liste_tableaux[2] = t_materiaux;
 	}
 	
 	/*
@@ -262,6 +264,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 				}
 			}
 	    });
+		liste_tableaux[3] = t_bruts;
 	}
 	
 	public void rafraichir_tableaux(String a_filtre) {
