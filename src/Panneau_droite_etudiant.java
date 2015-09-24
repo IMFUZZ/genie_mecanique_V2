@@ -76,19 +76,16 @@ public class Panneau_droite_etudiant extends Panneau_droite {
 		});
 		bouton_brut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Action : Faire don");
 				parent.controlleur.faire_don(parent.etudiant);
 			}
 		});
 		bouton_retour.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Action : Faire retour");
 				parent.controlleur.faire_retour(parent.etudiant, 0);
 			}
 		});
 		bouton_bris.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Action : Outil brisé");
 				parent.controlleur.faire_retour(parent.etudiant, 1);
 			}
 		});

@@ -4,6 +4,8 @@ CREATE TABLE Outils (
 	Id TEXT PRIMARY KEY,
 	Nom TEXT NOT NULL,
 	Description TEXT,
+	Proprietaire TEXT
+		NOT NULL,
 	Quantite_Disponible INT
 		NOT NULL,
 	Quantite_Loue INT
@@ -16,12 +18,12 @@ CREATE TABLE Outils (
 -- ajouter quantité totale?
 
 	
-INSERT INTO Outils (Id,	Nom, Description, Quantite_Disponible,	Quantite_Loue, Quantite_Brise, Seuil_Approvisionnement) 
-	VALUES ('OUT0001', 'Marteau', "Outil servant a planter des clous", 10, 0, 0, 2);
-INSERT INTO Outils (Id,	Nom, Description, Quantite_Disponible,	Quantite_Loue, Quantite_Brise, Seuil_Approvisionnement) 
-	VALUES ('OUT0002', 'Tournevis', "Outil servant a visser des vis", 25, 0, 0, 5);
-INSERT INTO Outils (Id,	Nom, Description, Quantite_Disponible,	Quantite_Loue, Quantite_Brise, Seuil_Approvisionnement) 
-	VALUES ('OUT0003', 'Cle anglaise', "Outil permettant d'effectuer des reparations", 14, 0, 0, 6);
+INSERT INTO Outils (Id,	Nom, Description, Proprietaire, Quantite_Disponible, Quantite_Loue, Quantite_Brise, Seuil_Approvisionnement) 
+	VALUES ('OUT0001', 'Marteau', "Outil servant a planter des clous", "TGM", 10, 0, 0, 2);
+INSERT INTO Outils (Id,	Nom, Description, Proprietaire, Quantite_Disponible, Quantite_Loue, Quantite_Brise, Seuil_Approvisionnement) 
+	VALUES ('OUT0002', 'Tournevis', "Outil servant a visser des vis", "Paul-Rousseau", 25, 0, 0, 5);
+INSERT INTO Outils (Id,	Nom, Description, Proprietaire, Quantite_Disponible, Quantite_Loue, Quantite_Brise, Seuil_Approvisionnement) 
+	VALUES ('OUT0003', 'Cle anglaise', "Outil permettant d'effectuer des reparations", "TGM", 14, 0, 0, 6);
 
 
 
