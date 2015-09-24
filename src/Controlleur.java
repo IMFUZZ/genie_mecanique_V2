@@ -151,7 +151,7 @@ public class Controlleur extends Base_de_donnees_sqlite{
 					id_outil_valide = id_existe(nom_table, id_outil);
 					id_location = trouver_id_location(a_membre, id_outil);
 					
-					if (id_outil_valide && id_location != null) {
+					if (id_location != null) {
 						Object[] colonnes_retour = {"Id_Outil", "Id_Proprietaire", "Id_Responsable", "Bris"};
 						Object[] data_retour = {id_outil, a_membre.id, parent.administrateur.id, a_est_brise};
 						Object[] data_location = {id_location};
@@ -160,21 +160,19 @@ public class Controlleur extends Base_de_donnees_sqlite{
 						faire_update_sqlite(
 								"DELETE FROM Locations WHERE Id = ?", data_location);
 						faire_ajout("Retours", colonnes_retour, data_retour);
-						faire_update_sqlite(
-								"UPDATE Outils SET Quantite_Disponible = Quantite_Disponible + 1, "
-									+ "Quantite_Loue = Quantite_Loue - 1 "
-									+ "WHERE Id = ?;", data_outil);
+						if (id_outil_valide) {
+							faire_update_sqlite(
+									"UPDATE Outils SET Quantite_Disponible = Quantite_Disponible + 1, "
+										+ "Quantite_Loue = Quantite_Loue - 1 "
+										+ "WHERE Id = ?;", data_outil);
+						}
 						
 						a_annule = true;
 						parent.current_p_centre_etudiant.rafraichir_tableaux();
 						parent.current_p_centre_recherche.rafraichir_tableaux("");
 					}
 					
-					else if (!id_outil_valide) {
-						JOptionPane.showMessageDialog(parent, "L'id ne correspond pas à un outil existant");
-					}
-					
-					else if (id_location == null) {
+					else {
 						JOptionPane.showMessageDialog(parent, "Cet outil n'est pas emprunté par ce membre");
 					}
 				}
@@ -425,7 +423,8 @@ public class Controlleur extends Base_de_donnees_sqlite{
 			}
 			else
 			{
-				return a_donnees_ligne;
+				Object[] erreur = {};
+				return erreur;
 			}
 		}
 		else

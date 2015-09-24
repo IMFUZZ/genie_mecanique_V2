@@ -128,6 +128,7 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	public void ajouter_panneau_etudiants(String a_filtre) {
 		panneau_etudiants.removeAll();		
 		t_etudiants = new Tableau(parent.controlleur.creer_modele_table("membres", ""));
+		
 		t_etudiants.sorter.setRowFilter(RowFilter.regexFilter("(?i)" + a_filtre));
 		scroll_tableau_etudiants = new Panneau_scroll(t_etudiants);
 		panneau_etudiants.add(scroll_tableau_etudiants);

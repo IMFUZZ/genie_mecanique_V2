@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -56,16 +57,19 @@ public class Panneau_droite_recherche extends Panneau_droite {
 				Tableau tab = (Tableau) parent.current_p_centre_recherche.liste_tableaux[
 				      parent.current_p_centre_recherche.tabbed_pane.getSelectedIndex()];
 				
-				Object[] colonnes = new Object[tab.getColumnCount()];
-				Object[] data = new Object[tab.getColumnCount()];
+				ArrayList<Object> colonnes = new ArrayList<Object>();
+				ArrayList<Object> data = new ArrayList<Object>();
 				
 				for (int x = 0; x < tab.getColumnCount(); x++)
 				{
-					colonnes[x] = tab.getColumnName(x);
-					data[x] = "";
+					if (!tab.getColumnName(x).equals("Photo"))
+					{
+						colonnes.add(tab.getColumnName(x));
+						data.add("");
+					}
 					
 				}
-				Object[] result = parent.controlleur.optionPane_dynamique(colonnes, data);
+				Object[] result = parent.controlleur.optionPane_dynamique(colonnes.toArray(), data.toArray());
 				for (int i = 0; i < result.length; i++)
 				{
 					if (result[i] == null){
@@ -76,8 +80,11 @@ public class Panneau_droite_recherche extends Panneau_droite {
 				{
 					parent.controlleur.faire_ajout( 
 							tab.nom_table, 
-							colonnes, 
+							colonnes.toArray(), 
 							result);
+				}
+				else{
+					System.out.println("données résultantes du optionPaneDynamique = null");
 				}
 				parent.current_p_centre_recherche.rafraichir_tableaux("");
 			}

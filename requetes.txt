@@ -107,6 +107,17 @@ INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
 INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
     VALUES ('2345678', 'André', 'éèéè', 'src/images/etudiants/1234567.png', 1);
 
+CREATE TRIGGER photo_automatique AFTER INSERT ON membres 
+    FOR EACH ROW 
+    WHEN NEW.Photo IS NULL
+  BEGIN
+    UPDATE membres SET Photo = "src/images/etudiants/" || NEW.Id || ".png"
+    WHERE Id = NEW.Id;
+  END;
+
+ INSERT INTO Membres (Id, Prenom, Nom_Famille, Est_Administrateur)
+    VALUES ('9999999', 'bob', 'ttttt', 1);
+
 
 
 

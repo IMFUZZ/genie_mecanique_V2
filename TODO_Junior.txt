@@ -1,4 +1,4 @@
-﻿ THIS IS YOUR TODO LIST!!
+ THIS IS YOUR TODO LIST!!
  
  - [ X ] Faire en sorte que la BDSQLITE supporte tout les datatypes
  - [ X ] Transformer les images codebarres en bouton avec l'image par-dessus
@@ -27,12 +27,24 @@
  - [ X ] Construction dynamique d'une requete sqlite3
  - [ X ] normalisation des tableaux des panneaux centre
 
- - [ ] Ajouter et supprimer données
- - [ ] Location, Retour et Bris
+ - [ X ] Ajouter et supprimer données
+ - [ X ] Location, Retour et Bris
  - [ ] Notifications lorsqu'un item atteint le seul de réapprovisionnement
  - [ ] BD: Ajouter Propriétaire (TGM ou Paul-Rousseau) pour les outils
  - [ ] S'assurer que la colonne d'image d'intervienne pas avec le filtre (barre de recherche)
- - [ ] Faire une fonction qui permet de retourner un boolean indiquant si la liste de data d'une optionpanedynamique continent une valeur null ****
+
+ - [ X ] s'assurer que la fermeture d'un optionpanedynamique ne créer pas d'objet vide
+
+ - [ X ] Faire une fonction qui permet de retourner un boolean indiquant si la liste de data d'une optionpanedynamique continent une valeur null ****
  - [ ] Vérifier voir si le changement des types (modification de table / conversion de data sqlite) peut causer un problème.
 
  - [ ] L'optionPaneDynamique retourne uniquement des String À CORRIGER!
+
+- [ ] Vérifier si c'est possible de mettre le nom des étudiants dans les tables à la place des id ***** 
+
+- [ ] Changer le nom des colonnes 'id_propriétaire et id_responsable...' pour des termes plus significatifs
+
+- [ ] Vérifier l'impact des modifications manuelles des données sur les requetes de modifications
+
+- [ ] Mettre le titre du optionPaneDynamique en argument au contructeur
+ 
