@@ -99,7 +99,7 @@ public class Fenetre extends JFrame{
 		add(p_bas, BorderLayout.SOUTH);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+			
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent windowEvent) {
 				setVisible(false);

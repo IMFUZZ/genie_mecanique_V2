@@ -160,10 +160,17 @@ public class Controlleur extends Base_de_donnees_sqlite{
 						faire_update_sqlite(
 								"DELETE FROM Locations WHERE Id = ?", data_location);
 						faire_ajout("Retours", colonnes_retour, data_retour);
-						faire_update_sqlite(
-								"UPDATE Outils SET Quantite_Disponible = Quantite_Disponible + 1, "
-									+ "Quantite_Loue = Quantite_Loue - 1 "
-									+ "WHERE Id = ?;", data_outil);
+						if (a_est_brise == 1) {
+							faire_update_sqlite(
+									"UPDATE Outils SET Quantite_Brise = Quantite_Brise + 1, "
+										+ "Quantite_Loue = Quantite_Loue - 1 "
+										+ "WHERE Id = ?;", data_outil);
+						} else {
+							faire_update_sqlite(
+									"UPDATE Outils SET Quantite_Disponible = Quantite_Disponible + 1, "
+										+ "Quantite_Loue = Quantite_Loue - 1 "
+										+ "WHERE Id = ?;", data_outil);
+						}
 						
 						a_annule = true;
 						parent.current_p_centre_etudiant.rafraichir_tableaux();
