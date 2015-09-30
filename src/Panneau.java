@@ -96,8 +96,8 @@ public abstract class Panneau extends JPanel{
 	        		  (new ImageIcon(
 	        				  ((new ImageIcon(
 	        						  a_chemin_image)).getImage()).getScaledInstance(
-	        								  100, 
-	        								  70, 
+	        								  141, 
+	        								  120, 
 	        								  java.awt.Image.SCALE_SMOOTH))));
 	          return b_image;
 	       } catch (Exception exceptions) {
