@@ -34,7 +34,7 @@ public class Fenetre extends JFrame{
 	JPanel p_bas;
 	
 	JTextField t_commande;
-	char focus_char = '|';
+	char focus_char = '.';
 	
 	int screen_height;
 	int screen_width;
