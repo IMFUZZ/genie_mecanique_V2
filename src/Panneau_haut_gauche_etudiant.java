@@ -92,6 +92,7 @@ public class Panneau_haut_gauche_etudiant extends Panneau{
 		
 		l_codebarre_centre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				parent.etudiant = new Membre();
 				parent.set_panneau_recherche();
 			}
 		});
