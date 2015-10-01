@@ -96,25 +96,57 @@ public class Panneau_haut extends Panneau {
 			public void actionPerformed(ActionEvent e) {
 				String commande = parent.t_commande.getText();
 				
-				if (commande.equals("A1"))
+				if (commande.equals("selection"))
 				{
 					parent.charger_panneau_etudiant();
 				}
-				else if (commande.equals("A2"))
+				else if (commande.equals("recherche"))
 				{
 					parent.set_panneau_recherche();
 				}
-				else if (commande.equals("A3"))
+				else if (commande.equals("location"))
 				{
-					parent.controlleur.faire_location(parent.etudiant);
+					if (parent.etudiant.id != "") {
+						parent.controlleur.faire_location(parent.etudiant);
+					} else {
+						parent.etudiant = parent.controlleur.scanner_etudiant();
+						if (parent.etudiant.id != ""){
+							parent.controlleur.faire_location(parent.etudiant);
+						}
+					}
 				}
-				else if (commande.equals("A4"))
+				else if (commande.equals("don"))
 				{
-					System.out.println("Action : Faire don");
+					if (parent.etudiant.id != "") {
+						parent.controlleur.faire_don(parent.etudiant);
+					} else {
+						parent.etudiant = parent.controlleur.scanner_etudiant();
+						if (parent.etudiant.id != ""){
+							parent.controlleur.faire_don(parent.etudiant);
+						}
+					}
 				}
-				else if (commande.equals("A5"))
+				else if (commande.equals("retour"))
 				{
-					System.out.println("Action : Faire retour");
+					if (parent.etudiant.id != "") {
+						parent.controlleur.faire_retour(parent.etudiant, 0);
+					} else {
+						parent.etudiant = parent.controlleur.scanner_etudiant();
+						if (parent.etudiant.id != ""){
+							parent.controlleur.faire_retour(parent.etudiant, 0);
+						}
+					}
+				}
+				else if (commande.equals("bris"))
+				{
+					if (parent.etudiant.id != "") {
+						parent.controlleur.faire_retour(parent.etudiant, 1);
+					} else {
+						parent.etudiant = parent.controlleur.scanner_etudiant();
+						if (parent.etudiant.id != ""){
+							parent.controlleur.faire_retour(parent.etudiant, 1);
+						}
+					}
 				}
 				else
 				{
