@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -27,13 +28,22 @@ public class Panneau_droite_recherche extends Panneau_droite {
 	public Panneau_droite_recherche(Fenetre a_parent)
 	{
 		super(a_parent);
-
-		t_rechercher = new JTextField();
 		
 		b_rechercher = new Bouton("Rechercher");
 		b_ajouter = new Bouton("Ajouter");
 		b_modifier = new Bouton("Modifier");
 		b_retirer = new Bouton("Retirer");
+		
+		t_rechercher = new JTextField();
+		t_rechercher.addActionListener( 
+				new AbstractAction()
+				{
+				    @Override
+				    public void actionPerformed(ActionEvent e)
+				    {
+				    	b_rechercher.doClick();
+				    }
+				});
 		
 		liste_de_boites.addAll(Arrays.asList(t_rechercher, b_rechercher, b_ajouter, b_modifier,  b_retirer, new JPanel()));
 		ajuster_boites();

@@ -5,11 +5,16 @@ import java.awt.GridLayout;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -33,6 +38,7 @@ public class Fenetre extends JFrame{
 	JPanel p_droite;
 	JPanel p_bas;
 	
+	Bouton b_lancer_commande;
 	JTextField t_commande;
 	char focus_char = '.';
 	
@@ -48,13 +54,25 @@ public class Fenetre extends JFrame{
 		new JFrame();
 		UIManager.put("TitledBorder.border", new LineBorder(new Color(125,125,125), 1));
 		
+		controlleur = new Controlleur(this);
+		
+		b_lancer_commande = new Bouton("Exécuter");
+		
 		t_commande = new JTextField();
 		t_commande.setPreferredSize(
 				new Dimension(150, 30));
 		t_commande.setMaximumSize(
 				new Dimension(150, 30));
 		
-		controlleur = new Controlleur(this);
+		t_commande.addActionListener( 
+				new AbstractAction()
+				{
+				    @Override
+				    public void actionPerformed(ActionEvent e)
+				    {
+				    	b_lancer_commande.doClick();
+				    }
+				});
 
 		setTitle("Système de gestion - 2014");
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -103,6 +121,71 @@ public class Fenetre extends JFrame{
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent windowEvent) {
 				setVisible(false);
+			}
+		});
+		
+		b_lancer_commande.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String commande = t_commande.getText();
+				
+				if (commande.equals("selection")|| commande.equals(".selection"))
+				{
+					charger_panneau_etudiant();
+				}
+				else if (commande.equals("recherche")|| commande.equals(".recherche"))
+				{
+					set_panneau_recherche();
+				}
+				else if (commande.equals("location")|| commande.equals(".location"))
+				{
+					if (etudiant.id != "") {
+						controlleur.faire_location(etudiant);
+					} else {
+						etudiant = controlleur.scanner_etudiant();
+						if (etudiant.id != ""){
+							controlleur.faire_location(etudiant);
+						}
+					}
+				}
+				else if (commande.equals("don")|| commande.equals(".don"))
+				{
+					if (etudiant.id != "") {
+						controlleur.faire_don(etudiant);
+					} else {
+						etudiant = controlleur.scanner_etudiant();
+						if (etudiant.id != ""){
+							controlleur.faire_don(etudiant);
+						}
+					}
+				}
+				else if (commande.equals("retour")|| commande.equals(".retour"))
+				{
+					if (etudiant.id != "") {
+						controlleur.faire_retour(etudiant, 0);
+					} else {
+						etudiant = controlleur.scanner_etudiant();
+						if (etudiant.id != ""){
+							controlleur.faire_retour(etudiant, 0);
+						}
+					}
+				}
+				else if (commande.equals("bris") || commande.equals(".bris"))
+				{
+					if (etudiant.id != "") {
+						controlleur.faire_retour(etudiant, 1);
+					} else {
+						etudiant = controlleur.scanner_etudiant();
+						if (etudiant.id != ""){
+							controlleur.faire_retour(etudiant, 1);
+						}
+					}
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Erreur : La commande entrée est invalide");
+				}
+				
+				t_commande.setText("");
 			}
 		});
 		
