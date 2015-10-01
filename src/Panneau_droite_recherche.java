@@ -24,6 +24,8 @@ public class Panneau_droite_recherche extends Panneau_droite {
 	Bouton b_ajouter;
 	Bouton b_modifier;
 	Bouton b_retirer;
+	Bouton b_remplir_bd;
+
 	
 	public Panneau_droite_recherche(Fenetre a_parent)
 	{
@@ -33,6 +35,7 @@ public class Panneau_droite_recherche extends Panneau_droite {
 		b_ajouter = new Bouton("Ajouter");
 		b_modifier = new Bouton("Modifier");
 		b_retirer = new Bouton("Retirer");
+		b_remplir_bd = new Bouton("Remplir la base de données");
 		
 		t_rechercher = new JTextField();
 		t_rechercher.addActionListener( 
@@ -46,7 +49,7 @@ public class Panneau_droite_recherche extends Panneau_droite {
 				    }
 				});
 		
-		liste_de_boites.addAll(Arrays.asList(t_rechercher, b_rechercher, b_ajouter, b_modifier,  b_retirer, new JPanel()));
+		liste_de_boites.addAll(Arrays.asList(t_rechercher, b_rechercher, b_ajouter, b_modifier,  b_retirer, new JPanel(), b_remplir_bd));
 		ajuster_boites();
 	
 		for(Iterator<JComponent> i = liste_de_boites.iterator();  i.hasNext(); ) 
@@ -58,6 +61,14 @@ public class Panneau_droite_recherche extends Panneau_droite {
 			public void actionPerformed(ActionEvent e) 
 			{
 				parent.current_p_centre_recherche.rafraichir_tableaux(t_rechercher.getText());
+			}
+		});
+		
+		b_remplir_bd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				parent.controlleur.remplir_bd();
+				parent.current_p_centre_recherche.rafraichir_tableaux("");
 			}
 		});
 		

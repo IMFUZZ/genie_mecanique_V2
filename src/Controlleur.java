@@ -1,9 +1,12 @@
+import java.awt.Dimension;
 import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 
@@ -459,6 +462,32 @@ public class Controlleur extends Base_de_donnees_sqlite{
 		} 
 		else {
 			return null;
+		}
+	}
+	/*
+	 * Permet de trouver s'il y a un objet possèdant une quantité totale sous le seul 
+	 * d'approvisionnement.
+	 */
+	public void remplir_bd() {
+		JTextArea textArea = new JTextArea("Ajouter les requêtes ici..");
+		JScrollPane scrollPane = new JScrollPane(textArea);  
+		textArea.setLineWrap(true);  
+		textArea.setWrapStyleWord(true); 
+		scrollPane.setPreferredSize( new Dimension( 500, 500 ) );
+		int result = JOptionPane.showConfirmDialog(null, scrollPane, "Requêtes",  
+		                                       JOptionPane.YES_NO_OPTION);
+		if (result == 0)
+		{
+			String[] requetes = textArea.getText().split(";");
+			for(String requete: requetes){
+				System.out.println(requete);
+				faire_update_sqlite(requete);
+			}
+			
+		}
+		else
+		{
+			System.out.println("Annulation du remplissage de la base de données!");
 		}
 	}
 }

@@ -99,15 +99,7 @@ CREATE TABLE Membres (
 		DEFAULT 0
 );
 
-INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
-	VALUES ('1245278', 'Daniel-Junior', 'Dube', 'src/images/etudiants/1245278.png', 1);
-INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
-	VALUES ('1357059', 'Sarah', 'Laflamme', 'src/images/etudiants/1357059.png', 1);
-INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
-	VALUES ('1234567', 'Doug', 'McMahon', 'src/images/etudiants/1234567.png', 1);
 
-INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
-    VALUES ('2345678', 'André', 'éèéè', 'src/images/etudiants/1234567.png', 1);
 
 CREATE TRIGGER photo_automatique AFTER INSERT ON membres 
     FOR EACH ROW 
@@ -117,8 +109,19 @@ CREATE TRIGGER photo_automatique AFTER INSERT ON membres
     WHERE Id = NEW.Id;
   END;
 
- INSERT INTO Membres (Id, Prenom, Nom_Famille, Est_Administrateur)
+INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
+	VALUES ('1245278', 'Daniel-Junior', 'Dube', 'src/images/etudiants/1245278.png', 1);
+INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
+	VALUES ('1357059', 'Sarah', 'Laflamme', 'src/images/etudiants/1357059.png', 1);
+
+INSERT INTO Membres (Id, Prenom, Nom_Famille, Est_Administrateur)
     VALUES ('9999999', 'bob', 'ttttt', 1);
+
+INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
+	VALUES ('1234567', 'Doug', 'McMahon', 'src/images/etudiants/1234567.png', 1);
+
+INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
+    VALUES ('2345678', 'André', 'éèéè', 'src/images/etudiants/1234567.png', 1);
 
 
 

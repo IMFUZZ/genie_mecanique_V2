@@ -163,6 +163,26 @@ abstract class Base_de_donnees_sqlite {
 		}
 		return;
 	}
+public void faire_update_sqlite(String a_requete_prepare) {
+		
+		try {
+			Class.forName("org.sqlite.JDBC");
+			con = DriverManager.getConnection("jdbc:sqlite:base_de_donnees.db", new Properties( ));
+			SQLiteConfig config = new SQLiteConfig();
+			config.setEncoding(SQLiteConfig.Encoding.UTF8);
+			con.setAutoCommit(false);
+			p_stmt = con.prepareStatement(a_requete_prepare); 
+			p_stmt.executeUpdate();
+			p_stmt.close();
+			con.commit();
+			con.close();
+		} catch (Exception e) {
+			System.out.println("Impossible d'effectuer l'update dans la base de données!");
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+		}
+		return;
+	}
 	public List<Object> faire_requete_sqlite(String a_requete_prepare) {
 		
 		ResultSet rs = null;
