@@ -96,15 +96,15 @@ public class Panneau_haut extends Panneau {
 			public void actionPerformed(ActionEvent e) {
 				String commande = parent.t_commande.getText();
 				
-				if (commande.equals("selection"))
+				if (commande.equals("selection")|| commande.equals(".selection"))
 				{
 					parent.charger_panneau_etudiant();
 				}
-				else if (commande.equals("recherche"))
+				else if (commande.equals("recherche")|| commande.equals(".recherche"))
 				{
 					parent.set_panneau_recherche();
 				}
-				else if (commande.equals("location"))
+				else if (commande.equals("location")|| commande.equals(".location"))
 				{
 					if (parent.etudiant.id != "") {
 						parent.controlleur.faire_location(parent.etudiant);
@@ -115,7 +115,7 @@ public class Panneau_haut extends Panneau {
 						}
 					}
 				}
-				else if (commande.equals("don"))
+				else if (commande.equals("don")|| commande.equals(".don"))
 				{
 					if (parent.etudiant.id != "") {
 						parent.controlleur.faire_don(parent.etudiant);
@@ -126,7 +126,7 @@ public class Panneau_haut extends Panneau {
 						}
 					}
 				}
-				else if (commande.equals("retour"))
+				else if (commande.equals("retour")|| commande.equals(".retour"))
 				{
 					if (parent.etudiant.id != "") {
 						parent.controlleur.faire_retour(parent.etudiant, 0);
@@ -137,7 +137,7 @@ public class Panneau_haut extends Panneau {
 						}
 					}
 				}
-				else if (commande.equals("bris"))
+				else if (commande.equals("bris") || commande.equals(".bris"))
 				{
 					if (parent.etudiant.id != "") {
 						parent.controlleur.faire_retour(parent.etudiant, 1);
@@ -150,8 +150,10 @@ public class Panneau_haut extends Panneau {
 				}
 				else
 				{
-					JOptionPane.showMessageDialog(null, "ERREUR : La commande entrée est invalide!");
+					JOptionPane.showMessageDialog(null, "Erreur : La commande entrée est invalide");
 				}
+				
+				parent.t_commande.setText("");
 			}
 		});
 	}

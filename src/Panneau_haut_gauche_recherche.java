@@ -51,7 +51,7 @@ public class Panneau_haut_gauche_recherche extends Panneau{
 		
 		l_titre = new JLabel("Logiciel de");
 		l_titre_suite = new JLabel("gestion d'inventaire");
-		l_codebarre_centre = faire_codebarre("src/images/barcode.png");
+		l_codebarre_centre = faire_codebarre("src/images/barcodes/selection.png");
 		
 		l_titre.setBorder(BorderFactory.createEmptyBorder(35, 20, 0, 20));
 		l_titre_suite.setBorder(BorderFactory.createEmptyBorder(0, 20, 35, 20));

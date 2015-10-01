@@ -36,10 +36,10 @@ public class Panneau_droite_etudiant extends Panneau_droite {
 		
 		// Création des images des codes barre
 		// *** À remplacer pour du texte avec la font "code barre"
-		bouton_location = faire_codebarre("src/images/barcode.png");
-		bouton_brut = faire_codebarre("src/images/barcode.png");
-		bouton_retour = faire_codebarre("src/images/barcode.png");
-		bouton_bris = faire_codebarre("src/images/barcode.png");
+		bouton_location = faire_codebarre("src/images/barcodes/location.png");
+		bouton_brut = faire_codebarre("src/images/barcodes/don.png");
+		bouton_retour = faire_codebarre("src/images/barcodes/retour.png");
+		bouton_bris = faire_codebarre("src/images/barcodes/bris.png");
 	
 		// Bordure autour du code barre
 		bouton_location.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
