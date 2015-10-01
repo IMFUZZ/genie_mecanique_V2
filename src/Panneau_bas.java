@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 public class Panneau_bas extends Panneau {
 	
 	JLabel l_commande;
+	Object[] seuils;
 		
 	public Panneau_bas(Fenetre a_parent)
 	{	
@@ -20,8 +21,9 @@ public class Panneau_bas extends Panneau {
 		l_commande.setBorder(BorderFactory.createEmptyBorder(0, 200, 0, 100));
 		
 		add(l_commande);
+		seuils = parent.controlleur.verifier_seuil();
 		
-		niveau_alerte(0);
+		niveau_alerte(seuils);
 	}
 	
 	public void set_l_commande(String a_s_notification)
@@ -31,21 +33,36 @@ public class Panneau_bas extends Panneau {
 	
 	// -------- Changer le niveau de couleur (light green, light yellow and light red)
 	
-	public void niveau_alerte(int niveau_alerte)
+	public void niveau_alerte(Object[] a_seuils)
 	{
-		if (niveau_alerte == 0)
+		if (a_seuils == null)
 		{
-			l_commande.setText("Aucune commande nécessaire!");
+			l_commande.setText("Aucun objet n'a atteint le seuil d'approvisionnement");
 			setBackground(Color.green);
 		}
-		else if (niveau_alerte == 1)
+		else if (a_seuils.length == 1)
 		{
-			l_commande.setText("Certaines quantitées de brutes sont près du seuil de livraison!");
+			String text = "Un objet à atteint le seuil d'approvisionnement : ";
+			text += (String) a_seuils[0];
+			l_commande.setText(text);
 			setBackground(Color.yellow);
+		}
+		else if (a_seuils.length > 1)
+		{
+			String text = "Plusieurs objets ont atteint le seuil d'approvisionnement! : ";
+			text += (String) a_seuils[0];
+			for(int i = 1; i < a_seuils.length; i++)
+			{
+				text += ", ";
+				text += (String) a_seuils[i];
+			}
+			l_commande.setText(text);
+			
+			setBackground(Color.red);
 		}
 		else
 		{
-			l_commande.setText("Vous devez commander des brutes!");
+			l_commande.setText("Erreur!");
 			setBackground(Color.red);
 		}
 	}

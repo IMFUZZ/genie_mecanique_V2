@@ -163,5 +163,49 @@ abstract class Base_de_donnees_sqlite {
 		}
 		return;
 	}
+	public List<Object> faire_requete_sqlite(String a_requete_prepare) {
+		
+		ResultSet rs = null;
+		Object entree = null;
+		List<Object> enregistrement = new LinkedList<Object>();
+		try {
+			Class.forName("org.sqlite.JDBC");
+			con = DriverManager.getConnection("jdbc:sqlite:base_de_donnees.db");
+			con.setAutoCommit(false);
+			p_stmt = con.prepareStatement(a_requete_prepare); 
+			
+			rs = p_stmt.executeQuery();
+			ResultSetMetaData rm = rs.getMetaData();
+			
+			while (rs.next()) {
+				for (int x = 1; x <= (rm.getColumnCount()); x++) {
+					int typeColonne = rm.getColumnType(x);
+					if (typeColonne == Types.TINYINT
+							|| typeColonne == Types.INTEGER) {
+						entree = rs.getInt(x);
+					} else if (typeColonne == Types.VARCHAR 
+							|| typeColonne == Types.NVARCHAR
+							|| typeColonne == Types.CHAR
+							|| typeColonne == Types.DATE
+							|| typeColonne == Types.TIME
+							|| typeColonne == Types.NCHAR) {
+						entree = rs.getString(x);
+					} else {
+						// Si le Nuplet est d'un autre type
+						System.out.println("autre type non géré!!");
+					}
+					enregistrement.add(entree);
+				}
+			}
+			p_stmt.close();
+			con.close();
+		} catch (Exception e) {
+			System.out.println("Impossible d'effectuer la requête dans la base de donnée!");
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+		}
+
+		return enregistrement;
+	}
 
 }

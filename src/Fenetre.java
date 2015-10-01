@@ -213,6 +213,7 @@ public class Fenetre extends JFrame{
 		p_droite.add(current_p_droit_recherche);
 		p_centre.add(current_p_centre_recherche);
 		current_p_haut.set_panneau_gauche_recherche();
+		etudiant = new Membre();
 	}
 	
 	public void set_panneau_etudiant()

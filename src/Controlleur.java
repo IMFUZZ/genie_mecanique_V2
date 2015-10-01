@@ -442,4 +442,23 @@ public class Controlleur extends Base_de_donnees_sqlite{
 			return a_donnees_ligne;
 		}
 	}
+	
+	/*
+	 * Permet de trouver s'il y a un objet possèdant une quantité totale sous le seul 
+	 * d'approvisionnement.
+	 */
+	public Object[] verifier_seuil() {
+		List<Object> seuil_outils = faire_requete_sqlite(
+			"SELECT Nom FROM outils WHERE Quantite_Disponible < Seuil_Approvisionnement;");
+		List<Object> seuil_materiaux = faire_requete_sqlite(
+				"SELECT (type || ' en ' || materiau) FROM Materiel WHERE Quantite_Restante < Seuil_Approvisionnement;");
+		if (seuil_outils.size() > 0 || seuil_materiaux.size() > 0)
+		{
+			seuil_outils.addAll(seuil_materiaux);
+			return seuil_outils.toArray();
+		} 
+		else {
+			return null;
+		}
+	}
 }
