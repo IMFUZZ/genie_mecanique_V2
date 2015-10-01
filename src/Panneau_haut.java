@@ -22,7 +22,6 @@ import javax.swing.border.TitledBorder;
 public class Panneau_haut extends Panneau {
 	
 	Bouton l_codebarre_centre;
-	Bouton b_lancer_commande;
 	
 	JLabel l_prof_prenom;
 	JLabel l_prof_nom;
@@ -49,9 +48,11 @@ public class Panneau_haut extends Panneau {
 		l_prof_prenom = new JLabel(parent.administrateur.prenom);
 		l_prof_nom = new JLabel(parent.administrateur.nom);
 		l_date = new JLabel();
-		b_lancer_commande = new Bouton("Exécuter");
 		
-		liste_de_boites.add(b_lancer_commande);
+		
+		
+		
+		liste_de_boites.add(parent.b_lancer_commande);
 		
 		ajuster_boites();
 		
@@ -88,72 +89,11 @@ public class Panneau_haut extends Panneau {
 		p_droite.add(l_prof_nom);
 		p_droite.add(l_date);
 		p_centre.add(parent.t_commande);
-		p_centre.add(b_lancer_commande);
+		p_centre.add(parent.b_lancer_commande);
 		
 		set_panneau_gauche_recherche();
 		
-		b_lancer_commande.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String commande = parent.t_commande.getText();
-				
-				if (commande.equals("selection"))
-				{
-					parent.charger_panneau_etudiant();
-				}
-				else if (commande.equals("recherche"))
-				{
-					parent.set_panneau_recherche();
-				}
-				else if (commande.equals("location"))
-				{
-					if (parent.etudiant.id != "") {
-						parent.controlleur.faire_location(parent.etudiant);
-					} else {
-						parent.etudiant = parent.controlleur.scanner_etudiant();
-						if (parent.etudiant.id != ""){
-							parent.controlleur.faire_location(parent.etudiant);
-						}
-					}
-				}
-				else if (commande.equals("don"))
-				{
-					if (parent.etudiant.id != "") {
-						parent.controlleur.faire_don(parent.etudiant);
-					} else {
-						parent.etudiant = parent.controlleur.scanner_etudiant();
-						if (parent.etudiant.id != ""){
-							parent.controlleur.faire_don(parent.etudiant);
-						}
-					}
-				}
-				else if (commande.equals("retour"))
-				{
-					if (parent.etudiant.id != "") {
-						parent.controlleur.faire_retour(parent.etudiant, 0);
-					} else {
-						parent.etudiant = parent.controlleur.scanner_etudiant();
-						if (parent.etudiant.id != ""){
-							parent.controlleur.faire_retour(parent.etudiant, 0);
-						}
-					}
-				}
-				else if (commande.equals("bris"))
-				{
-					if (parent.etudiant.id != "") {
-						parent.controlleur.faire_retour(parent.etudiant, 1);
-					} else {
-						parent.etudiant = parent.controlleur.scanner_etudiant();
-						if (parent.etudiant.id != ""){
-							parent.controlleur.faire_retour(parent.etudiant, 1);
-						}
-					}
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(null, "ERREUR : La commande entrée est invalide!");
-				}
-			}
-		});
+		
 	}
 	public void set_panneau_gauche_recherche()
 	{
