@@ -128,15 +128,15 @@ public class Fenetre extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				String commande = t_commande.getText();
 				
-				if (commande.equals("selection"))
+				if (commande.equals("selection")|| commande.equals(".selection"))
 				{
 					charger_panneau_etudiant();
 				}
-				else if (commande.equals("recherche"))
+				else if (commande.equals("recherche")|| commande.equals(".recherche"))
 				{
 					set_panneau_recherche();
 				}
-				else if (commande.equals("location"))
+				else if (commande.equals("location")|| commande.equals(".location"))
 				{
 					if (etudiant.id != "") {
 						controlleur.faire_location(etudiant);
@@ -147,7 +147,7 @@ public class Fenetre extends JFrame{
 						}
 					}
 				}
-				else if (commande.equals("don"))
+				else if (commande.equals("don")|| commande.equals(".don"))
 				{
 					if (etudiant.id != "") {
 						controlleur.faire_don(etudiant);
@@ -158,7 +158,7 @@ public class Fenetre extends JFrame{
 						}
 					}
 				}
-				else if (commande.equals("retour"))
+				else if (commande.equals("retour")|| commande.equals(".retour"))
 				{
 					if (etudiant.id != "") {
 						controlleur.faire_retour(etudiant, 0);
@@ -169,7 +169,7 @@ public class Fenetre extends JFrame{
 						}
 					}
 				}
-				else if (commande.equals("bris"))
+				else if (commande.equals("bris") || commande.equals(".bris"))
 				{
 					if (etudiant.id != "") {
 						controlleur.faire_retour(etudiant, 1);
@@ -182,8 +182,10 @@ public class Fenetre extends JFrame{
 				}
 				else
 				{
-					JOptionPane.showMessageDialog(null, "ERREUR : La commande entrée est invalide!");
+					JOptionPane.showMessageDialog(null, "Erreur : La commande entrée est invalide");
 				}
+				
+				t_commande.setText("");
 			}
 		});
 		

@@ -2,7 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -51,7 +51,7 @@ public class Panneau_haut_gauche_recherche extends Panneau{
 		
 		l_titre = new JLabel("Logiciel de");
 		l_titre_suite = new JLabel("gestion d'inventaire");
-		l_codebarre_centre = faire_codebarre("src/images/barcode.png");
+		l_codebarre_centre = faire_codebarre("src/images/barcodes/selection.png");
 		
 		l_titre.setBorder(BorderFactory.createEmptyBorder(35, 20, 0, 20));
 		l_titre_suite.setBorder(BorderFactory.createEmptyBorder(0, 20, 35, 20));
@@ -63,7 +63,7 @@ public class Panneau_haut_gauche_recherche extends Panneau{
 		p_gauche.setAlignmentX(Component.CENTER_ALIGNMENT);
 		p_remplissage.setLayout(new BoxLayout(p_remplissage, BoxLayout.X_AXIS));
 		p_remplissage.setMaximumSize(new Dimension(1000, 200));
-		p_codebarre.setLayout(new GridLayout(1,1));
+		p_codebarre.setLayout(new GridBagLayout());
 		p_codebarre.setAlignmentX(Component.CENTER_ALIGNMENT);
 		p_titre_gauche.setLayout(new BoxLayout(p_titre_gauche, BoxLayout.Y_AXIS));
 		p_titre_gauche.setAlignmentX(Component.CENTER_ALIGNMENT);

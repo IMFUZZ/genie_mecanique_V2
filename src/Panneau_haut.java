@@ -93,8 +93,8 @@ public class Panneau_haut extends Panneau {
 		
 		set_panneau_gauche_recherche();
 		
-		
 	}
+	
 	public void set_panneau_gauche_recherche()
 	{
 		removeAll();

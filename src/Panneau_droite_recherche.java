@@ -42,6 +42,7 @@ public class Panneau_droite_recherche extends Panneau_droite {
 				    public void actionPerformed(ActionEvent e)
 				    {
 				    	b_rechercher.doClick();
+				    	t_rechercher.setText("");
 				    }
 				});
 		

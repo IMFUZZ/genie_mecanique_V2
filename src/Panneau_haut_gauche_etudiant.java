@@ -1,8 +1,7 @@
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -56,7 +55,7 @@ public class Panneau_haut_gauche_etudiant extends Panneau{
 		l_nom_etudiant = new JLabel(s_nom_etudiant);
 		l_prenom_etudiant = new JLabel(s_prenom_etudiant);
 		l_image_etudiant = faire_image(parent.etudiant.chemin_image, 150, 160);
-		l_codebarre_centre = faire_codebarre("src/images/barcode.png");
+		l_codebarre_centre = faire_codebarre("src/images/barcodes/recherche.png");
 		
 		l_image_etudiant.setFont(f_sousTitre);
 		l_nom_etudiant.setFont(f_sousTitre);
@@ -65,7 +64,7 @@ public class Panneau_haut_gauche_etudiant extends Panneau{
 		p_info_etudiant.setLayout(new BoxLayout(p_info_etudiant, BoxLayout.X_AXIS));
 		p_remplissage.setLayout(new BoxLayout(p_remplissage, BoxLayout.X_AXIS));
 		p_remplissage.setMaximumSize(new Dimension(1000, 200));
-		p_codebarre.setLayout(new GridLayout(1,1));
+		p_codebarre.setLayout(new GridBagLayout());
 		p_codebarre.setAlignmentX(Component.CENTER_ALIGNMENT);
 		p_nom_prenom.setLayout(new BoxLayout(p_nom_prenom, BoxLayout.Y_AXIS));
 		p_nom_prenom.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
