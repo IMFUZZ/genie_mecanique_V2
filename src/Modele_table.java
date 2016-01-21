@@ -37,7 +37,7 @@ public class Modele_table extends DefaultTableModel {
     		return ImageIcon.class;
     	}
     	else {
-    		return String.class;
+    		return getValueAt(0, column).getClass();
     	}
     }
 }

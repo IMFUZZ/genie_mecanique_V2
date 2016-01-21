@@ -87,7 +87,13 @@ public class Panneau_droite_recherche extends Panneau_droite {
 					if (!tab.getColumnName(x).equals("Photo"))
 					{
 						colonnes.add(tab.getColumnName(x));
-						data.add("");
+						if (tab.getColumnName(x).equals("Id")) {
+							//ENTRER UN NOUVEL ID INEXISTANT!!
+							data.add("");
+						} else {
+							data.add("");
+						}
+						
 					}
 					
 				}
