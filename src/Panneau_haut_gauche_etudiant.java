@@ -70,7 +70,7 @@ public class Panneau_haut_gauche_etudiant extends Panneau{
 		p_nom_prenom.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
 		
 		t_b_info_etudiant = BorderFactory.createTitledBorder("Information sur le client");
-		t_b_codeBarre = BorderFactory.createTitledBorder("Retour à la selection de client");
+		t_b_codeBarre = BorderFactory.createTitledBorder("Retour à la page de recherche");
 		
 		p_info_etudiant.setBorder(
 				t_b_info_etudiant);

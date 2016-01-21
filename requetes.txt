@@ -1,4 +1,4 @@
-﻿
+
 
 CREATE TABLE Outils (
 	Id TEXT PRIMARY KEY,
@@ -111,6 +111,7 @@ CREATE TRIGGER photo_automatique AFTER INSERT ON membres
 
 INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
 	VALUES ('1245278', 'Daniel-Junior', 'Dube', 'src/images/etudiants/1245278.png', 1);
+	
 INSERT INTO Membres (Id, Prenom, Nom_Famille, Photo, Est_Administrateur)
 	VALUES ('1357059', 'Sarah', 'Laflamme', 'src/images/etudiants/1357059.png', 1);
 

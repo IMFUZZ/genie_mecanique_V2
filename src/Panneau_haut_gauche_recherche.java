@@ -71,7 +71,7 @@ public class Panneau_haut_gauche_recherche extends Panneau{
 		p_titre_gauche.setBackground(Color.white);
 		
 		t_b_titre_gauche = BorderFactory.createLineBorder(Color.black, 2);
-		t_b_codeBarre = BorderFactory.createTitledBorder("Retour à la selection de client");
+		t_b_codeBarre = BorderFactory.createTitledBorder("Sélectionner un étudiant");
 		
 		p_gauche.setBorder(
 				t_b_titre_gauche);

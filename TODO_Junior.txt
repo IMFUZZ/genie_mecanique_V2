@@ -47,4 +47,12 @@
 - [ ] Vérifier l'impact des modifications manuelles des données sur les requetes de modifications
 
 - [ ] Mettre le titre du optionPaneDynamique en argument au contructeur
+
+- [ ] AJOUTER LA FONCTIONNALITÉ DE FILTRE PAR COLONNE
+
+- [ ] Ajouter l'entrée automatique de l'id lors de l'entrée de nouvel article
+
+- [ ] Ajouter une BOOLEAN est_de_paulrousseau
+
+- [ ] Voir si c'est facile de faire afficher du texte d'une champ sur un hover
  
