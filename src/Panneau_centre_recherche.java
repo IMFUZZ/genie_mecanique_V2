@@ -18,6 +18,7 @@ import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
+import javax.swing.table.TableRowSorter;
 
 
 public class Panneau_centre_recherche extends Panneau_centre {
@@ -126,9 +127,10 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	 * Vide le panneau_etudiants et lui ajoute un nouveau tableau contenant les informations sur les étudiants
 	 */
 	public void ajouter_panneau_etudiants(String a_filtre) {
-		panneau_etudiants.removeAll();		
-		t_etudiants = new Tableau(parent.controlleur.creer_modele_table("membres", ""));
 		
+		Modele_table model_table = parent.controlleur.creer_modele_table("membres", "");
+		panneau_etudiants.removeAll();		
+		t_etudiants = new Tableau(model_table);
 		t_etudiants.sorter.setRowFilter(RowFilter.regexFilter("(?i)" + a_filtre));
 		scroll_tableau_etudiants = new Panneau_scroll(t_etudiants);
 		panneau_etudiants.add(scroll_tableau_etudiants);
@@ -165,8 +167,9 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	 */
 	public void ajouter_panneau_outils(String a_filtre) {
 		
+		Modele_table model_table = parent.controlleur.creer_modele_table("outils", "");
 		panneau_outils.removeAll();
-		t_outils = new Tableau(parent.controlleur.creer_modele_table("outils", ""));
+		t_outils = new Tableau(model_table);
 		t_outils.sorter.setRowFilter(RowFilter.regexFilter("(?i)" + a_filtre));
 		scroll_tableau_outils = new Panneau_scroll(t_outils);
 		panneau_outils.add(scroll_tableau_outils);
@@ -200,9 +203,10 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	 * Vide le panneau_materiel et lui ajoute un nouveau tableau contenant les informations sur le matériel
 	 */
 	public void ajouter_panneau_materiel(String a_filtre) {
-		
+
+		Modele_table model_table = parent.controlleur.creer_modele_table("materiel", "");
 		panneau_materiel.removeAll();
-		t_materiaux = new Tableau(parent.controlleur.creer_modele_table("materiel", ""));
+		t_materiaux = new Tableau(model_table);
 		t_materiaux.sorter.setRowFilter(RowFilter.regexFilter("(?i)" + a_filtre));
 		scroll_tableau_materiel = new Panneau_scroll(t_materiaux);
 		panneau_materiel.add(scroll_tableau_materiel);
@@ -237,8 +241,9 @@ public class Panneau_centre_recherche extends Panneau_centre {
 	 */
 	public void ajouter_panneau_bruts(String a_filtre) {
 		
+		Modele_table model_table = parent.controlleur.creer_modele_table("bruts", "");
 		panneau_bruts.removeAll();
-		t_bruts = new Tableau(parent.controlleur.creer_modele_table("bruts", ""));
+		t_bruts = new Tableau(model_table);
 		t_bruts.sorter.setRowFilter(RowFilter.regexFilter("(?i)" + a_filtre));
 		scroll_tableau_bruts = new Panneau_scroll(t_bruts);
 		panneau_bruts.add(scroll_tableau_bruts);
